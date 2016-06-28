@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- 主色调 蓝色 -->
+    <color name="main_blue">#5677fc</color>
+    <!-- 主色调 白l色 -->
+    <color name="main_white">@android:color/white</color>
+    <!-- 主文字颜色 白色 -->
+    <color name="main_text_white">@android:color/white</color>
+
 </resources>

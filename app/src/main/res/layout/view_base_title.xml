@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><!-- fragment基类中，头布局 -->
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_blue">
+
+    <!-- 头中左边的返回按键 -->
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/fragmenr_base_head_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentLeft="true"
+        android:visibility="invisible"
+        app:layout_heightPercent="100%h"
+        app:layout_widthPercent="100%h">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/arrow_left"
+            app:layout_heightPercent="35%h"
+            app:layout_widthPercent="35%h" />
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+    <!-- 头中间的文字 -->
+    <TextView
+        android:id="@+id/fragmenr_base_head_title"
+        style="@style/main_text_white_big"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        tools:text="订单详情" />
+
+    <!-- 头中右边的电话按键 -->
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/fragmenr_base_head_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible"
+        app:layout_heightPercent="100%h"
+        app:layout_widthPercent="100%h">
+
+        <TextView
+            android:id="@+id/fragmenr_base_head_right_image"
+            style="@style/main_text_white_big"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            tools:text="返回" />
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+
+</com.zhy.android.percent.support.PercentRelativeLayout>

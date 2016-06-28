@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 这是e家子项目，含加载状态切换，通用fragment基类基本布局 -->
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_white">
+
+    <!-- 头布局 -->
+    <include
+        android:id="@+id/view_base_head"
+        layout="@layout/view_base_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/main_blue"
+        app:layout_heightPercent="15%"></include>
+
+    <!-- 正常展示数据状态  -->
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/fragmenr_base_view_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view_base_head"></com.zhy.android.percent.support.PercentRelativeLayout>
+
+</com.zhy.android.percent.support.PercentRelativeLayout>

@@ -1,7 +1,9 @@
-package com.investigation.investigationsystem;
+package com.investigation.investigationsystem.business.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.investigation.investigationsystem.R;
 
 public class MainActivity extends AppCompatActivity {
 
