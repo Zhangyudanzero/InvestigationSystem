@@ -3,6 +3,10 @@ package com.investigation.investigationsystem.business.login.presenter;
 import android.app.Activity;
 import android.provider.SyncStateContract;
 
+import com.investigation.investigationsystem.business.login.view.LoginFragment;
+import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
+import com.investigation.investigationsystem.common.base.BasePresenter;
+import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 
 /**
@@ -24,17 +28,17 @@ import com.investigation.investigationsystem.common.constants.StringConstants;
  * <p/>
  * ==========================================
  */
-public class LoginPresenter {
+public class LoginPresenter extends BasePresenter {
 
     private static final String TAG = StringConstants.TAG + LoginPresenter.class.getName();
-    private Activity rootActivity;
+    private BaseFragmentActivity rootActivity;
     private static LoginPresenter persenter;
 
-    private LoginPresenter(Activity rootActivity) {
+    private LoginPresenter(BaseFragmentActivity rootActivity) {
         this.rootActivity = rootActivity;
     }
 
-    public static void regist(Activity rootActivity) {
+    public static void regist(BaseFragmentActivity rootActivity) {
         persenter = new LoginPresenter(rootActivity);
     }
 
@@ -46,8 +50,7 @@ public class LoginPresenter {
      * 加载默认的 fragment 页面
      */
     public void addDefaultFragment() {
-
-
+        replaceFragment(rootActivity, LoginFragment.newInstance(), rootActivity.getFragmentViewID());
     }
 
 }

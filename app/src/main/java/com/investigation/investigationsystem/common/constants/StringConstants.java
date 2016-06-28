@@ -21,5 +21,6 @@ package com.investigation.investigationsystem.common.constants;
 public class StringConstants {
 
     public static final String TAG = "iwen";
+    public static final String TITLE_LOGIN = "欢迎使用北京中医健康乡村基线普查系统";
 
 }

@@ -6,11 +6,22 @@
 
     <!-- 主色调 蓝色 -->
     <color name="main_blue">#5677fc</color>
-    <!-- 主色调 白l色 -->
+    <!-- 主色调 白色 -->
     <color name="main_white">@android:color/white</color>
+    <!-- 主色调 灰色 -->
+    <color name="main_gray">@android:color/darker_gray</color>
     <!-- 主文字颜色 白色 -->
     <color name="main_text_white">@android:color/white</color>
     <!-- 主文字颜色 黑色 -->
-    <color name="main_text_black">@android:color/white</color>
+    <color name="main_text_black">@android:color/black</color>
+    <!-- 主文字颜色 灰色 -->
+    <color name="main_text_gray">@android:color/darker_gray</color>
+    <!-- 主文字颜色 橙色 -->
+    <color name="main_text_Orange">#ffa726</color>
+    <!-- 主文字颜色 绿色 -->
+    <color name="main_text_green">#9ccc65</color>
+    <!-- 主文字颜色 蓝色 -->
+    <color name="main_text_blue">#899adc</color>
+
 
 </resources>

@@ -1,6 +1,6 @@
 package com.investigation.investigationsystem;
 
-import com.investigation.investigationsystem.common.base.BaseApplication;
+import android.app.Application;
 
 /**
  * ==========================================
@@ -20,5 +20,17 @@ import com.investigation.investigationsystem.common.base.BaseApplication;
  * <p/>
  * ==========================================
  */
-public class MyApplication extends BaseApplication {
+public class MyApplication extends Application {
+
+    private static MyApplication instance;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        instance = this;
+    }
+
+    public static MyApplication getInstance() {
+        return instance;
+    }
 }

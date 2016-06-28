@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.investigation.investigationsystem.R;
 
 import butterknife.ButterKnife;
 
@@ -32,7 +35,7 @@ import butterknife.ButterKnife;
 public abstract class BaseFragment extends Fragment {
 
     // 跟activity对象
-    protected Activity rootActivity;
+    protected AppCompatActivity rootActivity;
 
     // 根视图对象
     protected View rootView;
@@ -79,7 +82,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.rootActivity = activity;
+        this.rootActivity = (AppCompatActivity) activity;
     }
 
     @Override
@@ -94,7 +97,7 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // 初始化U控件
         rootView = inflater.inflate(getLayoutID(), container, false);
-        ButterKnife.bind(rootActivity, rootView);
+        ButterKnife.bind(this, rootView);
         return rootView;
     }
 

@@ -41,7 +41,7 @@ public class LoginActivity extends BaseFragmentActivity {
 
     @Override
     protected void setRootContent() {
-        MyApplication.getInstance().getApplicationContext();
+        this.rootContext = MyApplication.getInstance().getApplicationContext();
     }
 
     @Override

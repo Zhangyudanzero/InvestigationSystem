@@ -97,10 +97,10 @@ public abstract class BaseTitleFragemnt extends BaseFragment {
     @Override
     protected void initDefaultView() {
 
-        // 添加架几种加载状态视图布局
-        attachContentView();
         // 初始化用户自己的UI控件
         initView();
+        // 添加架几种加载状态视图布局
+        attachContentView();
     }
 
     @Override

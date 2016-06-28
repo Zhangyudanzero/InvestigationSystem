@@ -20,22 +20,29 @@
         <item name="android:textSize">22sp</item>
     </style>
 
-    <!-- 主文样式:白色 大号字 -->
+    <!-- 主文样式:白色 中号字 -->
     <style name="main_text_white_normal">
         <item name="android:textColor">@color/main_text_white</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
-    <!-- 主文样式:白色 大号字 -->
+    <!-- 主文样式:黑色 大号字 -->
     <style name="main_text_black_big">
-        <item name="android:textColor">@color/main_text_white</item>
+        <item name="android:textColor">@color/main_text_black</item>
         <item name="android:textSize">22sp</item>
     </style>
 
-    <!-- 主文样式:白色 大号字 -->
-    <style name="main_text_nlcak_normal">
+    <!-- 主文样式:黑色 中号字 -->
+    <style name="main_text_black_normal">
+        <item name="android:textColor">@color/main_text_black</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- 主按钮样式:白色 中号字 -->
+    <style name="main_button_white_normal">
         <item name="android:textColor">@color/main_text_white</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 

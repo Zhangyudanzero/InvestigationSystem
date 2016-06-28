@@ -1,5 +1,13 @@
 package com.investigation.investigationsystem.business.login.view;
 
+import android.os.Bundle;
+
+import com.investigation.investigationsystem.R;
+import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
+import com.investigation.investigationsystem.common.constants.StringConstants;
+
+import java.nio.channels.UnsupportedAddressTypeException;
+
 /**
  * ==========================================
  * <p/>
@@ -19,5 +27,49 @@ package com.investigation.investigationsystem.business.login.view;
  * <p/>
  * ==========================================
  */
-public class LoginFragment {
+public class LoginFragment extends BaseTitleFragemnt {
+
+    /**
+     * 提供给外部使用的创建对象的接口
+     *
+     * @return
+     */
+    public static LoginFragment newInstance() {
+        return new LoginFragment();
+    }
+
+    @Override
+    protected void initHeadView() {
+        setTitleStyle(false, false, StringConstants.TITLE_LOGIN);
+    }
+
+    @Override
+    protected void InitHeadClick() {
+        return;
+    }
+
+    @Override
+    protected int getContentViewID() {
+        return R.layout.fragment_login;
+    }
+
+    @Override
+    protected void analyzeBundle(Bundle bundle) {
+        return;
+    }
+
+    @Override
+    protected void onCreateByUser() {
+
+    }
+
+    @Override
+    protected void initView() {
+        
+    }
+
+    @Override
+    protected void initClick() {
+
+    }
 }
