@@ -26,5 +26,17 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <!-- 主文样式:白色 大号字 -->
+    <style name="main_text_black_big">
+        <item name="android:textColor">@color/main_text_white</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <!-- 主文样式:白色 大号字 -->
+    <style name="main_text_nlcak_normal">
+        <item name="android:textColor">@color/main_text_white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 
 </resources>

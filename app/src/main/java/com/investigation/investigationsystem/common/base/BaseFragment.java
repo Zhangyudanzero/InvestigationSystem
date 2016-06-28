@@ -69,9 +69,13 @@ public abstract class BaseFragment extends Fragment {
     /**
      * 进行用户自己的各种初始操作
      */
-    protected abstract void beaginWorkByUser();
+    protected abstract void onActivityCreatedByUser();
 
-    // 在fragment挂载时设置activity对象
+    /**
+     * 在fragment挂载时设置activity对象
+     *
+     * @param activity
+     */
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -81,7 +85,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         // 解析初始参数
         analyzeBundle(getArguments());
         onCreateByUser();
@@ -89,7 +92,6 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         // 初始化U控件
         rootView = inflater.inflate(getLayoutID(), container, false);
         ButterKnife.bind(rootActivity, rootView);
@@ -103,7 +105,7 @@ public abstract class BaseFragment extends Fragment {
         // 初始化数据，并初始化点击事件，此时UI控件都是创建完毕的
         initDefaultClick();
         // 进行用户自己的各种初始操作
-        beaginWorkByUser();
+        onActivityCreatedByUser();
     }
 
     @Override

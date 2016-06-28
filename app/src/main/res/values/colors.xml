@@ -10,5 +10,7 @@
     <color name="main_white">@android:color/white</color>
     <!-- 主文字颜色 白色 -->
     <color name="main_text_white">@android:color/white</color>
+    <!-- 主文字颜色 黑色 -->
+    <color name="main_text_black">@android:color/white</color>
 
 </resources>

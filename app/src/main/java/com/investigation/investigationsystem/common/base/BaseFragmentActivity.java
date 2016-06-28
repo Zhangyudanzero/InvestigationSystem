@@ -27,7 +27,6 @@ import com.investigation.investigationsystem.common.constants.StringConstants;
  */
 public abstract class BaseFragmentActivity extends BaseActivity {
 
-    public static final String TAG = StringConstants.TAG + BaseFragmentActivity.class.getName();
     // 全局上下文
     protected Context rootContext;
 
@@ -54,7 +53,7 @@ public abstract class BaseFragmentActivity extends BaseActivity {
     /**
      * 在oncreate时加载一些需要的数据
      */
-    protected abstract void initDataOnCreate();
+    protected abstract void onCreateByUser();
 
     /**
      * 处理传递初始化参数的方法
@@ -73,9 +72,9 @@ public abstract class BaseFragmentActivity extends BaseActivity {
         // 父类中已经进行了一些操作，设置状态栏颜色，加载根布局id
         super.onCreate(savedInstanceState);
 
-        initDataOnCreate();
         // 具体的上下文对象自己去传递
         setRootContent();
+        onCreateByUser();
 
         Intent intent = getIntent();
         if (null != intent) {

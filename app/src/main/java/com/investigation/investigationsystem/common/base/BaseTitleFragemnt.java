@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.investigation.investigationsystem.R;
 import com.zhy.android.percent.support.PercentRelativeLayout;
 
+import butterknife.Bind;
+
 
 /**
  * ==========================================
@@ -31,15 +33,20 @@ import com.zhy.android.percent.support.PercentRelativeLayout;
  */
 public abstract class BaseTitleFragemnt extends BaseFragment {
 
-    // 正常显示数据状态显示
+    // 内容视图
+    @Bind(R.id.fragmenr_base_view_content)
     protected PercentRelativeLayout view_content;
 
     /**
      * 头布局UI控件
      */
+    @Bind(R.id.fragmenr_base_head_left)
     protected View head_view_left;
+    @Bind(R.id.fragmenr_base_head_right)
     protected View head_view_right;
+    @Bind(R.id.fragmenr_base_head_title)
     protected TextView head_tv_title;
+    @Bind(R.id.fragmenr_base_head_right_image)
     protected TextView head_text_right;
 
     // 设置头布局的样式显示
@@ -56,8 +63,7 @@ public abstract class BaseTitleFragemnt extends BaseFragment {
     /**
      * 加载内容视图布局
      */
-    private void attachStateView2RootView() {
-
+    private void attachContentView() {
         LayoutInflater layoutInflater = LayoutInflater.from(rootActivity);
         PercentRelativeLayout.LayoutParams la = null;
         if (getContentViewID() != 0) {
@@ -91,17 +97,8 @@ public abstract class BaseTitleFragemnt extends BaseFragment {
     @Override
     protected void initDefaultView() {
 
-        // 初始化内容页面
-        view_content = (PercentRelativeLayout) rootView.findViewById(R.id.fragmenr_base_view_content);
-
-        // 初始化标题栏UI控件
-        head_view_left = rootView.findViewById(R.id.fragmenr_base_head_left);
-        head_view_right = rootView.findViewById(R.id.fragmenr_base_head_right);
-        head_tv_title = (TextView) rootView.findViewById(R.id.fragmenr_base_head_title);
-        head_text_right = (TextView) rootView.findViewById(R.id.fragmenr_base_head_right_image);
-
         // 添加架几种加载状态视图布局
-        attachStateView2RootView();
+        attachContentView();
         // 初始化用户自己的UI控件
         initView();
     }
@@ -116,7 +113,7 @@ public abstract class BaseTitleFragemnt extends BaseFragment {
     }
 
     @Override
-    protected void beaginWorkByUser() {
+    protected void onActivityCreatedByUser() {
         // 设置头布局的样式显示
         initHeadView();
     }
