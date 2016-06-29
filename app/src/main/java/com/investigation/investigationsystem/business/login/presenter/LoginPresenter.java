@@ -3,6 +3,7 @@ package com.investigation.investigationsystem.business.login.presenter;
 import android.app.Activity;
 import android.provider.SyncStateContract;
 
+import com.investigation.investigationsystem.business.login.view.EditPasswordFragment;
 import com.investigation.investigationsystem.business.login.view.LoginFragment;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
@@ -31,7 +32,6 @@ import com.investigation.investigationsystem.common.constants.StringConstants;
 public class LoginPresenter extends BasePresenter {
 
     private static final String TAG = StringConstants.TAG + LoginPresenter.class.getName();
-    private BaseFragmentActivity rootActivity;
     private static LoginPresenter persenter;
 
     private LoginPresenter(BaseFragmentActivity rootActivity) {
@@ -50,7 +50,14 @@ public class LoginPresenter extends BasePresenter {
      * 加载默认的 fragment 页面
      */
     public void addDefaultFragment() {
-        replaceFragment(rootActivity, LoginFragment.newInstance(), rootActivity.getFragmentViewID());
+        replaceFragment(LoginFragment.newInstance(), rootActivity.getFragmentViewID());
+    }
+
+    /**
+     * 修改密码的点击事件,是登陆页面的
+     */
+    public void buttonEditPasswordClickByLogin() {
+        replaceFragmentAddBackStack(EditPasswordFragment.newInstance(), rootActivity.getFragmentViewID());
     }
 
 }

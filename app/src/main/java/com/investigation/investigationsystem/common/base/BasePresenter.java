@@ -23,17 +23,42 @@ import android.support.v7.app.AppCompatActivity;
  */
 public class BasePresenter {
 
+    protected BaseFragmentActivity rootActivity;
+
     /**
      * 替换fragment
      *
-     * @param activity
      * @param fragment
      * @param contentID
      */
-    protected void replaceFragment(AppCompatActivity activity, Fragment fragment, int contentID) {
-        activity.getSupportFragmentManager().beginTransaction()
+    protected void replaceFragment(Fragment fragment, int contentID) {
+        rootActivity.getSupportFragmentManager().beginTransaction()
                 .replace(contentID, fragment)
                 .commit();
+    }
+
+    /**
+     * 替换fragment,并加入返回栈
+     *
+     * @param fragment
+     * @param contentID
+     */
+    protected void replaceFragmentAddBackStack(Fragment fragment, int contentID) {
+        rootActivity.getSupportFragmentManager().beginTransaction()
+                .replace(contentID, fragment)
+                .addToBackStack(fragment.getClass().getName())
+                .commit();
+    }
+
+    /**
+     * 返回操作
+     */
+    public void goBack() {
+        if (rootActivity.getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            rootActivity.getSupportFragmentManager().popBackStack();
+        } else {
+            rootActivity.finish();
+        }
     }
 
 

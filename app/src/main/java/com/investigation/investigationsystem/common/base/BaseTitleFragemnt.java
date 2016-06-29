@@ -34,31 +34,30 @@ import butterknife.Bind;
 public abstract class BaseTitleFragemnt extends BaseFragment {
 
     // 内容视图
-    @Bind(R.id.fragmenr_base_view_content)
     protected PercentRelativeLayout view_content;
 
     /**
      * 头布局UI控件
      */
-    @Bind(R.id.fragmenr_base_head_left)
     protected View head_view_left;
-    @Bind(R.id.fragmenr_base_head_right)
     protected View head_view_right;
-    @Bind(R.id.fragmenr_base_head_title)
     protected TextView head_tv_title;
-    @Bind(R.id.fragmenr_base_head_right_image)
     protected TextView head_text_right;
 
-    // 设置头布局的样式显示
-    protected abstract void initHeadView();
-
-    // 设置头布局相关的点击事件
+    /**
+     * 设置头布局相关的点击事件
+     */
     protected abstract void InitHeadClick();
 
     /**
      * 返回的视图的ID,方法留给子类实现
      */
     protected abstract int getContentViewID();
+
+    /**
+     * 设置头布局的样式显示
+     */
+    protected abstract void initHeadView();
 
     /**
      * 加载内容视图布局
@@ -97,10 +96,15 @@ public abstract class BaseTitleFragemnt extends BaseFragment {
     @Override
     protected void initDefaultView() {
 
-        // 初始化用户自己的UI控件
-        initView();
+        view_content = (PercentRelativeLayout) rootView.findViewById(R.id.fragmenr_base_view_content);
+        head_view_left = rootView.findViewById(R.id.fragmenr_base_head_left);
+        head_view_right = rootView.findViewById(R.id.fragmenr_base_head_right);
+        head_tv_title = (TextView) rootView.findViewById(R.id.fragmenr_base_head_title);
+        head_text_right = (TextView) rootView.findViewById(R.id.fragmenr_base_head_right_image);
         // 添加架几种加载状态视图布局
         attachContentView();
+        // 初始化用户自己的UI控件
+        initView();
     }
 
     @Override
@@ -118,7 +122,13 @@ public abstract class BaseTitleFragemnt extends BaseFragment {
         initHeadView();
     }
 
-    // 设置标题栏显示样式和数据的
+    /**
+     * 设置标题栏显示样式和数据的
+     *
+     * @param leftShow
+     * @param rightShow
+     * @param title
+     */
     protected void setTitleStyle(boolean leftShow, boolean rightShow, String title) {
         // 不显示标题栏右边图标时，图片资源id传什么都行
         head_view_left.setVisibility(leftShow ? View.VISIBLE : View.GONE);

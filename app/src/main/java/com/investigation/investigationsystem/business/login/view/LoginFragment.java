@@ -1,12 +1,17 @@
 package com.investigation.investigationsystem.business.login.view;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.investigation.investigationsystem.R;
+import com.investigation.investigationsystem.business.login.presenter.LoginPresenter;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
 import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.labo.kaji.fragmentanimations.CubeAnimation;
 
-import java.nio.channels.UnsupportedAddressTypeException;
 
 /**
  * ==========================================
@@ -28,6 +33,14 @@ import java.nio.channels.UnsupportedAddressTypeException;
  * ==========================================
  */
 public class LoginFragment extends BaseTitleFragemnt {
+
+    private EditText edit_name;
+    private EditText edit_password;
+    private Button btn_exit;
+    private Button btn_editPassword;
+    private Button btn_login;
+
+    private int direction;
 
     /**
      * 提供给外部使用的创建对象的接口
@@ -65,11 +78,37 @@ public class LoginFragment extends BaseTitleFragemnt {
 
     @Override
     protected void initView() {
-        
+        edit_name = (EditText) rootView.findViewById(R.id.login_name);
+        edit_password = (EditText) rootView.findViewById(R.id.login_password);
+        btn_exit = (Button) rootView.findViewById(R.id.login_button_exit);
+        btn_editPassword = (Button) rootView.findViewById(R.id.login_button_editpassword);
+        btn_login = (Button) rootView.findViewById(R.id.login_button_login);
     }
 
     @Override
     protected void initClick() {
 
+        // 修改密码按钮点击事件
+        btn_editPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginPresenter.getInstance().buttonEditPasswordClickByLogin();
+            }
+        });
+    }
+
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        switch (direction) {
+            case 1:
+                return CubeAnimation.create(CubeAnimation.RIGHT, enter, StringConstants.DURATION);
+        }
+        return null;
+    }
+
+    @Override
+    protected void onActivityCreatedByUser() {
+        super.onActivityCreatedByUser();
+        direction = 1;
     }
 }

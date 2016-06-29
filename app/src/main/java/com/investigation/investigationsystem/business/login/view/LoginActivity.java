@@ -62,4 +62,6 @@ public class LoginActivity extends BaseFragmentActivity {
     protected void initDefaultAddFragment() {
         LoginPresenter.getInstance().addDefaultFragment();
     }
+
+
 }

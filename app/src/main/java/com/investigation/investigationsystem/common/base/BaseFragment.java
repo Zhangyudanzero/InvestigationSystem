@@ -9,10 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.investigation.investigationsystem.R;
-
-import butterknife.ButterKnife;
-
 /**
  * ==========================================
  * <p/>
@@ -97,7 +93,6 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // 初始化U控件
         rootView = inflater.inflate(getLayoutID(), container, false);
-        ButterKnife.bind(this, rootView);
         return rootView;
     }
 
@@ -113,7 +108,6 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public void onDestroy() {
-        ButterKnife.unbind(this);
         rootView = null;
         rootActivity = null;
         super.onDestroy();
