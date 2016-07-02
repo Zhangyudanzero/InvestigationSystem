@@ -24,4 +24,22 @@
     <color name="main_text_blue">#899adc</color>
 
 
+    <!--橘色-->
+    <color name="main_organ">#ffa726</color>
+    <!--绿色-->
+    <color name="main_green">#9ccc65</color>
+    <!--深绿色-->
+    <color name="main_green_deep">#00bb9c</color>
+    <!--紫色-->
+    <color name="main_puper">#7e57c2</color>
+    <!--红色-->
+    <color name="main_red">#e84e40</color>
+    <!--深蓝色-->
+    <color name="main_blue_deep">#26a69a</color>
+    <!--灰色-->
+    <color name="main_gray_light">#CCCCCC</color>
+    <!--深灰色-->
+    <color name="main_gray_deep">#CCCCCC</color>
+
+
 </resources>

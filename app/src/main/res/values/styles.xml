@@ -45,5 +45,37 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <!--常用黑色字体-->
+    <style name="main_text_black_normal_z">
+        <item name="android:textColor">@color/main_text_black</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--常用蓝色字体-->
+    <style name="main_text_blue_normal">
+        <item name="android:textColor">@color/main_blue</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+    <style name="main_text_blue_normal_z">
+        <item name="android:textColor">@color/main_blue</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--调查问卷扫描页 每个linerlayout间距-->
+    <style name="qusetion_linerlayout_margin">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+
 
 </resources>

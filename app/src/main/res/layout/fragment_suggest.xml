@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/suggest_tv_commit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/main_text_black"
+        android:text="请留下您的意见建议"
+        android:textSize="25sp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
+        />
+
+    <EditText
+        android:id="@+id/suggest_et_commit"
+        android:layout_width="800dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:background="@drawable/shape_suggest"
+        android:maxEms="500"
+        android:hint="请输入您的意见建议"
+        android:lines="12"
+        android:layout_centerInParent="true"
+        android:gravity="top"
+        android:padding="20dp"
+        />
+
+    <Button
+        android:id="@+id/suggest_btn_commit"
+        android:layout_below="@+id/suggest_et_commit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="80dp"
+        android:background="@color/main_blue"
+        android:textColor="@color/main_white"
+        />
+
+</RelativeLayout>

@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">InvestigationSystem</string>
+
+    <string name="app_ploaddata">上传数据</string>
+    <string name="str_questionnaire_upload">问卷上传</string>
+    <string name="str_feedback_information_upload">反馈信息上传</string>
+    <string name="str_upload_all">全部上传</string>
+    <string name="str_survey_questionnaire">调查问卷获取</string>
+    <string name="str_key_monitoring_content_acquisitiond">重点监测内容获取</string>
+    <string name="str_update_personal_information">更新个人信息</string>
+
+    <!--重点监测详情-->
+    <string name="str_name">姓名：%1$s</string>
+    <string name="str_xingbie">性别：%1$s</string>
+    <string name="str_age">年龄：%1$s</string>
+    <string name="str_minzu">民族：%1$s</string>
+    <string name="str_idcard">身份证号：%1$s</string>
+    <string name="str_local_area">所在地区：%1$s</string>
+    <string name="str_hujidizhi">户籍地址：%1$s</string>
+    <string name="str_juzhudizhi">居住地址：%1$s</string>
+    <string name="str_zhongdianjiancejibing">重点监测疾病：%1$s</string>
+    <string name="str_jiancepinlv">监测频率：%1$s</string>
+    <string name="str_jianceneirong">监测内容：%1$s</string>
+    <string name="str_update_jiancefangshi">监测方式：%1$s</string>
+    <string name="str_update_morentuandui">默认团队：%1$s</string>
+    <string name="str_update_querenren">确认人：%1$s</string>
+    <string name="str_update_qurenriqi">确认日期：%1$s</string>
+
+
 </resources>

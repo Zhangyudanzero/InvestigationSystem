@@ -30,7 +30,7 @@
 
             <EditText
                 android:id="@+id/login_name"
-                style="@style/main_text_black_normal"
+                style="@style/main_text_black_normal_z"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/btn_havestorge_gray"
@@ -61,7 +61,7 @@
 
             <EditText
                 android:id="@+id/login_password"
-                style="@style/main_text_black_normal"
+                style="@style/main_text_black_normal_z"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/btn_havestorge_gray"

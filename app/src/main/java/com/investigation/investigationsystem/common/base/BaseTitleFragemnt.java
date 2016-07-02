@@ -9,8 +9,6 @@ import android.widget.TextView;
 import com.investigation.investigationsystem.R;
 import com.zhy.android.percent.support.PercentRelativeLayout;
 
-import butterknife.Bind;
-
 
 /**
  * ==========================================
