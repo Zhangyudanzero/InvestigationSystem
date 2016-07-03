@@ -38,4 +38,7 @@ public class MainActivity extends BaseFragmentActivity {
     protected void initDefaultAddFragment() {
         MainPresenter.getInstance().addDefaultFragment();
     }
+
+
+
 }

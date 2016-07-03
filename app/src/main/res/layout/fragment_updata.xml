@@ -27,39 +27,90 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="50dp"
         android:gravity="center_vertical"
         android:layout_marginTop="20dp"
         >
 
-        <Button
-            android:layout_width="230dp"
-            android:layout_height="60dp"
-            android:text="@string/str_questionnaire_upload"
-            android:textSize="25sp"
-            android:background="@color/main_blue"
-            android:textColor="@color/main_white"
-            />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            >
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/str_questionnaire_upload"
+                android:textSize="25sp"
+                android:background="@color/main_blue"
+                android:textColor="@color/main_white"
+                />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shape_red_dot"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            >
 
         <Button
-            android:layout_width="230dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="@string/str_feedback_information_upload"
             android:textSize="25sp"
-            android:layout_marginLeft="50dp"
             android:background="@color/main_puper"
             android:textColor="@color/main_white"
             />
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shape_red_dot"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            >
+
         <Button
-            android:layout_width="230dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="@string/str_upload_all"
             android:textSize="25sp"
-            android:layout_marginLeft="50dp"
             android:textColor="@color/main_white"
             android:background="@color/main_blue_deep"
             />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shape_red_dot"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                />
+
+        </RelativeLayout>
 
     </LinearLayout>
 
@@ -87,12 +138,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp"
         >
 
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            >
+
+
         <Button
-            android:layout_width="230dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="调查问卷获取"
             android:textSize="25sp"
@@ -100,25 +159,70 @@
             android:background="@color/main_green"
             />
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shape_red_dot"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            >
+
         <Button
-            android:layout_width="230dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="重点监测内容获取"
             android:textSize="25sp"
-            android:layout_marginLeft="50dp"
             android:textColor="@color/main_white"
             android:background="@color/main_red"
             />
 
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/shape_red_dot"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            >
+
         <Button
-            android:layout_width="230dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="更新个人信息"
             android:textSize="25sp"
-            android:layout_marginLeft="50dp"
             android:textColor="@color/main_white"
             android:background="@color/main_organ"
             />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/shape_red_dot"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            />
+
+        </RelativeLayout>
 
     </LinearLayout>
 
