@@ -37,6 +37,7 @@
             android:layout_weight="1">
 
             <Button
+                android:id="@+id/update_btn_question_upload"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@color/main_blue"

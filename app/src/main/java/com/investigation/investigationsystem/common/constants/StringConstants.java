@@ -25,6 +25,7 @@ public class StringConstants {
     public static final String TITLE_EDITPASSWORD = "修改密码";
     public static final String TITLE_MAIN = "调查系统主页";
     public static final String TITLE_UPDATE = "数据更新";
+    public static final String TITLE_SUGGEST = "意见建议";
     public static final int DURATION = 300;
 
 }
