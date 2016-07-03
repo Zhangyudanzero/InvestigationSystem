@@ -5,8 +5,6 @@ import android.content.Intent;
 import com.investigation.investigationsystem.MyApplication;
 import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.login.presenter.LoginPresenter;
-import com.investigation.investigationsystem.business.main.presenter.MainPresenter;
-import com.investigation.investigationsystem.common.base.BaseActivity;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 
 /**

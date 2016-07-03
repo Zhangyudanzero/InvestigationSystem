@@ -27,36 +27,99 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
-        <Button
-            android:id="@+id/update_btn_question_upload"
-            android:layout_width="230dp"
-            android:layout_height="60dp"
-            android:background="@color/main_blue"
-            android:text="@string/str_questionnaire_upload"
-            android:textColor="@color/main_white"
-            android:textSize="25sp" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            >
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/str_questionnaire_upload"
+                android:textSize="25sp"
+                android:background="@color/main_blue"
+                android:textColor="@color/main_white"
+                />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shape_red_dot"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            >
 
         <Button
             android:id="@+id/update_btn_feedback_upload"
-            android:layout_width="230dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginLeft="50dp"
             android:background="@color/main_puper"
             android:text="@string/str_feedback_information_upload"
             android:textColor="@color/main_white"
             android:textSize="25sp" />
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shape_red_dot"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            >
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shape_red_dot"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                />
+
         <Button
-            android:id="@+id/update_btn_all_upload"
-            android:layout_width="230dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:text="@string/str_upload_all"
+            android:textSize="25sp"
+            android:textColor="@color/main_white"
+            android:id="@+id/update_btn_all_upload"
             android:layout_marginLeft="50dp"
             android:background="@color/main_blue_deep"
-            android:text="@string/str_upload_all"
-            android:textColor="@color/main_white"
-            android:textSize="25sp" />
+            />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shape_red_dot"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                />
+
+        </RelativeLayout>
 
     </LinearLayout>
 
@@ -85,8 +148,17 @@
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            >
+
+
         <Button
-            android:layout_width="230dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/main_green"
             android:text="调查问卷获取"
@@ -94,25 +166,72 @@
             android:textSize="25sp"
             android:id="@+id/update_btn_update_question" />
 
-        <Button
-            android:layout_width="230dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="50dp"
-            android:background="@color/main_red"
-            android:text="重点监测内容获取"
-            android:textColor="@color/main_white"
-            android:textSize="25sp"
-            android:id="@+id/update_btn_update_emphases" />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shape_red_dot"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            >
 
         <Button
-            android:layout_width="230dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:text="重点监测内容获取"
+            android:textSize="25sp"
+            android:textColor="@color/main_white"
+            android:layout_marginLeft="50dp"
+            android:background="@color/main_red"
+            android:id="@+id/update_btn_update_emphases" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/shape_red_dot"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="更新个人信息"
+            android:textSize="25sp"
+            android:textColor="@color/main_white"
             android:layout_marginLeft="50dp"
             android:background="@color/main_organ"
-            android:text="更新个人信息"
-            android:textColor="@color/main_white"
-            android:textSize="25sp"
             android:id="@+id/update_btn_update_userinfo" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/shape_red_dot"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            />
+
+        </RelativeLayout>
 
     </LinearLayout>
 
