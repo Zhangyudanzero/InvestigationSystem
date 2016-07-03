@@ -39,6 +39,9 @@ public class MainActivity extends BaseFragmentActivity {
         MainPresenter.getInstance().addDefaultFragment();
     }
 
-
-
+    @Override
+    protected void onDestroy() {
+        MainPresenter.getInstance().onDes();
+        super.onDestroy();
+    }
 }

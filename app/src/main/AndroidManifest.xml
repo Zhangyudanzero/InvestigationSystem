@@ -11,6 +11,11 @@
         android:theme="@style/NoActionBar">
         <activity
             android:name=".business.main.view.MainActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name=".business.update.view.UpdateActivity"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden"></activity>

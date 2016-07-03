@@ -45,11 +45,6 @@ public abstract class BaseTitleFragemnt extends BaseFragment {
     protected TextView head_tv_userName;
 
     /**
-     * 设置头布局相关的点击事件
-     */
-    protected abstract void InitHeadClick();
-
-    /**
      * 返回的视图的ID,方法留给子类实现
      */
     protected abstract int getContentViewID();
@@ -58,6 +53,11 @@ public abstract class BaseTitleFragemnt extends BaseFragment {
      * 设置头布局的样式显示
      */
     protected abstract void initHeadView();
+
+    /**
+     * 设置头布局相关的点击事件
+     */
+    protected abstract void InitHeadClick();
 
     /**
      * 加载内容视图布局

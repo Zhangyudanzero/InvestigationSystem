@@ -1,14 +1,10 @@
 package com.investigation.investigationsystem.business.login.presenter;
 
-import android.app.Activity;
-import android.provider.SyncStateContract;
-
 import com.investigation.investigationsystem.business.login.view.EditPasswordFragment;
 import com.investigation.investigationsystem.business.login.view.LoginFragment;
 import com.investigation.investigationsystem.business.main.presenter.MainPresenter;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
-import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 
 /**
@@ -67,6 +63,13 @@ public class LoginPresenter extends BasePresenter {
     public void buttonLoginClick() {
         MainPresenter.startUp(rootActivity);
         rootActivity.finish();
+    }
+
+    /**
+     * 销毁，回收资源
+     */
+    public void onDes() {
+        persenter = null;
     }
 
 }
