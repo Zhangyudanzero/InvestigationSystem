@@ -3,6 +3,7 @@ package com.investigation.investigationsystem.business.emphases.view;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ import java.util.List;
  */
 public class EmphasesFragment extends BaseTitleFragemnt {
 
+    private static final String TAG = StringConstants.TAG + EmphasesFragment.class.getName();
     private EmpListAdapter adapter;
     private List<String> data;
     private RecyclerView recyclerView;
@@ -94,7 +96,7 @@ public class EmphasesFragment extends BaseTitleFragemnt {
         adapter.setClick(new EmpListAdapter.EmpListAdapterClick() {
             @Override
             public void onCLick(String name) {
-                Toast.makeText(rootActivity, name, Toast.LENGTH_SHORT).show();
+                EmphasesPresenter.getInstance().startUpDetailFragment(name);
             }
         });
         recyclerView.setAdapter(adapter);
@@ -104,7 +106,13 @@ public class EmphasesFragment extends BaseTitleFragemnt {
     @Override
     protected void initClick() {
 
-
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            EmphasesPresenter.getInstance().setCurrentFragment(this);
+        }
+    }
 }

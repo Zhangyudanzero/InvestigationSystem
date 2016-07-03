@@ -3,8 +3,11 @@ package com.investigation.investigationsystem.business.emphases.presenter;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
+import com.investigation.investigationsystem.business.emphases.asdsa;
 import com.investigation.investigationsystem.business.emphases.view.EmphasesActivity;
+import com.investigation.investigationsystem.business.emphases.view.EmphasesDetailFragment;
 import com.investigation.investigationsystem.business.emphases.view.EmphasesFragment;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
@@ -52,6 +55,10 @@ public class EmphasesPresenter extends BasePresenter {
         intent = null;
     }
 
+    public void startUpDetailFragment(String name) {
+        addFragmentAddBackStack(EmphasesDetailFragment.newInstance(name));
+    }
+
     /**
      * 加载默认的 fragment 页面
      */
@@ -65,12 +72,23 @@ public class EmphasesPresenter extends BasePresenter {
         fragment = null;
     }
 
+    private void addFragmentAddBackStack(Fragment fragment) {
+        addFragmentAddBackStack(currentFragment, fragment, rootActivity.getFragmentViewID());
+        currentFragment = fragment;
+        fragment = null;
+    }
+
     /**
      * 销毁，回收资源
      */
     public void onDes() {
         currentFragment = null;
         persenter = null;
+    }
+
+    public void setCurrentFragment(Fragment fragment) {
+        currentFragment = fragment;
+        Log.d(TAG, fragment.getClass().getName() + "重新点亮");
     }
 
 
