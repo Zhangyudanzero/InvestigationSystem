@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                style="@style/qusetion_linerlayout_margin"
+                >
+
+                <TextView
+                    style="@style/main_text_blue_normal"
+                    android:text="团队"
+                    android:layout_marginLeft="30dp"
+                    />
+
+                <Spinner
+                    android:id="@+id/questionnaire_spinner_team"
+                    android:layout_width="500dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    ></Spinner>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                style="@style/qusetion_linerlayout_margin"
+                >
+
+                <TextView
+                    style="@style/main_text_blue_normal"
+                    android:text="调查地域"
+                    android:layout_marginLeft="30dp"
+                    />
+
+                <Spinner
+                    android:id="@+id/questionnaire_spinner_eare"
+                    android:layout_width="500dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    ></Spinner>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/qusetion_linerlayout_margin"
+                >
+
+                <TextView
+                    style="@style/main_text_blue_normal"
+                    android:text="使用问卷"
+                    android:layout_marginLeft="30dp"
+                    />
+
+                <Spinner
+                    android:id="@+id/questionnaire_spinner_questionnaire"
+                    android:layout_width="500dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    ></Spinner>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@color/main_blue"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                style="@style/main_text_blue_normal"
+                android:text="被调查者信息"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="8dp"
+                />
+
+
+
+            <LinearLayout
+                style="@style/qusetion_linerlayout_margin"
+                >
+
+                <TextView
+                    style="@style/main_text_blue_normal"
+                    android:text="姓名"
+                    android:layout_marginLeft="30dp"
+                    />
+
+                <EditText
+                    android:id="@+id/questionnaire_et_name"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"/>
+
+                <Button
+                    android:id="@+id/questionnaire_btn_scan"
+                    style="@style/main_text_black_normal_z"
+                    android:text="扫描身份信息"
+                    android:layout_marginLeft="250dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:background="@color/main_blue"
+                    android:textColor="@color/main_white"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/qusetion_linerlayout_margin"
+
+                >
+
+                <TextView
+                    style="@style/main_text_blue_normal"
+                    android:text="性别"
+                    android:layout_marginLeft="30dp"
+                    />
+
+                <EditText
+                    android:id="@+id/questionnaire_et_femalse"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"/>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/qusetion_linerlayout_margin"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    style="@style/main_text_blue_normal"
+                    android:text="年龄"
+                    android:layout_marginLeft="30dp"
+                    />
+
+                <EditText
+                    android:id="@+id/questionnaire_et_age"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"/>
+
+                <Button
+                    android:id="@+id/questionnaire_btn_begin"
+                    style="@style/main_text_black_normal_z"
+                    android:text="开始答题"
+                    android:layout_marginLeft="250dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:background="@color/main_organ"
+                    android:textColor="@color/main_white"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/qusetion_linerlayout_margin"
+                >
+
+                <TextView
+                    style="@style/main_text_blue_normal"
+                    android:text="身份证号"
+                    android:layout_marginLeft="30dp"
+                    />
+
+                <EditText
+                    android:id="@+id/questionnaire_et_idcard"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/qusetion_linerlayout_margin"
+                >
+
+                <TextView
+                    style="@style/main_text_blue_normal"
+                    android:text="户籍地址"
+                    android:layout_marginLeft="30dp"
+                    />
+
+                <EditText
+                    android:id="@+id/questionnaire_et_huji"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/qusetion_linerlayout_margin"
+                >
+
+                <TextView
+                    style="@style/main_text_blue_normal"
+                    android:text="联系电话"
+                    android:layout_marginLeft="30dp"
+                    />
+
+                <EditText
+                    android:id="@+id/questionnaire_et_tel"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/qusetion_linerlayout_margin"
+                >
+
+                <TextView
+                    style="@style/main_text_blue_normal"
+                    android:text="现居住地"
+                    android:layout_marginLeft="30dp"
+                    />
+
+                <EditText
+                    android:id="@+id/questionnaire_et_locate"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"/>
+
+                <CheckBox
+                    android:id="@+id/questionnaire_cb_same"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="与户籍地址相同"
+                    android:textSize="25sp"
+                    android:textColor="@color/main_blue_deep"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+            style="@style/qusetion_linerlayout_margin"
+            >
+
+            <TextView
+                style="@style/main_text_blue_normal"
+                android:text="联系人"
+                android:layout_marginLeft="30dp"
+                />
+
+            <EditText
+                android:id="@+id/questionnaire_et_contact"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"/>
+
+        </LinearLayout>
+
+            <LinearLayout
+                style="@style/qusetion_linerlayout_margin"
+                >
+
+                <TextView
+                    style="@style/main_text_blue_normal"
+                    android:text="联系人电话"
+                    android:layout_marginLeft="30dp"
+                    />
+
+                <EditText
+                    android:id="@+id/questionnaire_et_contacttal"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/qusetion_linerlayout_margin"
+                >
+
+                <TextView
+                    style="@style/main_text_blue_normal"
+                    android:text="联系人与被联系人调查关系"
+                    android:layout_marginLeft="30dp"
+                    />
+
+                <EditText
+                    android:id="@+id/questionnaire_et_relation"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"/>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

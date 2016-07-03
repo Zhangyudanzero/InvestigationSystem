@@ -56,7 +56,7 @@
     <!--常用蓝色字体-->
     <style name="main_text_blue_normal">
         <item name="android:textColor">@color/main_blue</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">25sp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
@@ -64,7 +64,7 @@
 
     <style name="main_text_blue_normal_z">
         <item name="android:textColor">@color/main_blue</item>
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
@@ -73,7 +73,8 @@
     <style name="qusetion_linerlayout_margin">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:gravity">center_vertical</item>
     </style>
 
 

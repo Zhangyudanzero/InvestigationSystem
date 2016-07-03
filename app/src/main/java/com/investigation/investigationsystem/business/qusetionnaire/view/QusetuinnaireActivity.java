@@ -1,35 +1,20 @@
-package com.investigation.investigationsystem.business.update.view;
+package com.investigation.investigationsystem.business.qusetionnaire.view;
 
 import android.content.Intent;
 
 import com.investigation.investigationsystem.MyApplication;
 import com.investigation.investigationsystem.R;
-import com.investigation.investigationsystem.business.update.presenter.UpdatePresenter;
+import com.investigation.investigationsystem.business.qusetionnaire.presenter.QusetuinnairePresenter;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 
 /**
- * ==========================================
- * <p/>
- * 版    权 ： 北京爱接力科技有限公司
- * <p/>
- * 作    者 ： iwen
- * <p/>
- * 版    本 ： 1.0
- * <p/>
- * 创建日期 ： on 2016/7/3  13:43
- * <p/>
- * 描    述 ：
- * <p/>
- * <p/>
- * 修订历史 ：
- * <p/>
- * ==========================================
+ * Created by zero on 2016/7/3.
  */
-public class UpdateActivity extends BaseFragmentActivity {
+public class QusetuinnaireActivity extends BaseFragmentActivity {
 
     @Override
     protected int getContentViewID() {
-        return R.layout.activity_update;
+        return R.layout.activity_qusetuinnaire;
     }
 
     @Override
@@ -44,7 +29,7 @@ public class UpdateActivity extends BaseFragmentActivity {
 
     @Override
     protected void onCreateByUser() {
-        UpdatePresenter.regist(this);
+        QusetuinnairePresenter.regist(this);
     }
 
     @Override
@@ -54,14 +39,13 @@ public class UpdateActivity extends BaseFragmentActivity {
 
     @Override
     protected void initDefaultAddFragment() {
-        UpdatePresenter.getInstance().addDefaultFragment();
+        QusetuinnairePresenter.getInstance().addDefaultFragment();
     }
 
     @Override
     protected void onDestroy() {
-        UpdatePresenter.getInstance().onDes();
+        QusetuinnairePresenter.getInstance().onDes();
         super.onDestroy();
     }
-
 
 }
