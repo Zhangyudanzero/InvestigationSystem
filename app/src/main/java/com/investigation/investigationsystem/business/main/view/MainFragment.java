@@ -31,7 +31,7 @@ import com.investigation.investigationsystem.common.constants.StringConstants;
 public class MainFragment extends BaseTitleFragemnt {
 
     // 重点检测
-    private Button btn_keymonitoring;
+    private Button btn_emphases;
     // 问卷查询
     private Button btn_quere;
     // 问卷调查
@@ -74,7 +74,7 @@ public class MainFragment extends BaseTitleFragemnt {
 
     @Override
     protected void initView() {
-        btn_keymonitoring = (Button) rootView.findViewById(R.id.main_keymonitoring);
+        btn_emphases = (Button) rootView.findViewById(R.id.main_keymonitoring);
         btn_quere = (Button) rootView.findViewById(R.id.main_questionnaire_inquiry);
         btn_start = (Button) rootView.findViewById(R.id.main_question_investigation);
         btn_suggest = (Button) rootView.findViewById(R.id.main_comments_suggestions);
@@ -86,7 +86,7 @@ public class MainFragment extends BaseTitleFragemnt {
     protected void initClick() {
 
         // 重点检测
-        btn_keymonitoring.setOnClickListener(new View.OnClickListener() {
+        btn_emphases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MainPresenter.getInstance().keyMonitoringClick();
@@ -132,7 +132,6 @@ public class MainFragment extends BaseTitleFragemnt {
                 MainPresenter.getInstance().btnExitClick();
             }
         });
-
-
     }
+
 }

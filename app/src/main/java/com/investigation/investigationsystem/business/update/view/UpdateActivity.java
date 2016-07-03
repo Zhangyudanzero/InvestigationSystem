@@ -1,17 +1,35 @@
-package com.investigation.investigationsystem.business.main.view;
+package com.investigation.investigationsystem.business.update.view;
 
 import android.content.Intent;
 
 import com.investigation.investigationsystem.MyApplication;
 import com.investigation.investigationsystem.R;
-import com.investigation.investigationsystem.business.main.presenter.MainPresenter;
+import com.investigation.investigationsystem.business.update.presenter.UpdatePresenter;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 
-public class MainActivity extends BaseFragmentActivity {
+/**
+ * ==========================================
+ * <p/>
+ * 版    权 ： 北京爱接力科技有限公司
+ * <p/>
+ * 作    者 ： iwen
+ * <p/>
+ * 版    本 ： 1.0
+ * <p/>
+ * 创建日期 ： on 2016/7/3  13:43
+ * <p/>
+ * 描    述 ：
+ * <p/>
+ * <p/>
+ * 修订历史 ：
+ * <p/>
+ * ==========================================
+ */
+public class UpdateActivity extends BaseFragmentActivity {
 
     @Override
     protected int getContentViewID() {
-        return R.layout.activity_main;
+        return R.layout.activity_update;
     }
 
     @Override
@@ -26,7 +44,7 @@ public class MainActivity extends BaseFragmentActivity {
 
     @Override
     protected void onCreateByUser() {
-        MainPresenter.regist(this);
+        UpdatePresenter.regist(this);
     }
 
     @Override
@@ -36,12 +54,12 @@ public class MainActivity extends BaseFragmentActivity {
 
     @Override
     protected void initDefaultAddFragment() {
-        MainPresenter.getInstance().addDefaultFragment();
+        UpdatePresenter.getInstance().addDefaultFragment();
     }
 
     @Override
     protected void onDestroy() {
-        MainPresenter.getInstance().onDes();
+        UpdatePresenter.getInstance().onDes();
         super.onDestroy();
     }
 }
