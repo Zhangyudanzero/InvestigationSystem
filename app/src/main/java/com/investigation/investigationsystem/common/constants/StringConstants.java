@@ -27,6 +27,7 @@ public class StringConstants {
     public static final String TITLE_UPDATE = "数据更新";
     public static final String TITLE_SUGGEST = "意见建议";
     public static final String TITLE_QUSETUINNAIR = "调查问卷";
+    public static final String TITLE_EMPHASES = "重点检测";
     public static final int DURATION = 300;
 
 }

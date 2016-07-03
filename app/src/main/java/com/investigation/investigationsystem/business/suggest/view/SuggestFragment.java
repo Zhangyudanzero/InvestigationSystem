@@ -6,14 +6,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.investigation.investigationsystem.R;
-import com.investigation.investigationsystem.business.update.presenter.UpdatePresenter;
+import com.investigation.investigationsystem.business.suggest.presenter.SuggestPresenter;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 
 /**
  * Created by zero on 2016/7/3.
  */
-public class SuggestFragment extends BaseTitleFragemnt{
+public class SuggestFragment extends BaseTitleFragemnt {
 
 
     private EditText et_commit; //意见建议输入框
@@ -38,14 +38,14 @@ public class SuggestFragment extends BaseTitleFragemnt{
         head_view_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdatePresenter.getInstance().goBack();
+                SuggestPresenter.getInstance().goBack();
             }
         });
     }
 
     @Override
     protected void analyzeBundle(Bundle bundle) {
-        return ;
+        return;
     }
 
     @Override

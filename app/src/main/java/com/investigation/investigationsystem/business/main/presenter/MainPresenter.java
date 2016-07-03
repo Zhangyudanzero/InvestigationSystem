@@ -3,8 +3,10 @@ package com.investigation.investigationsystem.business.main.presenter;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.investigation.investigationsystem.business.emphases.presenter.EmphasesPresenter;
 import com.investigation.investigationsystem.business.main.view.MainActivity;
 import com.investigation.investigationsystem.business.main.view.MainFragment;
+import com.investigation.investigationsystem.business.suggest.presenter.SuggestPresenter;
 import com.investigation.investigationsystem.business.update.presenter.UpdatePresenter;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
@@ -63,7 +65,7 @@ public class MainPresenter extends BasePresenter {
      * 重点检测点击事件
      */
     public void keyMonitoringClick() {
-
+        EmphasesPresenter.startUp(rootActivity);
     }
 
     /**
@@ -84,7 +86,7 @@ public class MainPresenter extends BasePresenter {
      * 意见建议
      */
     public void btnSuggestClick() {
-
+        SuggestPresenter.startUp(rootActivity);
     }
 
     /**
