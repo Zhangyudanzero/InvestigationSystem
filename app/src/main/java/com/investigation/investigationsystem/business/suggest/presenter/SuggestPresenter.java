@@ -5,7 +5,6 @@ import android.content.Intent;
 
 import com.investigation.investigationsystem.business.suggest.view.SuggestActivity;
 import com.investigation.investigationsystem.business.suggest.view.SuggestFragment;
-import com.investigation.investigationsystem.business.update.view.UpdateFragment;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
 import com.investigation.investigationsystem.common.constants.StringConstants;
@@ -13,7 +12,7 @@ import com.investigation.investigationsystem.common.constants.StringConstants;
 /**
  * Created by zero on 2016/7/3.
  */
-public class SuggestPresenter extends BasePresenter{
+public class SuggestPresenter extends BasePresenter {
 
     private static final String TAG = StringConstants.TAG + SuggestPresenter.class.getName();
     private static SuggestPresenter persenter;
@@ -46,7 +45,7 @@ public class SuggestPresenter extends BasePresenter{
     /**
      * 提交意见建议
      */
-    public void commitFeedBack(){
+    public void commitFeedBack() {
 
     }
 
@@ -57,7 +56,6 @@ public class SuggestPresenter extends BasePresenter{
     public void onDes() {
         persenter = null;
     }
-
 
 
 }
