@@ -50,6 +50,18 @@ public class BasePresenter {
     }
 
     /**
+     * 添加fragment,不加入返回栈
+     *
+     * @param fragment
+     * @param contentID
+     */
+    protected void addFragmentNoBackStack(Fragment fragment, int contentID) {
+        rootActivity.getSupportFragmentManager().beginTransaction()
+                .add(contentID, fragment, fragment.getClass().getName())
+                .commit();
+    }
+
+    /**
      * 返回操作
      */
     public void goBack() {

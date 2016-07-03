@@ -1,66 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
-        >
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_blue"
             android:text="团队"
-            android:textSize="30sp"
-            />
+            android:textColor="@color/main_blue"
+            android:textSize="30sp" />
 
         <Spinner
             android:layout_width="280dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            />
+            android:layout_marginLeft="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_blue"
-            android:text="调查地域"
-            android:textSize="30sp"
             android:layout_marginLeft="20dp"
-            />
+            android:text="调查地域"
+            android:textColor="@color/main_blue"
+            android:textSize="30sp" />
 
         <Spinner
             android:layout_width="280dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            />
+            android:layout_marginLeft="20dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_white"
+            android:layout_marginLeft="20dp"
             android:background="@color/main_blue"
             android:text="查询"
-            android:textSize="30sp"
-            android:layout_marginLeft="20dp"
-            />
+            android:textColor="@color/main_white"
+            android:textSize="30sp" />
 
     </LinearLayout>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/main_blue"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        />
+        android:layout_marginTop="20dp"
+        android:background="@color/main_blue" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,42 +62,38 @@
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:text="姓名"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="40dp"
-            />
+            android:layout_marginTop="20dp"
+            android:text="姓名" />
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:text="性别"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="40dp"
-            />
+            android:layout_marginTop="20dp"
+            android:text="性别" />
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:text="年龄"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="40dp"
-            />
+            android:layout_marginTop="20dp"
+            android:text="年龄" />
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:text="重点监测疾病"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="80dp"
-            />
+            android:layout_marginTop="20dp"
+            android:text="重点监测疾病" />
 
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/emphases_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        >
+        android:layout_marginTop="20dp">
 
     </android.support.v7.widget.RecyclerView>
 

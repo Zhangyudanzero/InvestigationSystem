@@ -25,6 +25,11 @@
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
+            android:name=".business.emphases.view.EmphasesActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
             android:name=".business.login.view.LoginActivity"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"

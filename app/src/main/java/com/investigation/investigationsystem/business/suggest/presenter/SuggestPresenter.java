@@ -49,7 +49,6 @@ public class SuggestPresenter extends BasePresenter {
 
     }
 
-
     /**
      * 销毁，回收资源
      */
