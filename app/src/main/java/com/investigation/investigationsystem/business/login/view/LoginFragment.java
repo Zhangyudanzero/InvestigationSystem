@@ -95,6 +95,15 @@ public class LoginFragment extends BaseTitleFragemnt {
                 LoginPresenter.getInstance().buttonEditPasswordClickByLogin();
             }
         });
+
+        // 登陆的点击事件
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginPresenter.getInstance().buttonLoginClick();
+            }
+        });
+
     }
 
     @Override

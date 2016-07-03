@@ -86,7 +86,7 @@ public class EditPasswordFragment extends BaseTitleFragemnt {
 
     @Override
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
-        return CubeAnimation.create(CubeAnimation.RIGHT, enter,  StringConstants.DURATION);
+        return CubeAnimation.create(CubeAnimation.RIGHT, enter, StringConstants.DURATION);
     }
 
 }

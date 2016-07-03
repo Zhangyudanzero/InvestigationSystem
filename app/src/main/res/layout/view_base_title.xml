@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_alignParentLeft="true"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_heightPercent="100%h"
         app:layout_widthPercent="100%h">
 
@@ -25,6 +25,36 @@
             app:layout_heightPercent="35%h"
             app:layout_widthPercent="35%h" />
     </com.zhy.android.percent.support.PercentRelativeLayout>
+
+    <!-- 调查员身份 -->
+    <com.zhy.android.percent.support.PercentLinearLayout
+        android:id="@+id/fragmenr_base_head_user"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_password"
+            app:layout_heightPercent="35%h"
+            app:layout_widthPercent="35%h" />
+
+        <TextView
+            android:id="@+id/fragmenr_base_head_usertext"
+            style="@style/main_text_white_big"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:gravity="left|center_vertical"
+            android:maxLength="8"
+            android:maxLines="1"
+            tools:text="测试我是问问去玩请问企鹅全文完全" />
+    </com.zhy.android.percent.support.PercentLinearLayout>
 
     <!-- 头中间的文字 -->
     <TextView
@@ -41,7 +71,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_alignParentRight="true"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_heightPercent="100%h"
         app:layout_widthPercent="100%h">
 

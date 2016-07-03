@@ -23,6 +23,7 @@ public class StringConstants {
     public static final String TAG = "iwen";
     public static final String TITLE_LOGIN = "欢迎使用北京中医健康乡村基线普查系统";
     public static final String TITLE_EDITPASSWORD = "修改密码";
+    public static final String TITLE_MAIN = "调查系统主页";
     public static final int DURATION = 300;
 
 }

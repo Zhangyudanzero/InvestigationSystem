@@ -5,6 +5,7 @@ import android.provider.SyncStateContract;
 
 import com.investigation.investigationsystem.business.login.view.EditPasswordFragment;
 import com.investigation.investigationsystem.business.login.view.LoginFragment;
+import com.investigation.investigationsystem.business.main.presenter.MainPresenter;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
@@ -58,6 +59,14 @@ public class LoginPresenter extends BasePresenter {
      */
     public void buttonEditPasswordClickByLogin() {
         replaceFragmentAddBackStack(EditPasswordFragment.newInstance(), rootActivity.getFragmentViewID());
+    }
+
+    /**
+     * 登陆的点击事件,是登陆页面的
+     */
+    public void buttonLoginClick() {
+        MainPresenter.startUp(rootActivity);
+        rootActivity.finish();
     }
 
 }
