@@ -8,14 +8,12 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/main_keymonitoring"
@@ -40,8 +38,6 @@
         </LinearLayout>
 
 
-
-
         <Button
             android:id="@+id/main_question_investigation"
             android:layout_width="300dp"
@@ -57,8 +53,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/main_comments_suggestions"
@@ -85,8 +80,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
 
 
     <Button
