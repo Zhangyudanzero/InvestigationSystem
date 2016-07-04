@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,56 +11,50 @@
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:text="姓名"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"
-            />
+            android:layout_marginTop="20dp"
+            android:text="姓名" />
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:text="性别"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"
-            />
+            android:layout_marginTop="20dp"
+            android:text="性别" />
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:text="年龄"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="40dp"
-            />
+            android:layout_marginTop="20dp"
+            android:text="年龄" />
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:text="身份证号"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"
-            />
+            android:layout_marginTop="20dp"
+            android:text="身份证号" />
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:text="调查日期"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="80dp"
-            />
+            android:layout_marginTop="20dp"
+            android:text="调查日期" />
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:text="调查问卷名"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="80dp"
-            />
+            android:layout_marginTop="20dp"
+            android:text="调查问卷名" />
 
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/inquire_rv_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        ></android.support.v7.widget.RecyclerView>
+        android:layout_marginTop="20dp"></android.support.v7.widget.RecyclerView>
 
 
 </LinearLayout>

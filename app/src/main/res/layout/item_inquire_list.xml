@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_gray_biankuang"
+    android:paddingBottom="10dp"
+    >
+
+    <TextView
+        android:id="@+id/item_inquire_tv_name"
+        style="@style/main_text_black_normal_z"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="姓名" />
+
+    <TextView
+        android:id="@+id/item_inquire_tv_famle"
+        style="@style/main_text_black_normal_z"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="性别" />
+
+    <TextView
+        android:id="@+id/item_inquire_tv_age"
+        style="@style/main_text_black_normal_z"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:text="年龄" />
+
+    <TextView
+        android:id="@+id/item_inquire_tv_idcard"
+        style="@style/main_text_black_normal_z"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="身份证号" />
+
+    <TextView
+        android:id="@+id/item_inquire_tv_time"
+        style="@style/main_text_black_normal_z"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:text="调查日期" />
+
+    <TextView
+        android:id="@+id/item_inquire_tv_question"
+        style="@style/main_text_black_normal_z"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:text="调查问卷名" />
+
+</LinearLayout>
