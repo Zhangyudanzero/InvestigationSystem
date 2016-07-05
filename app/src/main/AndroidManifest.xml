@@ -30,6 +30,16 @@
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
+            android:name=".business.questionnaireinquiry.view.InquireActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name=".business.qusetionnaire.view.QusetuinnaireActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
             android:name=".business.login.view.LoginActivity"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"

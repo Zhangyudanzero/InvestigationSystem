@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.investigation.investigationsystem.R;
-import com.investigation.investigationsystem.business.questionnaireinquiry.adapter.InquireAdapter;
 import com.investigation.investigationsystem.business.questionnaireinquiry.presenter.InquiryPresenter;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
 import com.investigation.investigationsystem.common.constants.StringConstants;
@@ -66,7 +65,7 @@ public class InquireFragment extends BaseTitleFragemnt {
     //初始化recycler
     public void iniRecycleView(){
         rv_show.setLayoutManager(new LinearLayoutManager(rootActivity));
-        rv_show.setAdapter(new InquireAdapter());
+//        rv_show.setAdapter(new InquireAdapter());
     }
 
 }

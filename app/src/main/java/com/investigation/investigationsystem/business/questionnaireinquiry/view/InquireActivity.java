@@ -42,7 +42,7 @@ public class InquireActivity extends BaseFragmentActivity {
 
     @Override
     protected void initDefaultAddFragment() {
-        UpdatePresenter.getInstance().addDefaultFragment();
+        InquiryPresenter.getInstance().addDefaultFragment();
     }
 
     @Override

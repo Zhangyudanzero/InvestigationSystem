@@ -44,4 +44,5 @@ public class MainActivity extends BaseFragmentActivity {
         MainPresenter.getInstance().onDes();
         super.onDestroy();
     }
+
 }
