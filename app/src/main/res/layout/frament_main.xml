@@ -18,38 +18,44 @@
 
             <Button
                 android:id="@+id/main_keymonitoring"
-                android:layout_width="230dp"
-                android:layout_height="130dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@color/main_blue"
                 android:text="重点监测"
                 android:textColor="@color/main_white"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:padding="20dp"
+                />
 
             <Button
                 android:id="@+id/main_questionnaire_inquiry"
-                android:layout_width="230dp"
-                android:layout_height="130dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/main_keymonitoring"
                 android:background="@drawable/btn_bk_green_nostorge"
                 android:text="问卷查询"
                 android:textColor="@color/main_white"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:padding="20dp"
+                />
 
         </LinearLayout>
 
 
         <Button
             android:id="@+id/main_question_investigation"
-            android:layout_width="300dp"
-            android:layout_height="270dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_toRightOf="@+id/main_questionnaire_inquiry"
             android:background="@drawable/btn_bk_blue_nostorge"
             android:text="问卷调查"
             android:textColor="@color/main_white"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            android:padding="20dp"
+            />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -59,25 +65,29 @@
 
             <Button
                 android:id="@+id/main_comments_suggestions"
-                android:layout_width="230dp"
-                android:layout_height="130dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_toRightOf="@+id/main_question_investigation"
                 android:background="@color/main_green_deep"
                 android:text="意见建议"
                 android:textColor="@color/main_white"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:padding="20dp"
+                />
 
             <Button
                 android:id="@+id/main_data_update"
-                android:layout_width="230dp"
-                android:layout_height="130dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/main_comments_suggestions"
                 android:layout_toRightOf="@+id/main_question_investigation"
                 android:background="@color/main_organ"
                 android:text="数据更新"
                 android:textColor="@color/main_white"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:padding="20dp"
+                />
 
         </LinearLayout>
 
@@ -86,14 +96,16 @@
 
     <Button
         android:id="@+id/main_exit"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/main_question_investigation"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@+id/main_keymonitoring"
         android:background="@color/main_red"
         android:text="退出系统"
         android:textColor="@color/main_white"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:padding="20dp"
+        />
 
 </LinearLayout>
