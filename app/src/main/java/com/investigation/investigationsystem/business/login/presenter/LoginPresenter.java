@@ -57,6 +57,8 @@ public class LoginPresenter extends BasePresenter {
         replaceFragmentAddBackStack(EditPasswordFragment.newInstance(), rootActivity.getFragmentViewID());
     }
 
+
+
     /**
      * 登陆的点击事件,是登陆页面的
      */
@@ -64,6 +66,7 @@ public class LoginPresenter extends BasePresenter {
         MainPresenter.startUp(rootActivity);
         rootActivity.finish();
     }
+
 
     /**
      * 销毁，回收资源

@@ -119,5 +119,6 @@ public class LoginFragment extends BaseTitleFragemnt {
     protected void onActivityCreatedByUser() {
         super.onActivityCreatedByUser();
         direction = 1;
+
     }
 }
