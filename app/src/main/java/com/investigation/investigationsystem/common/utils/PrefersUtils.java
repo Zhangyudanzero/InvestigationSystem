@@ -13,13 +13,9 @@ import com.investigation.investigationsystem.MyApplication;
 
 public class PrefersUtils {
 
-	//获取项目包名  get package name
-//	private static final String PACKAGE_NAME = ApplicationUtil.getPackageInfo().packageName + ".config";
+//	获取项目包名  get package name
+//	private static final String PACKAGE_NAME = MyApplication.getInstance() .getPackageInfo().packageName + ".config";
 
-	private static final String PRE_NIGHT = "night";
-	private static final String PRE_FIRST = "isFirst";
-	private static final String PRE_SEND_INFO = "isSendInfo";
-	private static final String PRE_SAVE_FLOW = "isSaveFlow";
 
 	//这里以用户名命名，每个用户保存一份内容 文件名 等加入applicationutils可以使用
 	public static SharedPreferences getSharedPreferences() {
@@ -67,9 +63,5 @@ public class PrefersUtils {
 		getSharedPreferences().edit().clear().commit();
 	}
 
-	//清除制定的缓存
-//	public static void clearData(){
-//		getSharedPreferences().edit().c
-//	}
 
 }

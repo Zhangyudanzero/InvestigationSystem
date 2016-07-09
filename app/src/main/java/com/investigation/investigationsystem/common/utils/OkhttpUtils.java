@@ -171,6 +171,46 @@ public class OkhttpUtils {
         });
     }
 
+
+    /**
+     * 异步post 传递json串
+     *
+     * @param url
+     * @param requestCallback
+     */
+    public void AsynPostJson(String url , String jsonStr , final RequestCallback requestCallback) {
+
+        DebugLog.i("okhttp" , "---传递的json串---" + "jsonStr" + jsonStr);
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+        RequestBody body = RequestBody.create(JSON , jsonStr);
+        //request需求
+        final Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        DebugLog.i("okhttp" , "---异步执行---");
+        //异步执行
+        mOkHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                DebugLog.i("okhttp" , "---数据获取失败---e---" + e.toString());
+                processFailData(e, requestCallback);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                DebugLog.i("okhttp" , "---获取数据成功---" + "response.code" + response.code() +
+                "response.body().string()" + response.body().string());
+                if (response.code() == 200) {
+                    String result = response.body().string();
+                    processSuccessData(result, requestCallback);
+                }
+            }
+        });
+    }
+
+
+
     /**
      * 上传图片
      */
