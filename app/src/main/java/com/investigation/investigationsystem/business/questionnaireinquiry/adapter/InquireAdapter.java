@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by zero on 2016/7/3.
  */
-public class InquireAdapter extends RecyclerView.Adapter<InquireAdapter.InquireViiewHolder>{
+public class InquireAdapter extends RecyclerView.Adapter<InquireAdapter.InquireViiewHolder> {
 
     private List<String> list;
     private Context context;
@@ -26,7 +26,7 @@ public class InquireAdapter extends RecyclerView.Adapter<InquireAdapter.InquireV
 
     @Override
     public InquireAdapter.InquireViiewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new InquireViiewHolder(LayoutInflater.from(context).inflate(R.layout.item_inquire_list , null));
+        return new InquireViiewHolder(LayoutInflater.from(context).inflate(R.layout.item_inquire_list, null));
     }
 
     @Override
@@ -39,7 +39,7 @@ public class InquireAdapter extends RecyclerView.Adapter<InquireAdapter.InquireV
         return list.size();
     }
 
-    public class InquireViiewHolder extends RecyclerView.ViewHolder{
+    public class InquireViiewHolder extends RecyclerView.ViewHolder {
 
         private final TextView tv_name;
         private final TextView tv_famle;
@@ -59,9 +59,6 @@ public class InquireAdapter extends RecyclerView.Adapter<InquireAdapter.InquireV
         }
 
     }
-
-
-
 
 
 }
