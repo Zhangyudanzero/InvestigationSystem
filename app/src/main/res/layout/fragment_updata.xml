@@ -39,7 +39,7 @@
             <Button
                 android:id="@+id/update_btn_question_upload"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:background="@color/main_blue"
                 android:text="@string/str_questionnaire_upload"
                 android:textColor="@color/main_white"
@@ -63,7 +63,7 @@
             <Button
                 android:id="@+id/update_btn_feedback_upload"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:background="@color/main_puper"
                 android:text="@string/str_feedback_information_upload"
                 android:textColor="@color/main_white"
@@ -95,8 +95,7 @@
             <Button
                 android:id="@+id/update_btn_all_upload"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginLeft="50dp"
+                android:layout_height="wrap_content"
                 android:background="@color/main_blue_deep"
                 android:text="@string/str_upload_all"
                 android:textColor="@color/main_white"
@@ -149,7 +148,7 @@
             <Button
                 android:id="@+id/update_btn_update_question"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:background="@color/main_green"
                 android:text="调查问卷获取"
                 android:textColor="@color/main_white"
@@ -175,8 +174,7 @@
             <Button
                 android:id="@+id/update_btn_update_emphases"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginLeft="50dp"
+                android:layout_height="wrap_content"
                 android:background="@color/main_red"
                 android:text="重点监测内容获取"
                 android:textColor="@color/main_white"
@@ -201,8 +199,7 @@
             <Button
                 android:id="@+id/update_btn_update_userinfo"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginLeft="50dp"
+                android:layout_height="wrap_content"
                 android:background="@color/main_organ"
                 android:text="更新个人信息"
                 android:textColor="@color/main_white"

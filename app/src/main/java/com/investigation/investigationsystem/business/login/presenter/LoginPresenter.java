@@ -1,11 +1,16 @@
 package com.investigation.investigationsystem.business.login.presenter;
 
+import com.google.gson.JsonObject;
 import com.investigation.investigationsystem.business.login.view.EditPasswordFragment;
 import com.investigation.investigationsystem.business.login.view.LoginFragment;
 import com.investigation.investigationsystem.business.main.presenter.MainPresenter;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
 import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.investigation.investigationsystem.common.utils.ConstantUrl;
+import com.investigation.investigationsystem.common.utils.OkhttpUtils;
+
+import java.io.IOException;
 
 /**
  * ==========================================
@@ -55,15 +60,36 @@ public class LoginPresenter extends BasePresenter {
      */
     public void buttonEditPasswordClickByLogin() {
         replaceFragmentAddBackStack(EditPasswordFragment.newInstance(), rootActivity.getFragmentViewID());
+
     }
+
+
 
     /**
      * 登陆的点击事件,是登陆页面的
      */
-    public void buttonLoginClick() {
-        MainPresenter.startUp(rootActivity);
-        rootActivity.finish();
+    public void buttonLoginClick(String username , String password) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("username" , username);
+        jsonObject.addProperty("password" , password);
+        String url = ConstantUrl.url + ConstantUrl.Login;
+        OkhttpUtils.getInstance().AsynPostJson(url, jsonObject.toString(), new OkhttpUtils.RequestCallback() {
+            @Override
+            public void onError(IOException e) {
+
+            }
+
+            @Override
+            public void onSuccess(String result) throws IOException {
+                MainPresenter.startUp(rootActivity);
+                rootActivity.finish();
+            }
+        });
+
+
+
     }
+
 
     /**
      * 销毁，回收资源
