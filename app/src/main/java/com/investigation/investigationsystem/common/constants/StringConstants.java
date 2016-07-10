@@ -21,7 +21,12 @@ package com.investigation.investigationsystem.common.constants;
 public class StringConstants {
 
     public static final String TAG = "iwen";
-    public static final String TITLE_LOGIN = "欢迎使用北京中医健康乡村基线普查系统";
+    public static final String FORMAT = "-------->>  ";
+    public static final String NET_TIMEOUT = FORMAT + "连接超时";
+    public static final String NET_DATAERROR = FORMAT + "数据获取错误";
+    public static final String NET_REQUESTDATA = FORMAT + "网络请求参数：";
+    public static final String NET_GETDATA = FORMAT + "获取网络数据:";
+    public static final String TITLE_LOGIN = "北京中医健康乡村基线普查电子系统";
     public static final String TITLE_EDITPASSWORD = "修改密码";
     public static final String TITLE_MAIN = "调查系统主页";
     public static final String TITLE_UPDATE = "数据更新";
