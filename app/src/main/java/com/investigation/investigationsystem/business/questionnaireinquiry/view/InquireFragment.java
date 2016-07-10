@@ -63,7 +63,7 @@ public class InquireFragment extends BaseTitleFragemnt {
     }
 
     //初始化recycler
-    public void iniRecycleView(){
+    public void iniRecycleView() {
         rv_show.setLayoutManager(new LinearLayoutManager(rootActivity));
 //        rv_show.setAdapter(new InquireAdapter());
     }
