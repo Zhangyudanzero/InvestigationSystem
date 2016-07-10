@@ -99,9 +99,15 @@ public class EmphasesPresenter extends BasePresenter {
     }
 
     /**
+     * 使用json解析本地的重点监测数据
+     */
+    public void 
+
+
+    /**
      * 从本地获取重点监测数据中的团队信息
      */
-    public void getEmphasesInfo(){
+    public void getEmphasesTeamInfo(){
         List<String> teamnamelist = new ArrayList<>();
         Gson gson = new Gson();
         emphases emphases = gson.fromJson(Data.FocusMonitoring, emphases.class);
@@ -110,8 +116,16 @@ public class EmphasesPresenter extends BasePresenter {
         for (int i = 0; i < teamlist.size(); i++) {
             teamnamelist.add(teamlist.get(i).getTeamname());
         }
-        
 
+
+    }
+
+    /**
+     * 根据团队信息获取地域信息 刷新spinner的数据
+     */
+    public void getEmphasesArea(String team){
+        Gson gson = new Gson();
+        gson.fromJson()
     }
 
 

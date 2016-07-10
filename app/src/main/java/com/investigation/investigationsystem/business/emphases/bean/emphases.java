@@ -17,7 +17,6 @@ public class emphases {
     private String result;
     private List<TeamList> Teamlist;
 
-
     @Override
     public String toString() {
         return "emphases{" +
