@@ -216,15 +216,22 @@ public class OkhttpUtils {
                         if ("1".equals(code)) {
                             // 请求成功
                             processSuccess(result, requestCallback);
+                            jsonObject = null;
                             result = null;
                             code = null;
                         } else {
                             // 请求失败
                             ToastUtils.showMessage(StringConstants.NET_DATAERROR);
                             processFail(requestCallback);
+                            jsonObject = null;
                             result = null;
                             code = null;
                         }
+                    } else {
+                        // 请求失败
+                        ToastUtils.showMessage(StringConstants.NET_DATAERROR);
+                        processFail(requestCallback);
+                        result = null;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
