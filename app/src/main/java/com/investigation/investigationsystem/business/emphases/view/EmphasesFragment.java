@@ -3,9 +3,8 @@ package com.investigation.investigationsystem.business.emphases.view;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Spinner;
 
 import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.emphases.adapter.EmpListAdapter;
@@ -40,6 +39,8 @@ public class EmphasesFragment extends BaseTitleFragemnt {
     private EmpListAdapter adapter;
     private List<String> data;
     private RecyclerView recyclerView;
+    private Spinner spinner_area;
+    private Spinner spinner_team;
 
     public static EmphasesFragment newInstance() {
         return new EmphasesFragment();
@@ -76,6 +77,10 @@ public class EmphasesFragment extends BaseTitleFragemnt {
 
     @Override
     protected void initView() {
+
+
+        spinner_area = (Spinner) rootView.findViewById(R.id.emphases_spinner_area);
+        spinner_team = (Spinner) rootView.findViewById(R.id.emphases_spinner_team);
 
         data = new ArrayList<>();
         data.add("123");

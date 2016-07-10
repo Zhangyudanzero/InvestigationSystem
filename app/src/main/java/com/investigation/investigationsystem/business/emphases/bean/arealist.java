@@ -7,48 +7,41 @@ import java.util.List;
  */
 public class arealist {
 
-        private String areaname;
-        private String areaID;
-        /**
-         * name : 你猜
-         * iDNO : 120111199901011234
-         * female : 1
-         * age : 37
-         * nation : 汉
-         * address : 天津市南开区
-         * address2 : 北京市朝阳区
-         * disease : 尘肺
-         * tutelageFreq : 每周一次
-         * tutelageWay : 住院
-         * tutelageContent : 心律
-         * doctor : 张生
-         * time : 2016/3/2
-         */
+    private String areaname;
+    private String areaID;
+    private List<Monitoringlist> monitoringlist;
 
-        private List<Monitoringlist> monitoringlist;
+    @Override
+    public String toString() {
+        return "arealist{" +
+                "areaname='" + areaname + '\'' +
+                ", areaID='" + areaID + '\'' +
+                ", monitoringlist=" + monitoringlist +
+                '}';
+    }
 
-        public String getAreaname() {
-            return areaname;
-        }
+    public String getAreaname() {
+        return areaname;
+    }
 
-        public void setAreaname(String areaname) {
-            this.areaname = areaname;
-        }
+    public void setAreaname(String areaname) {
+        this.areaname = areaname;
+    }
 
-        public String getAreaID() {
-            return areaID;
-        }
+    public String getAreaID() {
+        return areaID;
+    }
 
-        public void setAreaID(String areaID) {
-            this.areaID = areaID;
-        }
+    public void setAreaID(String areaID) {
+        this.areaID = areaID;
+    }
 
-        public List<Monitoringlist> getMonitoringlist() {
-            return monitoringlist;
-        }
+    public List<Monitoringlist> getMonitoringlist() {
+        return monitoringlist;
+    }
 
-        public void setMonitoringlist(List<Monitoringlist> monitoringlist) {
-            this.monitoringlist = monitoringlist;
-        }
+    public void setMonitoringlist(List<Monitoringlist> monitoringlist) {
+        this.monitoringlist = monitoringlist;
+    }
 
 }

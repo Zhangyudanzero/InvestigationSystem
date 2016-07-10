@@ -270,6 +270,7 @@ public class Data {
      * 获取重点监测对象
      */
     public static String FocusMonitoring = "{\n" +
+            "    \"result\": 1,\n" +
             "    \"Teamlist\": [\n" +
             "        {\n" +
             "            \"teamname\": \"x团队\",\n" +

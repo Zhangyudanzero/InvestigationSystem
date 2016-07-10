@@ -5,6 +5,22 @@ package com.investigation.investigationsystem.business.emphases.bean;
  */
 public class Monitoringlist {
 
+
+    /**
+     * name : 你猜
+     * iDNO : 120111199901011234
+     * female : 1
+     * age : 37
+     * nation : 汉
+     * address : 天津市南开区
+     * address2 : 北京市朝阳区
+     * disease : 尘肺
+     * tutelageFreq : 每周一次
+     * tutelageWay : 住院
+     * tutelageContent : 心律
+     * doctor : 张生
+     * time : 2016/3/2
+     */
     private String name;
     private String iDNO;
     private int female;
@@ -18,6 +34,25 @@ public class Monitoringlist {
     private String tutelageContent;
     private String doctor;
     private String time;
+
+    @Override
+    public String toString() {
+        return "Monitoringlist{" +
+                "name='" + name + '\'' +
+                ", iDNO='" + iDNO + '\'' +
+                ", female=" + female +
+                ", age=" + age +
+                ", nation='" + nation + '\'' +
+                ", address='" + address + '\'' +
+                ", address2='" + address2 + '\'' +
+                ", disease='" + disease + '\'' +
+                ", tutelageFreq='" + tutelageFreq + '\'' +
+                ", tutelageWay='" + tutelageWay + '\'' +
+                ", tutelageContent='" + tutelageContent + '\'' +
+                ", doctor='" + doctor + '\'' +
+                ", time='" + time + '\'' +
+                '}';
+    }
 
     public String getName() {
         return name;

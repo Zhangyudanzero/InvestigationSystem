@@ -5,13 +5,20 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
-import com.investigation.investigationsystem.business.emphases.asdsa;
+import com.google.gson.Gson;
+import com.investigation.investigationsystem.business.emphases.bean.TeamList;
+import com.investigation.investigationsystem.business.emphases.bean.emphases;
 import com.investigation.investigationsystem.business.emphases.view.EmphasesActivity;
 import com.investigation.investigationsystem.business.emphases.view.EmphasesDetailFragment;
 import com.investigation.investigationsystem.business.emphases.view.EmphasesFragment;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
 import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.investigation.investigationsystem.common.data.Data;
+import com.investigation.investigationsystem.common.utils.DebugLog;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * ==========================================
@@ -89,6 +96,22 @@ public class EmphasesPresenter extends BasePresenter {
     public void setCurrentFragment(Fragment fragment) {
         currentFragment = fragment;
         Log.d(TAG, fragment.getClass().getName() + "重新点亮");
+    }
+
+    /**
+     * 从本地获取重点监测数据中的团队信息
+     */
+    public void getEmphasesInfo(){
+        List<String> teamnamelist = new ArrayList<>();
+        Gson gson = new Gson();
+        emphases emphases = gson.fromJson(Data.FocusMonitoring, emphases.class);
+        DebugLog.i(TAG , emphases.toString());
+        List<TeamList> teamlist = emphases.getTeamlist();
+        for (int i = 0; i < teamlist.size(); i++) {
+            teamnamelist.add(teamlist.get(i).getTeamname());
+        }
+        
+
     }
 
 
