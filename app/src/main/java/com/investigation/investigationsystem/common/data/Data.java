@@ -1,6 +1,8 @@
 package com.investigation.investigationsystem.common.data;
 
 /**
+ * json假数据
+ *
  * Created by zero on 2016/7/7.
  */
 public class Data {
@@ -9,6 +11,7 @@ public class Data {
      * 登录数据
      * 修改密码数据
      * 更新团队信息数据
+     *
      */
     public static String loginData = "{\n" +
             "    \"result\": 1,\n" +
@@ -138,6 +141,174 @@ public class Data {
             "                    \"resultContent\": [\n" +
             "                        \"asdf5\",\n" +
             "                        \"asdf5\"\n" +
+            "                    ]\n" +
+            "                }\n" +
+            "            ]\n" +
+            "        }\n" +
+            "    ]\n" +
+            "}";
+
+
+    /**
+     *提交客服反馈
+     */
+    public static String commitfeedback = "{\n" +
+            "    \"size\": 2,\n" +
+            "    \" feedbackList\": [\n" +
+            "        {\n" +
+            "            \"userID\": \"e717e1160ceb40c7ada2bf3e9ccaa57e\",\n" +
+            "            \"content\": \"太好用了\",\n" +
+            "            \"time\": \"2016-05-01 11:11:12\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"userID\": \"e717e1160ceb40c7ada2bf3e9ccaa57e\",\n" +
+            "            \"content\": \"太好用了\",\n" +
+            "            \"time\": \"2016-05-01 11:11:12\"\n" +
+            "        }\n" +
+            "    ]\n" +
+            "}";
+
+
+    /**
+     * 获取调查问卷
+     */
+    public static String getQuestion = "{\n" +
+            "    \"updateTime\": \"20160523091234123456\",\n" +
+            "    \"size\": 2,\n" +
+            "    \"questionnaire_YES\": [\n" +
+            "        {\n" +
+            "            \"questionnaireID\": \"4f241109922844d49bfe5cea0ea2d412\",\n" +
+            "            \"subject\": \"全文\",\n" +
+            "            \"title\": \"全文\",\n" +
+            "            \"questionList\": [\n" +
+            "                {\n" +
+            "                    \"questionID\": \"4f241109922844d49bfe5cea0ea2d412\",\n" +
+            "                    \"questionTitle\": \"QEtitle\",\n" +
+            "                    \"questionNO\": \"1\",\n" +
+            "                    \"questionType\": \"0\",\n" +
+            "                    \"questionOption_list\": [\n" +
+            "                        {\n" +
+            "                            \"optionContent\": \"1\",\n" +
+            "                            \"optionNO\": \"1\"\n" +
+            "                        },\n" +
+            "                        {\n" +
+            "                            \"optionContent\": \"2\",\n" +
+            "                            \"optionNO\": \"2\"\n" +
+            "                        },\n" +
+            "                        {\n" +
+            "                            \"optionContent\": \"3\",\n" +
+            "                            \"optionNO\": \"3\"\n" +
+            "                        }\n" +
+            "                    ]\n" +
+            "                },\n" +
+            "                {\n" +
+            "                    \"questionID\": \"4f241109922844d49bfe5cea0ea2d412\",\n" +
+            "                    \"questionTitle\": \"QEtitle2\",\n" +
+            "                    \"questionNO\": \"2\",\n" +
+            "                    \"questionType\": \"0\",\n" +
+            "                    \"questionOption_list\": [\n" +
+            "                        {\n" +
+            "                            \"optionContent\": \"1\",\n" +
+            "                            \"optionNO\": \"1\"\n" +
+            "                        },\n" +
+            "                        {\n" +
+            "                            \"optionContent\": \"1\",\n" +
+            "                            \"optionNO\": \"2\"\n" +
+            "                        }\n" +
+            "                    ]\n" +
+            "                }\n" +
+            "            ]\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"questionnaireID\": \"4f241109922844d49bfe5cea0ea2d412\",\n" +
+            "            \"subject\": \"全文\",\n" +
+            "            \"title\": \"全文\",\n" +
+            "            \"questionList\": [\n" +
+            "                {\n" +
+            "                    \"questionID\": \"4f241109922844d49bfe5cea0ea2d412\",\n" +
+            "                    \"questionTitle\": \"QEtitle\",\n" +
+            "                    \"questionNO\": \"1\",\n" +
+            "                    \"questionType\": \"0\",\n" +
+            "                    \"questionOption_list\": [\n" +
+            "                        {\n" +
+            "                            \"optionContent\": \"1\",\n" +
+            "                            \"optionNO\": \"1\"\n" +
+            "                        },\n" +
+            "                        {\n" +
+            "                            \"optionContent\": \"2\",\n" +
+            "                            \"optionNO\": \"2\"\n" +
+            "                        },\n" +
+            "                        {\n" +
+            "                            \"optionContent\": \"3\",\n" +
+            "                            \"optionNO\": \"3\"\n" +
+            "                        }\n" +
+            "                    ]\n" +
+            "                },\n" +
+            "                {\n" +
+            "                    \"questionID\": \"4f241109922844d49bfe5cea0ea2d412\",\n" +
+            "                    \"questionTitle\": \"QEtitle2\",\n" +
+            "                    \"questionNO\": \"2\",\n" +
+            "                    \"questionType\": \"0\",\n" +
+            "                    \"questionOption_list\": [\n" +
+            "                        {\n" +
+            "                            \"optionContent\": \"1\",\n" +
+            "                            \"optionNO\": \"1\"\n" +
+            "                        },\n" +
+            "                        {\n" +
+            "                            \"optionContent\": \"1\",\n" +
+            "                            \"optionNO\": \"2\"\n" +
+            "                        }\n" +
+            "                    ]\n" +
+            "                }\n" +
+            "            ]\n" +
+            "        }\n" +
+            "    ]\n" +
+            "}";
+
+
+    /**
+     * 获取重点监测对象
+     */
+    public static String FocusMonitoring = "{\n" +
+            "    \"Teamlist\": [\n" +
+            "        {\n" +
+            "            \"teamname\": \"x团队\",\n" +
+            "            \"teamID\": \"1e93c7c51c824d3cab14ef2af4621124\",\n" +
+            "            \"arealist\": [\n" +
+            "                {\n" +
+            "                    \"areaname\": \"小区\",\n" +
+            "                    \"areaID\": \"1e93c7c51c824d3cab14ef2af4621124\",\n" +
+            "                    \"monitoringlist\": [\n" +
+            "                        {\n" +
+            "                            \"name\": \"你猜\",\n" +
+            "                            \"iDNO\": \"120111199901011234\",\n" +
+            "                            \"female\": 1,\n" +
+            "                            \"age\": 37,\n" +
+            "                            \"nation\": \"汉\",\n" +
+            "                            \"address\": \"天津市南开区\",\n" +
+            "                            \"address2\": \"北京市朝阳区\",\n" +
+            "                            \"disease\": \"尘肺\",\n" +
+            "                            \"tutelageFreq\": \"每周一次\",\n" +
+            "                            \"tutelageWay\": \"住院\",\n" +
+            "                            \"tutelageContent\": \"心律\",\n" +
+            "                            \"doctor\": \"张生\",\n" +
+            "                            \"time\": \"2016/3/2\"\n" +
+            "                        },\n" +
+            "                        {\n" +
+            "                            \"name\": \"你猜\",\n" +
+            "                            \"iDNO\": \"120111199901011234\",\n" +
+            "                            \"female\": 1,\n" +
+            "                            \"age\": 37,\n" +
+            "                            \"nation\": \"汉\",\n" +
+            "                            \"address\": \"天津市南开区\",\n" +
+            "                            \"address2\": \"北京市朝阳区\",\n" +
+            "                            \"disease\": \"尘肺\",\n" +
+            "                            \"tutelageFreq\": \"每周一次\",\n" +
+            "                            \"tutelageWay\": \"住院\",\n" +
+            "                            \"tutelageContent\": \"心律\",\n" +
+            "                            \"doctor\": \"张生\",\n" +
+            "                            \"time\": \"2016/3/2\"\n" +
+            "                        }\n" +
             "                    ]\n" +
             "                }\n" +
             "            ]\n" +
