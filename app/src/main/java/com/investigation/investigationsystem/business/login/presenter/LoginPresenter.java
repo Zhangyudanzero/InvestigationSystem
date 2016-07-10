@@ -75,18 +75,23 @@ public class LoginPresenter extends BasePresenter {
         String url = ConstantUrl.url + ConstantUrl.Login;
         OkhttpUtils.getInstance().AsynPostJson(url, jsonObject.toString(), new OkhttpUtils.RequestCallback() {
             @Override
-            public void onError(IOException e) {
+            public void onTimeOut() {
+
+            }
+
+            @Override
+            public void onError() {
 
             }
 
             @Override
             public void onSuccess(String result) throws IOException {
-                MainPresenter.startUp(rootActivity);
-                rootActivity.finish();
+
             }
         });
 
-
+        MainPresenter.startUp(rootActivity);
+        rootActivity.finish();
 
     }
 

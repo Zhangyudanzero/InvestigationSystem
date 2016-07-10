@@ -12,21 +12,24 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/emp_detail_name"
+            android:id="@+id/tv_name_empdetial"
             style="@style/main_text_black_normal_z"
             android:text="@string/str_name" />
 
         <TextView
+            android:id="@+id/tv_grender_empdetial"
             style="@style/main_text_black_normal_z"
             android:layout_marginLeft="30dp"
             android:text="@string/str_xingbie" />
 
         <TextView
+            android:id="@+id/tv_age_empdetial"
             style="@style/main_text_black_normal_z"
             android:layout_marginLeft="30dp"
             android:text="@string/str_age" />
 
         <TextView
+            android:id="@+id/tv_minzu_empdetial"
             style="@style/main_text_black_normal_z"
             android:layout_marginLeft="30dp"
             android:text="@string/str_minzu" />
@@ -41,10 +44,12 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tv_idcard_empdetial"
             style="@style/main_text_black_normal_z"
             android:text="@string/str_idcard" />
 
         <TextView
+            android:id="@+id/tv_location_empdetial"
             style="@style/main_text_black_normal_z"
             android:layout_marginLeft="30dp"
             android:text="@string/str_local_area" />
@@ -52,12 +57,14 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_huji_empdetial"
         style="@style/main_text_black_normal_z"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:text="@string/str_hujidizhi" />
 
     <TextView
+        android:id="@+id/tv_juzhu_empdetial"
         style="@style/main_text_black_normal_z"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
@@ -71,10 +78,12 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tv_desasse_empdetial"
             style="@style/main_text_black_normal_z"
             android:text="@string/str_zhongdianjiancejibing" />
 
         <TextView
+            android:id="@+id/tv_pinlv_empdetial"
             style="@style/main_text_black_normal_z"
             android:layout_marginLeft="30dp"
             android:text="@string/str_jiancepinlv" />
@@ -82,12 +91,14 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_jianceneirong_empdetial"
         style="@style/main_text_black_normal_z"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:text="@string/str_jianceneirong" />
 
     <TextView
+        android:id="@+id/tv_jiancefangshi_empdetial"
         style="@style/main_text_black_normal_z"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
@@ -101,15 +112,18 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tv_querenren_empdetial"
             style="@style/main_text_black_normal_z"
             android:text="@string/str_update_querenren" />
 
         <TextView
+            android:id="@+id/tv_morentuanduin_empdetial"
             style="@style/main_text_black_normal_z"
             android:layout_marginLeft="30dp"
-            android:text="@string/str_update_querenren" />
+            android:text="@string/str_update_morentuandui" />
 
         <TextView
+            android:id="@+id/tv_querenshijian_empdetial"
             style="@style/main_text_black_normal_z"
             android:layout_marginLeft="30dp"
             android:text="@string/str_update_qurenriqi" />

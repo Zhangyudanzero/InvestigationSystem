@@ -5,7 +5,6 @@ package com.investigation.investigationsystem.business.emphases.bean;
  */
 public class Monitoringlist {
 
-
     /**
      * name : 你猜
      * iDNO : 120111199901011234

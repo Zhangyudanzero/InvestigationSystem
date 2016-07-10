@@ -3,16 +3,26 @@ package com.investigation.investigationsystem.business.emphases.presenter;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 
 import com.google.gson.Gson;
+import com.investigation.investigationsystem.business.emphases.adapter.EmpListAdapter;
+import com.investigation.investigationsystem.business.emphases.bean.Monitoringlist;
 import com.investigation.investigationsystem.business.emphases.bean.TeamList;
+import com.investigation.investigationsystem.business.emphases.bean.arealist;
 import com.investigation.investigationsystem.business.emphases.bean.emphases;
 import com.investigation.investigationsystem.business.emphases.view.EmphasesActivity;
 import com.investigation.investigationsystem.business.emphases.view.EmphasesDetailFragment;
 import com.investigation.investigationsystem.business.emphases.view.EmphasesFragment;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
+import com.investigation.investigationsystem.common.constants.DataConstants;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 import com.investigation.investigationsystem.common.data.Data;
 import com.investigation.investigationsystem.common.utils.DebugLog;
@@ -85,6 +95,7 @@ public class EmphasesPresenter extends BasePresenter {
         fragment = null;
     }
 
+
     /**
      * 销毁，回收资源
      */
@@ -101,32 +112,110 @@ public class EmphasesPresenter extends BasePresenter {
     /**
      * 使用json解析本地的重点监测数据
      */
-    public void 
-
+    public emphases analysisJson(){
+        Gson gson = new Gson();
+        emphases emphasesz = gson.fromJson(Data.FocusMonitoring, emphases.class);
+        DebugLog.i(TAG  , "---解析本地数据emphasesz---" + emphasesz);
+        return emphasesz;
+    }
 
     /**
      * 从本地获取重点监测数据中的团队信息
      */
-    public void getEmphasesTeamInfo(){
+    public void getEmphasesTeamInfo(Spinner sp_team , final Spinner sp_area
+            , final Button btn_search , final RecyclerView rv_show){
+        //判断是否需要根据不同的用户获取数据
+        //获取团队数据
         List<String> teamnamelist = new ArrayList<>();
-        Gson gson = new Gson();
-        emphases emphases = gson.fromJson(Data.FocusMonitoring, emphases.class);
-        DebugLog.i(TAG , emphases.toString());
-        List<TeamList> teamlist = emphases.getTeamlist();
+        emphases emphases = analysisJson();
+        final List<TeamList> teamlist = emphases.getTeamlist();
         for (int i = 0; i < teamlist.size(); i++) {
             teamnamelist.add(teamlist.get(i).getTeamname());
         }
+        //把teamnamelist数据填充进spinner
+        final String[] teamnames = new String[teamnamelist.size()];
+        for (int i = 0 ; i < teamnamelist.size() ; i++) {
+            teamnames[i] = teamnamelist.get(i);
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootActivity
+                , android.R.layout.simple_spinner_item , teamnames);
+        sp_team.setAdapter(adapter);
+        //sp点击时候的事件
+        sp_team.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                getEmphasesArea( teamnames[position] , teamlist , sp_area , btn_search , rv_show);
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
     /**
      * 根据团队信息获取地域信息 刷新spinner的数据
      */
-    public void getEmphasesArea(String team){
-        Gson gson = new Gson();
-        gson.fromJson()
+    public void getEmphasesArea(String teamName , List<TeamList> teamlist , Spinner sp_area
+            , final Button btn_search , final RecyclerView rv_show){
+        for (int i = 0; i < teamlist.size(); i++)
+            if (teamlist.get(i).getTeamname().equals(teamName)) {
+                //把数据填充进spinner
+                final List<arealist> arealist = teamlist.get(i).getArealist();
+                String[] areas = new String[arealist.size()];
+                for (int j = 0; j < arealist.size(); j++) {
+                    areas[j] = arealist.get(j).getAreaname().toString();
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootActivity
+                        , android.R.layout.simple_spinner_item , areas);
+                sp_area.setAdapter(adapter);
+                sp_area.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        showUserInfo(btn_search , arealist.get(position).getMonitoringlist() , rv_show);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+            }
     }
 
+    /**
+     * 点击查询时 显示对应的数据
+     */
+    public void showUserInfo(Button btn_search , final List<Monitoringlist> monitoringlist , final RecyclerView rv_show){
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //点击查询数据 显对应的数据内容
+                EmpListAdapter empListAdapter = new EmpListAdapter(monitoringlist);
+                rv_show.setAdapter(empListAdapter);
+                empListAdapter.setOnItemClickListener(new EmpListAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(Monitoringlist monitoringlist) {
+                        if (monitoringlist != null) {
+                            DataConstants.monitoringConstants = monitoringlist;
+                            addFragmentAddBackStack(new EmphasesDetailFragment());
+                        }
+                    }
+                });
+
+            }
+        });
+    }
+
+
+    /**
+     * 重点监测详情显示数据 直接返回所有数据就行
+     */
+    public void showEmphasesDetial(){
+
+    }
 
 }

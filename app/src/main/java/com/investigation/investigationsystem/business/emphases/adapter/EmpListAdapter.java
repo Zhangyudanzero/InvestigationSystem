@@ -4,9 +4,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.investigation.investigationsystem.R;
+import com.investigation.investigationsystem.business.emphases.bean.Monitoringlist;
 
 import java.util.List;
 
@@ -31,10 +33,11 @@ import java.util.List;
  */
 public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.ViewHold> {
 
-    private List<String> data;
+    private List<Monitoringlist> data;
     private EmpListAdapterClick click;
+    private OnItemClickListener onClickListener;
 
-    public EmpListAdapter(List<String> data) {
+    public EmpListAdapter(List<Monitoringlist> data) {
         this.data = data;
     }
 
@@ -53,13 +56,18 @@ public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHold holder, final int position) {
-        holder.name.setText(data.get(position));
-        holder.name.setOnClickListener(new View.OnClickListener() {
+        holder.tv_name.setText(data.get(position).getName()+"");
+        holder.tv_age.setText(data.get(position).getAge()+"");
+        holder.tv_desasser.setText(data.get(position).getDisease()+"");
+        holder.tv_grender.setText(data.get(position).getFemale()+"");
+        holder.ll_root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                click.onCLick(data.get(position));
+                //点击跳转详情页面
+                onClickListener.onItemClick(data.get(position));
             }
         });
+
     }
 
     @Override
@@ -72,13 +80,34 @@ public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.ViewHold
 
     public class ViewHold extends RecyclerView.ViewHolder {
 
-        public TextView name;
+        public TextView tv_name;
+        public TextView tv_age;
+        public TextView tv_grender;
+        public TextView tv_desasser;
+        private final LinearLayout ll_root;
 
         public ViewHold(View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.emp_list_name);
+            tv_name = (TextView) itemView.findViewById(R.id.emp_item_tv_name);
+            tv_age = (TextView) itemView.findViewById(R.id.emp_item_tv_age);
+            tv_grender = (TextView) itemView.findViewById(R.id.emp_item_tv_grender);
+            tv_desasser = (TextView) itemView.findViewById(R.id.emp_item_tv_desasser);
+            ll_root = (LinearLayout) itemView.findViewById(R.id.emp_item_root);
         }
     }
 
+    /**
+     * 点击事件接口
+     */
+    public interface OnItemClickListener{
+        void onItemClick(Monitoringlist monitoringlist);
+    }
+
+    /**
+     * 设置点击事件
+     */
+    public void setOnItemClickListener(OnItemClickListener onClickListener){
+        this.onClickListener = onClickListener;
+    }
 
 }
