@@ -1,9 +1,13 @@
 package com.investigation.investigationsystem.common.utils;
 
 import android.app.Activity;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.view.WindowManager;
 
+import com.investigation.investigationsystem.MyApplication;
 import com.investigation.investigationsystem.common.SystemBarTintManager;
 
 /**
@@ -42,6 +46,19 @@ public class BaseUtils {
             tintManager.setStatusBarTintResource(color);
             tintManager.setStatusBarTintEnabled(true);
         }
+    }
+
+    /**
+     * 获取当前网络状态
+     *
+     * @return
+     */
+    public static boolean isNetworkAvailable() {
+        // 获取系统的连接服务
+        ConnectivityManager connectivityManager = (ConnectivityManager) MyApplication.getInstance()
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetInfo != null && activeNetInfo.isConnected();
     }
 
 }

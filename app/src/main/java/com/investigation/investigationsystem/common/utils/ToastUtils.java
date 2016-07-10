@@ -29,11 +29,12 @@ public class ToastUtils {
 
     public static void showMessage(String message) {
         if (null == toast) {
-            toast = new Toast(MyApplication.getInstance().getApplicationContext());
+            toast = Toast.makeText(MyApplication.getInstance().getApplicationContext(), message, Toast.LENGTH_SHORT);
+            toast.show();
+            return;
         }
         toast.cancel();
-        toast.setText(message);
-        toast.setDuration(Toast.LENGTH_SHORT);
+        toast = Toast.makeText(MyApplication.getInstance().getApplicationContext(), message, Toast.LENGTH_SHORT);
         toast.show();
     }
 }

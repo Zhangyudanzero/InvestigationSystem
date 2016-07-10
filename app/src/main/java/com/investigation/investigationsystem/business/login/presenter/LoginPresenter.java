@@ -1,16 +1,15 @@
 package com.investigation.investigationsystem.business.login.presenter;
 
-import com.google.gson.JsonObject;
+import android.text.TextUtils;
+
 import com.investigation.investigationsystem.business.login.view.EditPasswordFragment;
 import com.investigation.investigationsystem.business.login.view.LoginFragment;
-import com.investigation.investigationsystem.business.main.presenter.MainPresenter;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
 import com.investigation.investigationsystem.common.constants.StringConstants;
-import com.investigation.investigationsystem.common.utils.ConstantUrl;
-import com.investigation.investigationsystem.common.utils.OkhttpUtils;
-
-import java.io.IOException;
+import com.investigation.investigationsystem.common.utils.BaseUtils;
+import com.investigation.investigationsystem.common.utils.DebugLog;
+import com.investigation.investigationsystem.common.utils.ToastUtils;
 
 /**
  * ==========================================
@@ -64,32 +63,57 @@ public class LoginPresenter extends BasePresenter {
     }
 
 
-
     /**
      * 登陆的点击事件,是登陆页面的
      */
-    public void buttonLoginClick(String username , String password) {
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("username" , username);
-        jsonObject.addProperty("password" , password);
-        String url = ConstantUrl.url + ConstantUrl.Login;
-        OkhttpUtils.getInstance().AsynPostJson(url, jsonObject.toString(), new OkhttpUtils.RequestCallback() {
-            @Override
-            public void onError(IOException e) {
+    public void buttonLoginClick(String username, String password) {
 
-            }
+        // 校验输入
+        if (TextUtils.isEmpty(username)) {
+            ToastUtils.showMessage("请填写账户");
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            ToastUtils.showMessage("请填写密码");
+            return;
+        }
 
-            @Override
-            public void onSuccess(String result) throws IOException {
-                MainPresenter.startUp(rootActivity);
-                rootActivity.finish();
-            }
-        });
+        // 校验网络状态
+        boolean networkAvailable = BaseUtils.isNetworkAvailable();
+        DebugLog.d(TAG, "当前网络状态：" + networkAvailable);
+        if (networkAvailable) {
+            // 网络请求加载数据
 
 
+        } else {
+            // 加载本地缓存数据
 
+
+        }
+
+
+//        JsonObject jsonObject = new JsonObject();
+//        jsonObject.addProperty("username", username);
+//        jsonObject.addProperty("password", password);
+//        String url = ConstantUrl.url + ConstantUrl.Login;
+//        OkhttpUtils.getInstance().AsynPostJson(url, jsonObject.toString(), new OkhttpUtils.RequestCallback() {
+//            @Override
+//            public void onTimeOut() {
+//
+//            }
+//
+//            @Override
+//            public void onError() {
+//
+//            }
+//
+//            @Override
+//            public void onSuccess(String result) throws IOException {
+//                MainPresenter.startUp(rootActivity);
+//                rootActivity.finish();
+//            }
+//        });
     }
-
 
     /**
      * 销毁，回收资源
