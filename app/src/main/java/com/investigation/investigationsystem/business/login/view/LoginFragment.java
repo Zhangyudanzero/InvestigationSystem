@@ -92,7 +92,6 @@ public class LoginFragment extends BaseTitleFragemnt {
         btn_editPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 LoginPresenter.getInstance().buttonEditPasswordClickByLogin();
             }
         });
@@ -103,10 +102,9 @@ public class LoginFragment extends BaseTitleFragemnt {
             public void onClick(View v) {
                 String username = edit_name.getText().toString();
                 String password = edit_password.getText().toString();
-                LoginPresenter.getInstance().buttonLoginClick(username , password);
+                LoginPresenter.getInstance().buttonLoginClick(username, password);
             }
         });
-
     }
 
     @Override
