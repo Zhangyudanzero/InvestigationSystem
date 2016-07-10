@@ -200,7 +200,6 @@ public class OkhttpUtils {
             public void onFailure(Call call, IOException e) {
                 // 连接超时
                 DebugLog.i(TAG, StringConstants.NET_TIMEOUT);
-                ToastUtils.showMessage(StringConstants.NET_TIMEOUT);
                 processTimeOut(requestCallback);
             }
 
@@ -221,7 +220,6 @@ public class OkhttpUtils {
                             code = null;
                         } else {
                             // 请求失败
-                            ToastUtils.showMessage(StringConstants.NET_DATAERROR);
                             processFail(requestCallback);
                             jsonObject = null;
                             result = null;
@@ -229,7 +227,6 @@ public class OkhttpUtils {
                         }
                     } else {
                         // 请求失败
-                        ToastUtils.showMessage(StringConstants.NET_DATAERROR);
                         processFail(requestCallback);
                         result = null;
                     }
@@ -286,6 +283,7 @@ public class OkhttpUtils {
         mDelivery.post(new Runnable() {
             @Override
             public void run() {
+                ToastUtils.showMessage(StringConstants.NET_TIMEOUT);
                 requestCallback.onTimeOut();
             }
         });
@@ -296,6 +294,7 @@ public class OkhttpUtils {
         mDelivery.post(new Runnable() {
             @Override
             public void run() {
+                ToastUtils.showMessage(StringConstants.NET_DATAERROR);
                 requestCallback.onError();
             }
         });
