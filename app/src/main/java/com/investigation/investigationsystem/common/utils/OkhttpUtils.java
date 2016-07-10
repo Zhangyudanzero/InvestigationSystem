@@ -4,6 +4,11 @@ package com.investigation.investigationsystem.common.utils;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.investigation.investigationsystem.common.constants.StringConstants;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -26,6 +31,7 @@ import okhttp3.Response;
  */
 public class OkhttpUtils {
 
+    private static final String TAG = StringConstants.TAG + OkhttpUtils.class.getName();
     private static OkhttpUtils mInstance;
     private OkHttpClient mOkHttpClient;
     private static final int SECOND = 10;//各种超时的时间限制
@@ -75,7 +81,7 @@ public class OkhttpUtils {
         mOkHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                processFailData(e, requestCallback);
+                processFail(requestCallback);
             }
 
             @Override
@@ -84,9 +90,9 @@ public class OkhttpUtils {
                 if (response.code() == 200) {
                     String result = response.body().string();
                     if (!result.isEmpty()) {
-                        processSuccessData(result, requestCallback);
+                        processSuccess(result, requestCallback);
                     } else {
-                        processSuccessData(result, requestCallback);
+                        processSuccess(result, requestCallback);
                     }
                 } else {//返回码不是200
 //                    DebugLog.i(Constant.commentTAG , "---数据返回错误---response.code()---" + response.code());
@@ -112,7 +118,7 @@ public class OkhttpUtils {
         mOkHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                processFailData(e, requestCallback);
+                processFail(requestCallback);
             }
 
             @Override
@@ -120,9 +126,9 @@ public class OkhttpUtils {
                 if (response.code() == 200) {
                     String result = response.body().string();
                     if (!result.isEmpty()) {
-                        processSuccessData(result, requestCallback);
+                        processSuccess(result, requestCallback);
                     } else {
-                        processSuccessData(result, requestCallback);
+                        processSuccess(result, requestCallback);
                     }
                 }
             }
@@ -152,7 +158,7 @@ public class OkhttpUtils {
             @Override
             public void onFailure(Call call, IOException e) {
 //                dismissProgressdialog();
-                processFailData(e, requestCallback);
+                processFail(requestCallback);
             }
 
             @Override
@@ -162,15 +168,14 @@ public class OkhttpUtils {
                     String result = response.body().string();
 
                     if (!result.isEmpty()) {
-                        processSuccessData(result, requestCallback);
+                        processSuccess(result, requestCallback);
                     } else {
-                        processSuccessData(result, requestCallback);
+                        processSuccess(result, requestCallback);
                     }
                 }
             }
         });
     }
-
 
     /**
      * 异步post 传递json串
@@ -180,7 +185,7 @@ public class OkhttpUtils {
      */
     public void AsynPostJson(String url, String jsonStr, final RequestCallback requestCallback) {
 
-        DebugLog.i("okhttp", "---传递的json串---" + "jsonStr" + jsonStr);
+        DebugLog.i(TAG, StringConstants.NET_REQUESTDATA + jsonStr);
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         RequestBody body = RequestBody.create(JSON, jsonStr);
         //request需求
@@ -188,22 +193,44 @@ public class OkhttpUtils {
                 .url(url)
                 .post(body)
                 .build();
-        DebugLog.i("okhttp", "---异步执行---");
+        DebugLog.i(TAG, StringConstants.FORMAT + "异步执行");
         //异步执行
         mOkHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                DebugLog.i("okhttp", "---数据获取失败---e---" + e.toString());
-                processFailData(e, requestCallback);
+                // 连接超时
+                DebugLog.i(TAG, StringConstants.NET_TIMEOUT);
+                ToastUtils.showMessage(StringConstants.NET_TIMEOUT);
+                processTimeOut(requestCallback);
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                DebugLog.i("okhttp", "---获取数据成功---" + "response.code" + response.code() +
-                        "response.body().string()" + response.body().string());
-                if (response.code() == 200) {
-                    String result = response.body().string();
-                    processSuccessData(result, requestCallback);
+                String result = response.body().string();
+                //获取到数据
+                DebugLog.i(TAG, StringConstants.NET_GETDATA + result);
+                try {
+                    if (response.code() == 200) {
+                        JSONObject jsonObject = new JSONObject(result);
+                        String code = jsonObject.getString("result");
+                        if ("1".equals(code)) {
+                            // 请求成功
+                            processSuccess(result, requestCallback);
+                            result = null;
+                            code = null;
+                        } else {
+                            // 请求失败
+                            ToastUtils.showMessage(StringConstants.NET_DATAERROR);
+                            processFail(requestCallback);
+                            result = null;
+                            code = null;
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    // 请求失败
+                    processFail(requestCallback);
+                    result = null;
                 }
             }
         });
@@ -228,7 +255,7 @@ public class OkhttpUtils {
             @Override
             public void onFailure(Call call, IOException e) {
 //                dismissProgressdialog();
-                processFailData(e, requestCallback);
+                processFail(requestCallback);
             }
 
             @Override
@@ -237,29 +264,38 @@ public class OkhttpUtils {
                     String result = response.body().string();
                     if (!result.isEmpty()) {
                         if (result != null) {
-                            processSuccessData(result, requestCallback);
+                            processSuccess(result, requestCallback);
                         }
                     } else {
-                        processSuccessData(result, requestCallback);
+                        processSuccess(result, requestCallback);
                     }
                 }
             }
         });
     }
 
-
-    //处理数据返回失败
-    private void processFailData(final IOException e, final RequestCallback requestCallback) {
+    //处理连接超时
+    private void processTimeOut(final RequestCallback requestCallback) {
         mDelivery.post(new Runnable() {
             @Override
             public void run() {
-                requestCallback.onError(e);
+                requestCallback.onTimeOut();
+            }
+        });
+    }
+
+    //处理数据返回失败
+    private void processFail(final RequestCallback requestCallback) {
+        mDelivery.post(new Runnable() {
+            @Override
+            public void run() {
+                requestCallback.onError();
             }
         });
     }
 
     //处理数据返回成功
-    private void processSuccessData(final String result, final RequestCallback requestCallback) {
+    private void processSuccess(final String result, final RequestCallback requestCallback) {
         mDelivery.post(new Runnable() {
             @Override
             public void run() {
@@ -274,7 +310,10 @@ public class OkhttpUtils {
 
     //异步获取数据传递的接口
     public interface RequestCallback {
-        void onError(IOException e);
+
+        void onTimeOut();
+
+        void onError();
 
         void onSuccess(String result) throws IOException;
     }
