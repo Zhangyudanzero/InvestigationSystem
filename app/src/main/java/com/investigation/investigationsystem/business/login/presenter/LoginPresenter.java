@@ -4,6 +4,7 @@ import android.text.TextUtils;
 
 import com.investigation.investigationsystem.business.login.view.EditPasswordFragment;
 import com.investigation.investigationsystem.business.login.view.LoginFragment;
+import com.investigation.investigationsystem.business.main.presenter.MainPresenter;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
 import com.investigation.investigationsystem.common.constants.StringConstants;
@@ -85,13 +86,12 @@ public class LoginPresenter extends BasePresenter {
         if (networkAvailable) {
             // 网络请求加载数据
 
-
         } else {
             // 加载本地缓存数据
 
-
         }
-
+        MainPresenter.startUp(rootActivity);
+        rootActivity.finish();
 
 //        JsonObject jsonObject = new JsonObject();
 //        jsonObject.addProperty("username", username);
