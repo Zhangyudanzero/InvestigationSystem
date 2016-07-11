@@ -37,4 +37,7 @@ public class StringConstants {
     public static final int DURATION = 300;
     public static final long SPLASH_TIME = 1500;
 
+    //存放数据时公共的key命名
+    public static final String Suggest = "Suggest";
+
 }

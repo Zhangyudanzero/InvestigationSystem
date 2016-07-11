@@ -14,8 +14,6 @@ import com.investigation.investigationsystem.common.SystemBarTintManager;
 import com.investigation.investigationsystem.common.constants.DataConstants;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 
-import org.json.JSONObject;
-
 /**
  * ==========================================
  * <p/>
@@ -94,6 +92,7 @@ public class BaseUtils {
         DataConstants.userInfos = null;
         userInfos = null;
     }
+
 
 
 }

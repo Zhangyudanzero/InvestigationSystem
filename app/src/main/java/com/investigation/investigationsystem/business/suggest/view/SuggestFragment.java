@@ -5,15 +5,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
 import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.suggest.bean.FeedBack;
+import com.investigation.investigationsystem.business.suggest.bean.SuggestInfo;
 import com.investigation.investigationsystem.business.suggest.presenter.SuggestPresenter;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
 import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.investigation.investigationsystem.common.utils.DebugLog;
+import com.investigation.investigationsystem.common.utils.PrefersUtils;
 import com.investigation.investigationsystem.common.utils.ToastUtils;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 意见建议
@@ -25,6 +31,8 @@ public class SuggestFragment extends BaseTitleFragemnt {
 
     private EditText et_commit; //意见建议输入框
     private Button btn_commit; // 提交按钮
+//    private String suggestPrefrenceKey = DataConstants.currentUserInfo.getUserID() + StringConstants.Suggest;
+    private String suggestPrefrenceKey = StringConstants.Suggest;//暂时不使用currentUser因为是null
 
     public static SuggestFragment newInstance() {
         return new SuggestFragment();
@@ -80,8 +88,30 @@ public class SuggestFragment extends BaseTitleFragemnt {
                     Date curDate = new Date(System.currentTimeMillis());
                     String str = formatter.format(curDate);
                     feedBack.setTime(str);
+//                    feedBack.setUserID(DataConstants.currentUserInfo.getUserID());
 
-
+                    //把数据存放到sps中 先解析再存放
+                    Gson gson = new Gson();
+                    String suggests = PrefersUtils.getString(suggestPrefrenceKey);
+                    if (!suggests.isEmpty()) {
+                        SuggestInfo suggestInfo = gson.fromJson(suggests, SuggestInfo.class);
+                        suggestInfo.getFeedbackList().add(feedBack);
+                        suggestInfo.setSize(suggestInfo.getFeedbackList().size());
+                        String suggestsz = gson.toJson(suggestInfo);
+                        PrefersUtils.putString( suggestPrefrenceKey, suggestsz);
+                        DebugLog.i( "suggestTAG" , suggestsz);
+                        ToastUtils.showMessage("建议成功提交");
+                    }else{//如果本地没有数据存放
+                        List<FeedBack> list = new ArrayList<FeedBack>();
+                        list.add(feedBack);
+                        SuggestInfo suggestInfo = new SuggestInfo();
+                        suggestInfo.setSize(1);
+                        suggestInfo.setFeedbackList(list);
+                        String suggestsz = gson.toJson(suggestInfo);
+                        PrefersUtils.putString( suggestPrefrenceKey, suggestsz);
+                        DebugLog.i( "suggestTAG" , suggestsz);
+                        ToastUtils.showMessage("建议成功提交");
+                    }
 
                 } else {
                     ToastUtils.showMessage("请您填写建议以后再提交");
