@@ -4,19 +4,20 @@ import java.util.List;
 
 /**
  * Created by zero on 2016/7/10.
+ * 这是地区数据模型
  */
-public class arealist {
+public class MonitoringArea {
 
     private String areaname;
     private String areaID;
-    private List<Monitoringlist> monitoringlist;
+    private List<MonitoringPerson> monitoringPerson;
 
     @Override
     public String toString() {
-        return "arealist{" +
+        return "MonitoringArea{" +
                 "areaname='" + areaname + '\'' +
                 ", areaID='" + areaID + '\'' +
-                ", monitoringlist=" + monitoringlist +
+                ", monitoringPerson=" + monitoringPerson +
                 '}';
     }
 
@@ -36,12 +37,12 @@ public class arealist {
         this.areaID = areaID;
     }
 
-    public List<Monitoringlist> getMonitoringlist() {
-        return monitoringlist;
+    public List<MonitoringPerson> getMonitoringPerson() {
+        return monitoringPerson;
     }
 
-    public void setMonitoringlist(List<Monitoringlist> monitoringlist) {
-        this.monitoringlist = monitoringlist;
+    public void setMonitoringPerson(List<MonitoringPerson> monitoringPerson) {
+        this.monitoringPerson = monitoringPerson;
     }
 
 }

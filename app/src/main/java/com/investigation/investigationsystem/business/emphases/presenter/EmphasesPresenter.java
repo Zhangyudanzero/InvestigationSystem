@@ -13,9 +13,9 @@ import android.widget.Spinner;
 
 import com.google.gson.Gson;
 import com.investigation.investigationsystem.business.emphases.adapter.EmpListAdapter;
-import com.investigation.investigationsystem.business.emphases.bean.Monitoringlist;
-import com.investigation.investigationsystem.business.emphases.bean.TeamList;
-import com.investigation.investigationsystem.business.emphases.bean.arealist;
+import com.investigation.investigationsystem.business.emphases.bean.MonitoringArea;
+import com.investigation.investigationsystem.business.emphases.bean.MonitoringPerson;
+import com.investigation.investigationsystem.business.emphases.bean.MonitoringTeam;
 import com.investigation.investigationsystem.business.emphases.bean.emphases;
 import com.investigation.investigationsystem.business.emphases.view.EmphasesActivity;
 import com.investigation.investigationsystem.business.emphases.view.EmphasesDetailFragment;
@@ -128,7 +128,7 @@ public class EmphasesPresenter extends BasePresenter {
         //获取团队数据
         List<String> teamnamelist = new ArrayList<>();
         emphases emphases = analysisJson();
-        final List<TeamList> teamlist = emphases.getTeamlist();
+        final List<MonitoringTeam> teamlist = emphases.getTeamlist();
         for (int i = 0; i < teamlist.size(); i++) {
             teamnamelist.add(teamlist.get(i).getTeamname());
         }
@@ -158,15 +158,15 @@ public class EmphasesPresenter extends BasePresenter {
     /**
      * 根据团队信息获取地域信息 刷新spinner的数据
      */
-    public void getEmphasesArea(String teamName , List<TeamList> teamlist , Spinner sp_area
+    public void getEmphasesArea(String teamName , List<MonitoringTeam> teamlist , Spinner sp_area
             , final Button btn_search , final RecyclerView rv_show){
         for (int i = 0; i < teamlist.size(); i++)
             if (teamlist.get(i).getTeamname().equals(teamName)) {
                 //把数据填充进spinner
-                final List<arealist> arealist = teamlist.get(i).getArealist();
-                String[] areas = new String[arealist.size()];
-                for (int j = 0; j < arealist.size(); j++) {
-                    areas[j] = arealist.get(j).getAreaname().toString();
+                final List<MonitoringArea> MonitoringArea = teamlist.get(i).getMonitoringArea();
+                String[] areas = new String[MonitoringArea.size()];
+                for (int j = 0; j < MonitoringArea.size(); j++) {
+                    areas[j] = MonitoringArea.get(j).getAreaname().toString();
                 }
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootActivity
                         , android.R.layout.simple_spinner_item , areas);
@@ -174,7 +174,7 @@ public class EmphasesPresenter extends BasePresenter {
                 sp_area.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        showUserInfo(btn_search , arealist.get(position).getMonitoringlist() , rv_show);
+                        showUserInfo(btn_search , MonitoringArea.get(position).getMonitoringPerson() , rv_show);
                     }
 
                     @Override
@@ -189,18 +189,18 @@ public class EmphasesPresenter extends BasePresenter {
     /**
      * 点击查询时 显示对应的数据
      */
-    public void showUserInfo(Button btn_search , final List<Monitoringlist> monitoringlist , final RecyclerView rv_show){
+    public void showUserInfo(Button btn_search , final List<MonitoringPerson> monitoringPerson, final RecyclerView rv_show){
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //点击查询数据 显对应的数据内容
-                EmpListAdapter empListAdapter = new EmpListAdapter(monitoringlist);
+                EmpListAdapter empListAdapter = new EmpListAdapter(monitoringPerson);
                 rv_show.setAdapter(empListAdapter);
                 empListAdapter.setOnItemClickListener(new EmpListAdapter.OnItemClickListener() {
                     @Override
-                    public void onItemClick(Monitoringlist monitoringlist) {
-                        if (monitoringlist != null) {
-                            DataConstants.monitoringConstants = monitoringlist;
+                    public void onItemClick(MonitoringPerson monitoringPerson) {
+                        if (monitoringPerson != null) {
+                            DataConstants.monitoringConstants = monitoringPerson;
                             addFragmentAddBackStack(new EmphasesDetailFragment());
                         }
                     }

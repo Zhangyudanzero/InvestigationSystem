@@ -275,7 +275,7 @@ public class Data {
             "        {\n" +
             "            \"teamname\": \"x团队\",\n" +
             "            \"teamID\": \"1e93c7c51c824d3cab14ef2af4621124\",\n" +
-            "            \"arealist\": [\n" +
+            "            \"MonitoringArea\": [\n" +
             "                {\n" +
             "                    \"areaname\": \"小区\",\n" +
             "                    \"areaID\": \"1e93c7c51c824d3cab14ef2af4621124\",\n" +
