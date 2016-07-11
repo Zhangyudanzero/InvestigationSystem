@@ -2,6 +2,8 @@ package com.investigation.investigationsystem.common.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -9,6 +11,10 @@ import android.view.WindowManager;
 
 import com.investigation.investigationsystem.MyApplication;
 import com.investigation.investigationsystem.common.SystemBarTintManager;
+import com.investigation.investigationsystem.common.constants.DataConstants;
+import com.investigation.investigationsystem.common.constants.StringConstants;
+
+import org.json.JSONObject;
 
 /**
  * ==========================================
@@ -30,6 +36,8 @@ import com.investigation.investigationsystem.common.SystemBarTintManager;
  * ==========================================
  */
 public class BaseUtils {
+
+    private static final String TAG = StringConstants.TAG + BaseUtils.class.getName();
 
     /**
      * 修改状态颜色的方法,这里只修改4.4版本的状态栏颜色l
@@ -60,5 +68,32 @@ public class BaseUtils {
         NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetInfo != null && activeNetInfo.isConnected();
     }
+
+    /**
+     * 获取当前的版本号
+     *
+     * @return
+     */
+    public static String getMyVersionCode() {
+        try {
+            PackageManager pm = MyApplication.getInstance().getApplicationContext().getPackageManager();
+            PackageInfo packageInfo = pm.getPackageInfo(MyApplication.getInstance().getApplicationContext().getPackageName(), 0);
+            return packageInfo.versionName;
+        } catch (Exception e) {
+            DebugLog.e(TAG, "getMyVersionCode()", e);
+        }
+        return "";
+    }
+
+    /**
+     * 解析初始数据
+     */
+    public static void anacyleInitData() {
+        String userInfos = PrefersUtils.getString(PrefersUtils.TAG_USERINFO);
+        // 这里差一个gson解析
+        DataConstants.userInfos = null;
+        userInfos = null;
+    }
+
 
 }

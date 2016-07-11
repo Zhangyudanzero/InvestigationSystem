@@ -3,7 +3,7 @@ package com.investigation.investigationsystem.business.emphases.bean;
 /**
  * Created by zero on 2016/7/10.
  */
-public class Monitoringlist {
+public class MonitoringPerson {
 
     /**
      * name : 你猜
@@ -36,7 +36,7 @@ public class Monitoringlist {
 
     @Override
     public String toString() {
-        return "Monitoringlist{" +
+        return "MonitoringPerson{" +
                 "name='" + name + '\'' +
                 ", iDNO='" + iDNO + '\'' +
                 ", female=" + female +

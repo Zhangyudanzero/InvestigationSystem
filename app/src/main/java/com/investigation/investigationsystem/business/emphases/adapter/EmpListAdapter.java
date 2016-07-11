@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.investigation.investigationsystem.R;
-import com.investigation.investigationsystem.business.emphases.bean.Monitoringlist;
+import com.investigation.investigationsystem.business.emphases.bean.MonitoringPerson;
 
 import java.util.List;
 
@@ -33,11 +33,11 @@ import java.util.List;
  */
 public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.ViewHold> {
 
-    private List<Monitoringlist> data;
+    private List<MonitoringPerson> data;
     private EmpListAdapterClick click;
     private OnItemClickListener onClickListener;
 
-    public EmpListAdapter(List<Monitoringlist> data) {
+    public EmpListAdapter(List<MonitoringPerson> data) {
         this.data = data;
     }
 
@@ -100,7 +100,7 @@ public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.ViewHold
      * 点击事件接口
      */
     public interface OnItemClickListener{
-        void onItemClick(Monitoringlist monitoringlist);
+        void onItemClick(MonitoringPerson monitoringPerson);
     }
 
     /**

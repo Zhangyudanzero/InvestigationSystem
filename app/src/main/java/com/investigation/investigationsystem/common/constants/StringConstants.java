@@ -35,5 +35,6 @@ public class StringConstants {
     public static final String TITLE_EMPHASES = "重点检测";
     public static final String TITLE_INQUIRE = "问卷查询";
     public static final int DURATION = 300;
+    public static final long SPLASH_TIME = 1500;
 
 }

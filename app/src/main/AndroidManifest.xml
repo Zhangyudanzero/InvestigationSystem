@@ -43,7 +43,7 @@
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
-            android:name=".business.login.view.LoginActivity"
+            android:name=".business.splash.view.SplashActivity"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden">
@@ -53,6 +53,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".business.login.view.LoginActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden"></activity>
     </application>
 
 </manifest>
