@@ -10,8 +10,8 @@ public class ConstantUrl {
 
     //测试接口
 //    public final static String url = "http://192.168.1.101:8080/wenjuan";
-//    public final static String url = "http://192.168.56.1:8080/wenjuan";
-    public final static String url = "http://192.168.137.1:8080/wenjuan";
+    public final static String url = "http://192.168.56.1:8080/wenjuan";
+//    public final static String url = "http://192.168.137.1:8080/wenjuan";
 
     //登录接口
     public final static String Login = "/APP/url_login";

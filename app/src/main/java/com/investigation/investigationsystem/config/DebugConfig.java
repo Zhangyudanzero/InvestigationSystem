@@ -22,6 +22,7 @@ package com.investigation.investigationsystem.config;
 public class DebugConfig implements IConfig {
     @Override
     public String getBaseUrl() {
-        return "http://192.168.1.101:8080/wenjuan";
+//        return "http://192.168.1.101:8080/wenjuan";
+        return "http://192.168.1.103:8080/wenjuan";
     }
 }

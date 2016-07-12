@@ -23,7 +23,7 @@ public class ConfigFactroy {
 
     public static final String TAG = "debug";
     //登录接口
-    public final static String url_login = "/APP/url_login";
+    public final static String url_login = "/APP/Login";
     //修改密码
     public final static String changePassword = "/APP/ChangePassword";
     //提交问卷
