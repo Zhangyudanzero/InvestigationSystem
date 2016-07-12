@@ -270,18 +270,19 @@ public class Data {
      * 获取重点监测对象
      */
     public static String FocusMonitoring = "{\n" +
-            "    \"result\": 1,\n" +
-            "    \"Teamlist\": [\n" +
+            "\n" +
+            "\"result\": 1, \n" +
+            "\"Teamlist\": [\n" +
             "        {\n" +
             "            \"teamname\": \"x团队\",\n" +
             "            \"teamID\": \"1e93c7c51c824d3cab14ef2af4621124\",\n" +
-            "            \"MonitoringArea\": [\n" +
+            "            \"arealist\": [\n" +
             "                {\n" +
-            "                    \"areaname\": \"小区\",\n" +
+            "                    \"areaname\": \"小区1\",\n" +
             "                    \"areaID\": \"1e93c7c51c824d3cab14ef2af4621124\",\n" +
             "                    \"monitoringlist\": [\n" +
             "                        {\n" +
-            "                            \"name\": \"你猜\",\n" +
+            "                            \"name\": \"aa\",\n" +
             "                            \"iDNO\": \"120111199901011234\",\n" +
             "                            \"female\": 1,\n" +
             "                            \"age\": 37,\n" +
@@ -296,7 +297,43 @@ public class Data {
             "                            \"time\": \"2016/3/2\"\n" +
             "                        },\n" +
             "                        {\n" +
-            "                            \"name\": \"你猜\",\n" +
+            "                            \"name\": \"bb\",\n" +
+            "                            \"iDNO\": \"120111199901011234\",\n" +
+            "                            \"female\": 1,\n" +
+            "                            \"age\": 37,\n" +
+            "                            \"nation\": \"汉\",\n" +
+            "                            \"address\": \"天津市南开区\",\n" +
+            "                            \"address2\": \"北京市朝阳区\",\n" +
+            "                            \"disease\": \"尘肺\",\n" +
+            "                            \"tutelageFreq\": \"每周一次\",\n" +
+            "                            \"tutelageWay\": \"住院\",\n" +
+            "                            \"tutelageContent\": \"心律\",\n" +
+            "                            \"doctor\": \"张生\",\n" +
+            "                            \"time\": \"2016/3/2\"\n" +
+            "                        }\n" +
+            "                    ]\n" +
+            "                },\n" +
+            "{\n" +
+            "                    \"areaname\": \"小区2\",\n" +
+            "                    \"areaID\": \"1e93c7c51c824d3cab14ef2af4621124\",\n" +
+            "                    \"monitoringlist\": [\n" +
+            "                        {\n" +
+            "                            \"name\": \"cc\",\n" +
+            "                            \"iDNO\": \"120111199901011234\",\n" +
+            "                            \"female\": 1,\n" +
+            "                            \"age\": 37,\n" +
+            "                            \"nation\": \"汉\",\n" +
+            "                            \"address\": \"天津市南开区\",\n" +
+            "                            \"address2\": \"北京市朝阳区\",\n" +
+            "                            \"disease\": \"尘肺\",\n" +
+            "                            \"tutelageFreq\": \"每周一次\",\n" +
+            "                            \"tutelageWay\": \"住院\",\n" +
+            "                            \"tutelageContent\": \"心律\",\n" +
+            "                            \"doctor\": \"张生\",\n" +
+            "                            \"time\": \"2016/3/2\"\n" +
+            "                        },\n" +
+            "                        {\n" +
+            "                            \"name\": \"dd\",\n" +
             "                            \"iDNO\": \"120111199901011234\",\n" +
             "                            \"female\": 1,\n" +
             "                            \"age\": 37,\n" +
@@ -312,6 +349,7 @@ public class Data {
             "                        }\n" +
             "                    ]\n" +
             "                }\n" +
+            "\n" +
             "            ]\n" +
             "        }\n" +
             "    ]\n" +

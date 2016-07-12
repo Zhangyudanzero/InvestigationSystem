@@ -11,18 +11,14 @@ import android.text.TextUtils;
 import android.view.WindowManager;
 
 import com.google.gson.Gson;
-import com.google.gson.internal.Primitives;
 import com.investigation.investigationsystem.MyApplication;
 import com.investigation.investigationsystem.business.login.bean.UserInfo;
 import com.investigation.investigationsystem.common.SystemBarTintManager;
 import com.investigation.investigationsystem.common.constants.DataConstants;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.TreeMap;
+
 
 /**
  * ==========================================

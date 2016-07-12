@@ -102,7 +102,7 @@ public class MainPresenter extends BasePresenter {
      * 退出系统
      */
     public void btnExitClick() {
-
+        rootActivity.finish();
     }
 
     /**

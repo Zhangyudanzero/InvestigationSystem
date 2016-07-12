@@ -175,6 +175,7 @@ public class EmphasesPresenter extends BasePresenter {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         showUserInfo(btn_search , MonitoringArea.get(position).getMonitoringPerson() , rv_show);
+
                     }
 
                     @Override

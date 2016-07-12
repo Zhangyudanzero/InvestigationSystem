@@ -72,14 +72,11 @@ public class LoginPresenter extends BasePresenter {
      */
     public void buttonEditPasswordClickByLogin() {
         replaceFragmentAddBackStack(EditPasswordFragment.newInstance(), rootActivity.getFragmentViewID());
-
     }
-
 
     /**
      * 登陆的点击事件,是登陆页面的
      */
-
     public void buttonLoginClick(String username, String password, final SweetAlertDialog dialog) {
 
         // 校验输入
@@ -115,7 +112,6 @@ public class LoginPresenter extends BasePresenter {
                     toggleToMainActivity();
                 }
             });
-
         } else {
             // 加载本地缓存数据，判断是否可以登陆
             if (null == DataConstants.userInfos

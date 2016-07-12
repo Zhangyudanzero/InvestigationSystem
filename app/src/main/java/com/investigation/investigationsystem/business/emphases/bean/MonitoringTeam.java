@@ -10,14 +10,14 @@ public class MonitoringTeam {
 
     private String teamname;
     private String teamID;
-    private List<MonitoringArea> MonitoringArea;
+    private List<MonitoringArea> arealist;
 
     @Override
     public String toString() {
         return "MonitoringTeam{" +
                 "teamname='" + teamname + '\'' +
                 ", teamID='" + teamID + '\'' +
-                ", MonitoringArea=" + MonitoringArea +
+                ", arealist=" + arealist +
                 '}';
     }
 
@@ -38,11 +38,11 @@ public class MonitoringTeam {
     }
 
     public List<MonitoringArea> getMonitoringArea() {
-        return MonitoringArea;
+        return arealist;
     }
 
     public void setMonitoringArea(List<MonitoringArea> monitoringArea) {
-        this.MonitoringArea = monitoringArea;
+        this.arealist = monitoringArea;
     }
 
 

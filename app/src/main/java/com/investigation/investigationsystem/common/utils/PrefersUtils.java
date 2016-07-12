@@ -65,5 +65,6 @@ public class PrefersUtils {
         getSharedPreferences().edit().clear().commit();
     }
 
+	
 
 }
