@@ -10,7 +10,10 @@ import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.login.presenter.LoginPresenter;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
 import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.investigation.investigationsystem.common.utils.DialogUtils;
 import com.labo.kaji.fragmentanimations.CubeAnimation;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 /**
@@ -39,6 +42,7 @@ public class LoginFragment extends BaseTitleFragemnt {
     private Button btn_exit;
     private Button btn_editPassword;
     private Button btn_login;
+    private SweetAlertDialog dialog_loading;
 
     private int direction;
 
@@ -83,6 +87,7 @@ public class LoginFragment extends BaseTitleFragemnt {
         btn_exit = (Button) rootView.findViewById(R.id.login_button_exit);
         btn_editPassword = (Button) rootView.findViewById(R.id.login_button_editpassword);
         btn_login = (Button) rootView.findViewById(R.id.login_button_login);
+        dialog_loading = DialogUtils.getloadingDialog(rootActivity, StringConstants.MESSAGE_LOGINING);
     }
 
     @Override
@@ -102,7 +107,7 @@ public class LoginFragment extends BaseTitleFragemnt {
             public void onClick(View v) {
                 String username = edit_name.getText().toString();
                 String password = edit_password.getText().toString();
-                LoginPresenter.getInstance().buttonLoginClick(username, password);
+                LoginPresenter.getInstance().buttonLoginClick(username, password, dialog_loading);
             }
         });
     }
@@ -121,5 +126,14 @@ public class LoginFragment extends BaseTitleFragemnt {
         super.onActivityCreatedByUser();
         direction = 1;
 
+    }
+
+    @Override
+    public void onDestroy() {
+        if (dialog_loading != null && dialog_loading.isShowing()) {
+            dialog_loading.dismiss();
+        }
+        dialog_loading = null;
+        super.onDestroy();
     }
 }

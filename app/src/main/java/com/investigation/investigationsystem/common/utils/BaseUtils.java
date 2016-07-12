@@ -7,14 +7,22 @@ import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.text.TextUtils;
 import android.view.WindowManager;
 
+import com.google.gson.Gson;
+import com.google.gson.internal.Primitives;
 import com.investigation.investigationsystem.MyApplication;
+import com.investigation.investigationsystem.business.login.bean.UserInfo;
 import com.investigation.investigationsystem.common.SystemBarTintManager;
 import com.investigation.investigationsystem.common.constants.DataConstants;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeMap;
 
 /**
  * ==========================================
@@ -90,10 +98,22 @@ public class BaseUtils {
      */
     public static void anacyleInitData() {
         String userInfos = PrefersUtils.getString(PrefersUtils.TAG_USERINFO);
-        // 这里差一个gson解析
-        DataConstants.userInfos = null;
-        userInfos = null;
+        // 判断数据是否为null
+        if (TextUtils.isEmpty(userInfos)) {
+            DebugLog.d(TAG, "初始化用户登陆信息数据为null");
+            DataConstants.userInfos = null;
+            return;
+        }
+        try {
+            // 解析登陆数据
+            DataConstants.userInfos = new Gson().fromJson(userInfos, new TreeMap<String, UserInfo>().getClass());
+            DebugLog.d(TAG, "解析用户登陆信息集合：" + DataConstants.userInfos.toString());
+            userInfos = null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            DebugLog.d(TAG, "初始化数据失败");
+            DataConstants.userInfos = null;
+            userInfos = null;
+        }
     }
-
-
 }

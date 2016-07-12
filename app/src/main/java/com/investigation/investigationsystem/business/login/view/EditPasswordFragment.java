@@ -10,7 +10,10 @@ import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.login.presenter.LoginPresenter;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
 import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.investigation.investigationsystem.common.utils.DialogUtils;
 import com.labo.kaji.fragmentanimations.CubeAnimation;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 /**
@@ -34,9 +37,11 @@ import com.labo.kaji.fragmentanimations.CubeAnimation;
  */
 public class EditPasswordFragment extends BaseTitleFragemnt {
 
+    private EditText edit_name;
     private EditText edit_frist;
     private EditText edit_second;
     private Button btn_edit;
+    private EditPasswordFragment.ViewHold viewHold;
 
     public static EditPasswordFragment newInstance() {
         return new EditPasswordFragment();
@@ -74,19 +79,48 @@ public class EditPasswordFragment extends BaseTitleFragemnt {
 
     @Override
     protected void initView() {
+        edit_name = (EditText) rootView.findViewById(R.id.edit_username);
         edit_frist = (EditText) rootView.findViewById(R.id.edit_fristpassword);
         edit_second = (EditText) rootView.findViewById(R.id.edit_secondpassword);
         btn_edit = (Button) rootView.findViewById(R.id.edit_button_edit);
+        viewHold = new ViewHold();
+        viewHold.edit_name = edit_name;
+        viewHold.edit_frist = edit_frist;
+        viewHold.edit_second = edit_second;
+        viewHold.dialog_loading = DialogUtils.getloadingDialog(rootActivity, StringConstants.MESSAGE_LOGINING);
     }
 
     @Override
     protected void initClick() {
-
+        // 修改密码
+        btn_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginPresenter.getInstance().editPassword(viewHold);
+            }
+        });
     }
 
     @Override
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
         return CubeAnimation.create(CubeAnimation.RIGHT, enter, StringConstants.DURATION);
+    }
+
+    @Override
+    public void onDestroy() {
+        if (viewHold.dialog_loading != null && viewHold.dialog_loading.isShowing()) {
+            viewHold.dialog_loading.dismiss();
+        }
+        viewHold.dialog_loading = null;
+        viewHold = null;
+        super.onDestroy();
+    }
+
+    public class ViewHold {
+        public EditText edit_name;
+        public EditText edit_frist;
+        public EditText edit_second;
+        public SweetAlertDialog dialog_loading;
     }
 
 }

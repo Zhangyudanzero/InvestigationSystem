@@ -14,7 +14,7 @@ public class ConstantUrl {
     public final static String url = "http://192.168.137.1:8080/wenjuan";
 
     //登录接口
-    public final static String Login = "/APP/Login";
+    public final static String Login = "/APP/url_login";
     //修改密码
     public final static String changePassword = "/APP/ChangePassword";
     //提交问卷

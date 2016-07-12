@@ -23,7 +23,7 @@ public class StringConstants {
     public static final String TAG = "iwen";
     public static final String FORMAT = "-------->>  ";
     public static final String NET_TIMEOUT = FORMAT + "连接超时";
-    public static final String NET_DATAERROR = FORMAT + "数据获取错误";
+    public static final String NET_DATAERROR = FORMAT + "操作失败";
     public static final String NET_REQUESTDATA = FORMAT + "网络请求参数：";
     public static final String NET_GETDATA = FORMAT + "获取网络数据:";
     public static final String TITLE_LOGIN = "北京中医健康乡村基线普查电子系统";
@@ -34,6 +34,11 @@ public class StringConstants {
     public static final String TITLE_QUSETUINNAIR = "调查问卷";
     public static final String TITLE_EMPHASES = "重点检测";
     public static final String TITLE_INQUIRE = "问卷查询";
+    public static final String MESSAGE_CONECTIONNET_NOUSERINFO = "本机无该用户登陆数据，请尝试使用网络环境登录";
+    public static final String MESSAGE_PASSWORDERROR = "密码错误,请重新输入";
+    public static final String MESSAGE_PASSWOROK = "欢迎登录系统";
+    public static final String MESSAGE_LOGINING = "登录中，请稍等...";
+    public static final String NONETCONNETION = "没有网络，请连接网络再次尝试";
     public static final int DURATION = 300;
     public static final long SPLASH_TIME = 1500;
 
