@@ -55,6 +55,7 @@ public class InquireFragment extends BaseTitleFragemnt {
     @Override
     protected void initView() {
         rv_show = (RecyclerView) rootView.findViewById(R.id.inquire_rv_show);
+        iniRecycleView();
     }
 
     @Override
@@ -65,7 +66,7 @@ public class InquireFragment extends BaseTitleFragemnt {
     //初始化recycler
     public void iniRecycleView() {
         rv_show.setLayoutManager(new LinearLayoutManager(rootActivity));
-//        rv_show.setAdapter(new InquireAdapter());
+        InquiryPresenter.getInstance().getQuestionnaire(rv_show);
     }
 
 }

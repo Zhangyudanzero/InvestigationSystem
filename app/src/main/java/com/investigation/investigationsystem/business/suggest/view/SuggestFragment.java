@@ -32,7 +32,7 @@ public class SuggestFragment extends BaseTitleFragemnt {
     private EditText et_commit; //意见建议输入框
     private Button btn_commit; // 提交按钮
 //    private String suggestPrefrenceKey = DataConstants.currentUserInfo.getUserID() + StringConstants.Suggest;
-    private String suggestPrefrenceKey = StringConstants.Suggest;//暂时不使用currentUser因为是null
+    public static String suggestPrefrenceKey = StringConstants.Suggest;//暂时不使用currentUser因为是null
 
     public static SuggestFragment newInstance() {
         return new SuggestFragment();

@@ -3,11 +3,18 @@ package com.investigation.investigationsystem.business.update.presenter;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.investigation.investigationsystem.business.suggest.view.SuggestFragment;
 import com.investigation.investigationsystem.business.update.view.UpdateActivity;
 import com.investigation.investigationsystem.business.update.view.UpdateFragment;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
 import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.investigation.investigationsystem.common.utils.ConstantUrl;
+import com.investigation.investigationsystem.common.utils.OkhttpUtils;
+import com.investigation.investigationsystem.common.utils.PrefersUtils;
+import com.investigation.investigationsystem.common.utils.ToastUtils;
+
+import java.io.IOException;
 
 /**
  * ==========================================
@@ -69,7 +76,25 @@ public class UpdatePresenter extends BasePresenter {
      * 反馈信息上传点击
      */
     public void uploadFeedbackClick() {
+        String feedback = PrefersUtils.getString(SuggestFragment.suggestPrefrenceKey);
+        String url = ConstantUrl.url + ConstantUrl.saveFeedBack;
+        OkhttpUtils.getInstance().AsynPostJson(url, feedback, new OkhttpUtils.RequestCallback() {
+            @Override
+            public void onTimeOut() {
+                ToastUtils.showMessage("连接超时");
+            }
 
+            @Override
+            public void onError() {
+                ToastUtils.showMessage("数据上传错误");
+            }
+
+            @Override
+            public void onSuccess(String result) throws IOException {
+
+
+            }
+        });
 
     }
 
@@ -103,6 +128,14 @@ public class UpdatePresenter extends BasePresenter {
     public void updateMyClick() {
 
 
+    }
+
+    /**
+     * 监测是否有数据变化
+     */
+    public void checkDataChange(){
+        //获取更新数据
+        
     }
 
     /**

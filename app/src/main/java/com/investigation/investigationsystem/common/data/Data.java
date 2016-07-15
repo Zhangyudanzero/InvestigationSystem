@@ -173,17 +173,18 @@ public class Data {
      * 获取调查问卷
      */
     public static String getQuestion = "{\n" +
+            "    \"result\": \"1\",\n" +
             "    \"updateTime\": \"20160523091234123456\",\n" +
             "    \"size\": 2,\n" +
             "    \"questionnaire_YES\": [\n" +
             "        {\n" +
             "            \"questionnaireID\": \"4f241109922844d49bfe5cea0ea2d412\",\n" +
-            "            \"subject\": \"全文\",\n" +
-            "            \"title\": \"全文\",\n" +
+            "            \"subject\": \"问卷一\",\n" +
+            "            \"title\": \"问卷一\",\n" +
             "            \"questionList\": [\n" +
             "                {\n" +
             "                    \"questionID\": \"4f241109922844d49bfe5cea0ea2d412\",\n" +
-            "                    \"questionTitle\": \"QEtitle\",\n" +
+            "                    \"questionTitle\": \"这是一道单选题\",\n" +
             "                    \"questionNO\": \"1\",\n" +
             "                    \"questionType\": \"0\",\n" +
             "                    \"questionOption_list\": [\n" +
@@ -203,8 +204,36 @@ public class Data {
             "                },\n" +
             "                {\n" +
             "                    \"questionID\": \"4f241109922844d49bfe5cea0ea2d412\",\n" +
-            "                    \"questionTitle\": \"QEtitle2\",\n" +
+            "                    \"questionTitle\": \"这是一道多选题\",\n" +
             "                    \"questionNO\": \"2\",\n" +
+            "                    \"questionType\": \"1\",\n" +
+            "                    \"questionOption_list\": [\n" +
+            "                        {\n" +
+            "                            \"optionContent\": \"1\",\n" +
+            "                            \"optionNO\": \"1\"\n" +
+            "                        },\n" +
+            "                        {\n" +
+            "                            \"optionContent\": \"1\",\n" +
+            "                            \"optionNO\": \"2\"\n" +
+            "                        }\n" +
+            "                    ]\n" +
+            "                },\n" +
+            "                {\n" +
+            "                    \"questionID\": \"4f241109922844d49bfe5cea0ea2d412\",\n" +
+            "                    \"questionTitle\": \"这是一道填空题\",\n" +
+            "                    \"questionNO\": \"3\",\n" +
+            "                    \"questionType\": \"2\",\n" +
+            "                    \"questionOption_list\": [\n" +
+            "                        {\n" +
+            "                            \"optionContent\": \"这是一道填空题的内容\",\n" +
+            "                            \"optionNO\": \"1\"\n" +
+            "                        }\n" +
+            "                    ]\n" +
+            "                },\n" +
+            "                {\n" +
+            "                    \"questionID\": \"4f241109922844d49bfe5cea0ea2d412\",\n" +
+            "                    \"questionTitle\": \"这是一道单选题\",\n" +
+            "                    \"questionNO\": \"4\",\n" +
             "                    \"questionType\": \"0\",\n" +
             "                    \"questionOption_list\": [\n" +
             "                        {\n" +
@@ -221,8 +250,8 @@ public class Data {
             "        },\n" +
             "        {\n" +
             "            \"questionnaireID\": \"4f241109922844d49bfe5cea0ea2d412\",\n" +
-            "            \"subject\": \"全文\",\n" +
-            "            \"title\": \"全文\",\n" +
+            "            \"subject\": \"问卷二\",\n" +
+            "            \"title\": \"问卷二\",\n" +
             "            \"questionList\": [\n" +
             "                {\n" +
             "                    \"questionID\": \"4f241109922844d49bfe5cea0ea2d412\",\n" +
@@ -248,7 +277,7 @@ public class Data {
             "                    \"questionID\": \"4f241109922844d49bfe5cea0ea2d412\",\n" +
             "                    \"questionTitle\": \"QEtitle2\",\n" +
             "                    \"questionNO\": \"2\",\n" +
-            "                    \"questionType\": \"0\",\n" +
+            "                    \"questionType\": \"1\",\n" +
             "                    \"questionOption_list\": [\n" +
             "                        {\n" +
             "                            \"optionContent\": \"1\",\n" +

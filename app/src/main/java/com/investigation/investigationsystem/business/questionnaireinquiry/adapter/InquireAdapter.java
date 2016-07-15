@@ -8,15 +8,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.investigation.investigationsystem.R;
+import com.investigation.investigationsystem.business.questionnaireinquiry.bean.QusertionnaireResult;
 
 import java.util.List;
 
 /**
+ * 问卷查询内容
+ *
  * Created by zero on 2016/7/3.
  */
 public class InquireAdapter extends RecyclerView.Adapter<InquireAdapter.InquireViiewHolder> {
 
-    private List<String> list;
+    private List<QusertionnaireResult> list;
     private Context context;
 
     public InquireAdapter(List list, Context context) {
@@ -31,7 +34,16 @@ public class InquireAdapter extends RecyclerView.Adapter<InquireAdapter.InquireV
 
     @Override
     public void onBindViewHolder(InquireAdapter.InquireViiewHolder holder, int position) {
+        holder.tv_name.setText(list.get(position).getQusertionnaireresult().getName());
+        holder.tv_age.setText(list.get(position).getQusertionnaireresult().getAge()+"");
+        if (list.get(position).getQusertionnaireresult().getFemale() == 1) {
+            holder.tv_famle.setText("男");
+        }else if (list.get(position).getQusertionnaireresult().getFemale() == 2){
+            holder.tv_famle.setText("女");
+        }
 
+        holder.tv_idcard.setText(list.get(position).getQusertionnaireresult().getIdno());
+        holder.tv_time.setText(list.get(position).getQusertionnaireresult().getTime());
     }
 
     @Override
