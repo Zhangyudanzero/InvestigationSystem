@@ -40,6 +40,12 @@
     <color name="main_gray_light">#CCCCCC</color>
     <!--深灰色-->
     <color name="main_gray_deep">#CCCCCC</color>
+    <!--按钮的浅蓝色-->
+    <color name="main_btn_blue_deep">#57c8d6</color>
+    <!--按钮浅橘黄色-->
+    <color name="main_btn_orgen_deep">#ffa726</color>
+
+
 
 
 </resources>

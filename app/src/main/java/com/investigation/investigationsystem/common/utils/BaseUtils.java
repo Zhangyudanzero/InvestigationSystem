@@ -112,4 +112,25 @@ public class BaseUtils {
             userInfos = null;
         }
     }
+
+    /**
+     * 把字符串转为一个int值
+     *
+     * @param num
+     * @returns
+     */
+    public static int String2Int(String num) {
+        if (TextUtils.isEmpty(num) || "null".equals(num)) {
+            return 0;
+        }
+        int tem = 0;
+        try {
+            tem = Integer.parseInt(num);
+        } catch (Exception e) {
+            return 0;
+        }
+        return tem;
+    }
+
+
 }
