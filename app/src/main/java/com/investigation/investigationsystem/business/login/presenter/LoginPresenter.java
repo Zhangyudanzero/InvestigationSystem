@@ -14,7 +14,6 @@ import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
 import com.investigation.investigationsystem.common.constants.DataConstants;
 import com.investigation.investigationsystem.common.constants.StringConstants;
-import com.investigation.investigationsystem.common.data.Data;
 import com.investigation.investigationsystem.common.utils.BaseUtils;
 import com.investigation.investigationsystem.common.utils.DebugLog;
 import com.investigation.investigationsystem.common.utils.MD5Util;
@@ -84,10 +83,12 @@ public class LoginPresenter extends BasePresenter {
             ToastUtils.showMessage("请填写账户");
             return;
         }
+
         if (TextUtils.isEmpty(password)) {
             ToastUtils.showMessage("请填写密码");
             return;
         }
+
         // 密码要经过MD5加密再对比
         password = MD5Util.encryptByMD5(password);
         // 校验网络状态

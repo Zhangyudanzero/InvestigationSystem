@@ -5,7 +5,6 @@ import android.content.Intent;
 import com.investigation.investigationsystem.MyApplication;
 import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.questionnaireinquiry.presenter.InquiryPresenter;
-import com.investigation.investigationsystem.business.update.presenter.UpdatePresenter;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 
 /**
@@ -47,7 +46,7 @@ public class InquireActivity extends BaseFragmentActivity {
 
     @Override
     protected void onDestroy() {
-        UpdatePresenter.getInstance().onDes();
+        InquiryPresenter.getInstance().onDes();
         super.onDestroy();
     }
 

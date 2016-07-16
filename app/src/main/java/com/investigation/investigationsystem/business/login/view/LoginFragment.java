@@ -108,11 +108,6 @@ public class LoginFragment extends BaseTitleFragemnt {
                 String username = edit_name.getText().toString();
                 String password = edit_password.getText().toString();
                 LoginPresenter.getInstance().buttonLoginClick(username, password, dialog_loading);
-
-                //方便测试
-//                Intent it = new Intent(getActivity() , MainActivity.class);
-//                getActivity().startActivity(it);
-
             }
         });
     }

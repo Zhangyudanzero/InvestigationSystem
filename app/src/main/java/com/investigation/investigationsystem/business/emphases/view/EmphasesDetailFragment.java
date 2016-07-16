@@ -123,14 +123,14 @@ public class EmphasesDetailFragment extends BaseTitleFragemnt {
         tv_age_empdetial.setText("年龄：" + DataConstants.monitoringConstants.getAge());
         tv_grender_empdetial.setText("性别：" + DataConstants.monitoringConstants.getFemale());
         tv_idcard_empdetial.setText("身份证号：" + DataConstants.monitoringConstants.getIDNO());
-//        tv_location_empdetial.setText("所在地区：" + DataConstants.monitoringConstants.get);//通过全局变量反字段
+        tv_location_empdetial.setText("所在地区：" + DataConstants.emphasesArea);//通过全局变量反字段
         tv_huji_empdetial.setText("户籍地址：" + DataConstants.monitoringConstants.getAddress());
         tv_juzhu_empdetial.setText("居住地址：" + DataConstants.monitoringConstants.getAddress2());
         tv_desasse_empdetial.setText("重点监测疾病：" + DataConstants.monitoringConstants.getDisease());
         tv_pinlv_empdetial.setText("监测频率：" + DataConstants.monitoringConstants.getTutelageFreq());
         tv_jianceneirong_empdetial.setText("监测内容：" + DataConstants.monitoringConstants.getTutelageContent());
         tv_jiancefangshi_empdetial.setText("监测方式：" + DataConstants.monitoringConstants.getTutelageWay());
-//        tv_morentuanduin_empdetial.setText("默认团队：" + DataConstants.monitoringConstants.getTutelageWay());
+        tv_morentuanduin_empdetial.setText("默认团队：" + DataConstants.emphasesTeam);
         tv_querenren_empdetial.setText("确认人：" + DataConstants.monitoringConstants.getDoctor());
         tv_querenshijian_empdetial.setText("确认日期：" + DataConstants.monitoringConstants.getTime());
     }
