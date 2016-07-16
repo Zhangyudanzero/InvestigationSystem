@@ -23,6 +23,7 @@ public class DebugConfig implements IConfig {
     @Override
     public String getBaseUrl() {
 //        return "http://192.168.1.101:8080/wenjuan";
-        return "http://192.168.1.103:8080/wenjuan";
+//        return "http://192.168.1.103:8080/wenjuan";
+        return "http://101.200.177.16:8080/wenjuan";
     }
 }

@@ -44,6 +44,8 @@ public class InquireAdapter extends RecyclerView.Adapter<InquireAdapter.InquireV
 
         holder.tv_idcard.setText(list.get(position).getQusertionnaireresult().getIdno());
         holder.tv_time.setText(list.get(position).getQusertionnaireresult().getTime());
+        holder.tv_question.setText(list.get(position).getQusertionnaireresult().getQuestionnairename());
+
     }
 
     @Override
@@ -58,6 +60,7 @@ public class InquireAdapter extends RecyclerView.Adapter<InquireAdapter.InquireV
         private final TextView tv_age;
         private final TextView tv_idcard;
         private final TextView tv_time;
+        private final TextView tv_question;
 
         public InquireViiewHolder(View itemView) {
             super(itemView);
@@ -67,6 +70,7 @@ public class InquireAdapter extends RecyclerView.Adapter<InquireAdapter.InquireV
             tv_age = (TextView) itemView.findViewById(R.id.item_inquire_tv_age);
             tv_idcard = (TextView) itemView.findViewById(R.id.item_inquire_tv_idcard);
             tv_time = (TextView) itemView.findViewById(R.id.item_inquire_tv_time);
+            tv_question = (TextView) itemView.findViewById(R.id.item_inquire_tv_question);
 
         }
 

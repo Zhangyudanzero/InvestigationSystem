@@ -9,12 +9,12 @@ public class ConstantUrl {
 
 
     //测试接口
-//    public final static String url = "http://192.168.1.101:8080/wenjuan";
-    public final static String url = "http://192.168.56.1:8080/wenjuan";
-//    public final static String url = "http://192.168.137.1:8080/wenjuan";
+//    public final static String url = "http://192.168.56.1:8080/wenjuan";
+    public final static String url = "http://101.200.177.16:8080/wenjuan";
+
 
     //登录接口
-    public final static String Login = "/APP/url_login";
+    public final static String Login = "/APP/Login";
     //修改密码
     public final static String changePassword = "/APP/ChangePassword";
     //提交问卷

@@ -77,7 +77,8 @@ public class Data {
     /**
      * 提交问卷数据
      */
-    public static String answer = "{\n" + "\"size\": 2,\n" +
+    public static String answer = "{\n" +
+            "    \"size\": 2,\n" +
             "    \"qusertionnaireResultList\": [\n" +
             "        {\n" +
             "            \"qusertionnaireResult\": {\n" +
@@ -85,6 +86,7 @@ public class Data {
             "                \"areaID\": \"e717e1160ceb40c7ada2bf3e9ccaa57e\",\n" +
             "                \"userID\": \"e717e1160ceb40c7ada2bf3e9ccaa57e\",\n" +
             "                \"questionnaireID\": \"e717e1160ceb40c7ada2bf3e9ccaa57e\",\n" +
+            "                \"questionnairename\": \"问卷一\",\n" +
             "                \"time\": \"2016-05-01 11:11:12\",\n" +
             "                \"name\": \"小明\",\n" +
             "                \"iDNO\": \"120111199901011234\",\n" +
@@ -118,6 +120,7 @@ public class Data {
             "                \"areaID\": \"e717e1160ceb40c7ada2bf3e9ccaa57e\",\n" +
             "                \"userID\": \"e717e1160ceb40c7ada2bf3e9ccaa57e\",\n" +
             "                \"questionnaireID\": \"e717e1160ceb40c7ada2bf3e9ccaa57e\",\n" +
+            "                \"questionnairename\": \"问卷一\",\n" +
             "                \"time\": \"2016-05-01 11:11:12\",\n" +
             "                \"name\": \"小明\",\n" +
             "                \"iDNO\": \"120111199901011234\",\n" +

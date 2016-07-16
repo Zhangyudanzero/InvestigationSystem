@@ -22,7 +22,7 @@ public class PrefersUtils {
     //这里以用户名命名，每个用户保存一份内容 文件名 等加入applicationutils可以使用
     public static SharedPreferences getSharedPreferences() {
         return MyApplication.getInstance().getBaseContext().getSharedPreferences(
-                "PACKAGE_NAME", Context.MODE_PRIVATE);
+                "PACKAGE_NAME" , Context.MODE_PRIVATE);
     }
 
     /*****************************************************************************************

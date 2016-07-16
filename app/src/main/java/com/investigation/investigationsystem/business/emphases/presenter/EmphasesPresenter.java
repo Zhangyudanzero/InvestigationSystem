@@ -110,7 +110,7 @@ public class EmphasesPresenter extends BasePresenter {
     }
 
     /**
-     * 使用json解析本地的重点监测数据
+     * 使用json解析本地的重点监测数据 以后变成解析
      */
     public emphases analysisJson(){
         Gson gson = new Gson();
@@ -160,6 +160,9 @@ public class EmphasesPresenter extends BasePresenter {
      */
     public void getEmphasesArea(String teamName , List<MonitoringTeam> teamlist , Spinner sp_area
             , final Button btn_search , final RecyclerView rv_show){
+        //把团队信息最放到缓存中
+        DataConstants.emphasesTeam = teamName;
+        //通过团队信息解析数据
         for (int i = 0; i < teamlist.size(); i++)
             if (teamlist.get(i).getTeamname().equals(teamName)) {
                 //把数据填充进spinner
@@ -174,8 +177,9 @@ public class EmphasesPresenter extends BasePresenter {
                 sp_area.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        //被选中的地域信息存放到全局静态变量
+                        DataConstants.emphasesArea = MonitoringArea.get(position).getAreaname();
                         showUserInfo(btn_search , MonitoringArea.get(position).getMonitoringPerson() , rv_show);
-
                     }
 
                     @Override
@@ -211,12 +215,5 @@ public class EmphasesPresenter extends BasePresenter {
         });
     }
 
-
-    /**
-     * 重点监测详情显示数据 直接返回所有数据就行
-     */
-    public void showEmphasesDetial(){
-
-    }
 
 }

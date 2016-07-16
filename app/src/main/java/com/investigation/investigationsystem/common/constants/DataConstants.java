@@ -16,5 +16,9 @@ public class DataConstants {
     public static TreeMap<String, UserInfo> userInfos = null;
     // 当前登录的用户信息
     public static UserInfo currentUserInfo = null;
+    //重点监测 选择的团队
+    public static String emphasesTeam = null;
+    //重点监测 选择的地区
+    public static String emphasesArea = null;
 
 }

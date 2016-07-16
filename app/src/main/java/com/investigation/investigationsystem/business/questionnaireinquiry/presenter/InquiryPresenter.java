@@ -57,7 +57,10 @@ public class InquiryPresenter extends BasePresenter {
      * 获取问卷查询列表
      */
     public void getQuestionnaire(RecyclerView rv_show){
-        //获取问卷结果 暂时使用假数据
+        //获取问卷结果 暂时使用假数据 实际从sps中获取
+
+
+
         Gson gson = new Gson();
         Answer answer = gson.fromJson(Data.answer, Answer.class);
         DebugLog.i(TAG , "解析问卷---" + answer);

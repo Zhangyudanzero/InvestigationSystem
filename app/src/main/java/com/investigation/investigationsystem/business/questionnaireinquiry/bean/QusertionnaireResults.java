@@ -9,6 +9,24 @@ public class QusertionnaireResults {
     private String areaid;
     private String userid;
     private String questionnaireid;
+
+    public String getQuestionnairename() {
+        return questionnairename;
+    }
+
+    public void setQuestionnairename(String questionnairename) {
+        this.questionnairename = questionnairename;
+    }
+
+    public String getiDNO() {
+        return iDNO;
+    }
+
+    public void setiDNO(String iDNO) {
+        this.iDNO = iDNO;
+    }
+
+    private String questionnairename;
     private String time;
     private String name;
     private String iDNO;
@@ -29,9 +47,10 @@ public class QusertionnaireResults {
                 ", areaid='" + areaid + '\'' +
                 ", userid='" + userid + '\'' +
                 ", questionnaireid='" + questionnaireid + '\'' +
+                ", questionnairename='" + questionnairename + '\'' +
                 ", time='" + time + '\'' +
                 ", name='" + name + '\'' +
-                ", idno='" + iDNO + '\'' +
+                ", iDNO='" + iDNO + '\'' +
                 ", female=" + female +
                 ", age=" + age +
                 ", nation='" + nation + '\'' +
