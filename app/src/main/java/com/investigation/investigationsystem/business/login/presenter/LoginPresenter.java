@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.investigation.investigationsystem.business.login.bean.EditPasswordRequest;
 import com.investigation.investigationsystem.business.login.bean.LoginRequest;
 import com.investigation.investigationsystem.business.login.bean.MyUserInfo;
+import com.investigation.investigationsystem.business.login.bean.UserData;
 import com.investigation.investigationsystem.business.login.modle.LoginHelper;
 import com.investigation.investigationsystem.business.login.view.EditPasswordFragment;
 import com.investigation.investigationsystem.business.login.view.LoginFragment;
@@ -120,24 +121,14 @@ public class LoginPresenter extends BasePresenter {
         } else {
             DebugLog.d(TAG, "本地输入的usderid：" + username);
             // 加载本地缓存数据，判断是否可以登陆
-            if (DataConstants.userInfos != null) {
+            if (DataConstants.userInfos != null && DataConstants.userInfos.getData() != null) {
                 // 发现本地没有用户登陆的信息，或是没有这个用户的登录信息数据，那么提示用户联网登陆
-                MyUserInfo myUserInfo = DataConstants.userInfos.get(username);
+                MyUserInfo myUserInfo = DataConstants.userInfos.getData().get(username);
                 if (myUserInfo == null) {
                     ToastUtils.showMessage(StringConstants.MESSAGE_CONECTIONNET_NOUSERINFO);
                     myUserInfo = null;
                     return;
                 }
-//                DebugLog.d(TAG, "数据类型：" + DataConstants.userInfos.getClass().getName());
-//                HashMap<String, MyUserInfo> userInfos = DataConstants.userInfos;
-//
-//                Iterator<Map.Entry<String, MyUserInfo>> iterator = userInfos.entrySet().iterator();
-//                while (iterator.hasNext()){
-//                    String s = iterator.next().getValue().toString();
-//                    DebugLog.d(TAG, "取出数据:" +s);
-//                }
-
-                DebugLog.d(TAG, "取出数据:" + myUserInfo.toString());
                 // 校验用户账号，密码
                 if (passwordIsOK(myUserInfo, password)) {
                     // 密码正确
@@ -183,10 +174,13 @@ public class LoginPresenter extends BasePresenter {
         DataConstants.currentMyUserInfo = myUserInfo;
         // 判断该用户数据是否添加入用户登录缓存信息列表，若没有添加进入，若有，更新改用户下数据
         if (DataConstants.userInfos == null) {
-            DataConstants.userInfos = new HashMap<>();
+            DataConstants.userInfos = new UserData();
         }
-        DataConstants.userInfos.remove(myUserInfo.getAccount());
-        DataConstants.userInfos.put(myUserInfo.getAccount(), myUserInfo);
+        if (DataConstants.userInfos.getData() == null) {
+            DataConstants.userInfos.setData(new HashMap<String, MyUserInfo>());
+        }
+        DataConstants.userInfos.getData().remove(myUserInfo.getAccount());
+        DataConstants.userInfos.getData().put(myUserInfo.getAccount(), myUserInfo);
         PrefersUtils.putString(PrefersUtils.TAG_USERINFO, new Gson().toJson(DataConstants.userInfos));
     }
 

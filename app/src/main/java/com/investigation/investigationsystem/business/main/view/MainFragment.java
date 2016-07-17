@@ -7,7 +7,9 @@ import android.widget.Button;
 import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.main.presenter.MainPresenter;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
+import com.investigation.investigationsystem.common.constants.DataConstants;
 import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.investigation.investigationsystem.common.utils.DebugLog;
 
 /**
  * ==========================================
@@ -29,6 +31,8 @@ import com.investigation.investigationsystem.common.constants.StringConstants;
  * ==========================================
  */
 public class MainFragment extends BaseTitleFragemnt {
+
+    private static final String TAG = StringConstants.TAG + MainFragment.class.getName();
 
     // 重点检测
     private Button btn_emphases;
@@ -54,7 +58,12 @@ public class MainFragment extends BaseTitleFragemnt {
 
     @Override
     protected void initHeadView() {
-        setTitleStyle(false, true, false, StringConstants.TITLE_MAIN, "血色王冠");
+        try {
+            setTitleStyle(false, true, false, StringConstants.TITLE_MAIN, DataConstants.currentMyUserInfo.getName());
+        } catch (Exception e) {
+            DebugLog.d(TAG, "主界面读取当前用户信息出错");
+            setTitleStyle(false, true, false, StringConstants.TITLE_MAIN, "数据错误");
+        }
     }
 
     @Override

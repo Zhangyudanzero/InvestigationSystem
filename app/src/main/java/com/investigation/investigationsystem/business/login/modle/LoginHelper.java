@@ -114,7 +114,7 @@ public class LoginHelper {
             @Override
             public void onSuccess(String result) throws IOException {
                 try {
-                    MyUserInfo myUserInfo = new Gson().fromJson(request, MyUserInfo.class);
+                    MyUserInfo myUserInfo = new Gson().fromJson(result, MyUserInfo.class);
                     callback.success(myUserInfo);
                     myUserInfo = null;
                 } catch (Exception e) {
