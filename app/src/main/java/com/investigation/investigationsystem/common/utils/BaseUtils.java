@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import com.google.gson.Gson;
 import com.investigation.investigationsystem.MyApplication;
 import com.investigation.investigationsystem.business.login.bean.MyUserInfo;
+import com.investigation.investigationsystem.business.login.bean.UserData;
 import com.investigation.investigationsystem.common.SystemBarTintManager;
 import com.investigation.investigationsystem.common.constants.DataConstants;
 import com.investigation.investigationsystem.common.constants.StringConstants;
@@ -103,8 +104,7 @@ public class BaseUtils {
         }
         try {
             // 解析登陆数据
-            DataConstants.userInfos = new Gson().fromJson(userInfos, new HashMap<String, MyUserInfo>().getClass());
-            DebugLog.d(TAG, "解析用户登陆信息集合：" +userInfos);
+            DataConstants.userInfos = new Gson().fromJson(userInfos, UserData.class);
             DebugLog.d(TAG, "解析用户登陆信息集合：" + DataConstants.userInfos.toString());
             userInfos = null;
         } catch (Exception e) {
