@@ -44,12 +44,11 @@ public class StringConstants {
 
     //存放数据时公共的key命名
     public static final String Suggest = "Suggest";
+    public static String suggestPrefrenceKey = DataConstants.currentMyUserInfo.getUserID() + StringConstants.Suggest;
     public static final String Emphases = "Emphases";
-    //暂时不使用currentUser因为是null
-    public static String emphasesPrefrenceKey = StringConstants.Emphases;
+    public static String emphasesPrefrenceKey = DataConstants.currentMyUserInfo.getUserID() + StringConstants.Emphases;
     public static final String Questianner = "Questianner";
-    //暂时不使用currentUser因为是null
-    public static String questiannerPrefrenceKey = StringConstants.Questianner;//问卷答案
+    public static String questiannerPrefrenceKey = DataConstants.currentMyUserInfo.getUserID() +  StringConstants.Questianner;
 
 
 }

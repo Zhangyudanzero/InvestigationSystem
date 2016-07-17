@@ -58,6 +58,7 @@
                         />
 
                     <ImageView
+                        android:id="@+id/update_iv_question_upload"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_alignParentRight="true"
@@ -83,6 +84,7 @@
                         android:textSize="25sp" />
 
                     <ImageView
+                        android:id="@+id/update_iv_feedback_upload"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_alignParentRight="true"
@@ -115,6 +117,7 @@
                         android:textSize="25sp" />
 
                     <ImageView
+                        android:id="@+id/update_iv_all_upload"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_alignParentRight="true"
@@ -168,6 +171,7 @@
                         android:textSize="25sp" />
 
                     <ImageView
+                        android:id="@+id/update_iv_update_question"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_alignParentRight="true"
@@ -194,6 +198,7 @@
                         android:textSize="25sp" />
 
                     <ImageView
+                        android:id="@+id/update_iv_update_emphases"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_alignParentRight="true"
@@ -219,6 +224,7 @@
                         android:textSize="25sp" />
 
                     <ImageView
+                        android:id="@+id/update_iv_update_userinfo"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_alignParentRight="true"

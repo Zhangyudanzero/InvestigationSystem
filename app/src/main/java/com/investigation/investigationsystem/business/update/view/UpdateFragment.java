@@ -3,11 +3,13 @@ package com.investigation.investigationsystem.business.update.view;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.update.presenter.UpdatePresenter;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
 import com.investigation.investigationsystem.common.constants.StringConstants;
+
 
 /**
  * ==========================================
@@ -42,6 +44,14 @@ public class UpdateFragment extends BaseTitleFragemnt {
     private Button btn_update_emphases;
     // 更新个人信息
     private Button btn_update_my;
+
+    //小红点
+    private ImageView update_iv_question_upload;
+    private ImageView update_iv_feedback_upload;
+    private ImageView update_iv_all_upload;
+    private ImageView update_iv_update_question;
+    private ImageView update_iv_update_emphases;
+    private ImageView update_iv_update_userinfo;
 
     public static UpdateFragment newInstance() {
         return new UpdateFragment();
@@ -85,7 +95,17 @@ public class UpdateFragment extends BaseTitleFragemnt {
         btn_update_emphases = (Button) rootView.findViewById(R.id.update_btn_update_emphases);
         btn_update_my = (Button) rootView.findViewById(R.id.update_btn_update_userinfo);
 
-        //初始化数据
+        update_iv_question_upload = (ImageView) rootView.findViewById(R.id.update_iv_question_upload);
+        update_iv_feedback_upload = (ImageView) rootView.findViewById(R.id.update_iv_feedback_upload);
+        update_iv_all_upload = (ImageView) rootView.findViewById(R.id.update_iv_all_upload);
+        update_iv_update_question = (ImageView) rootView.findViewById(R.id.update_iv_update_question);
+        update_iv_update_emphases = (ImageView) rootView.findViewById(R.id.update_iv_update_emphases);
+        update_iv_update_userinfo = (ImageView) rootView.findViewById(R.id.update_iv_update_userinfo);
+
+        //获取身份证扫描数据
+//        Intent it = new Intent(getActivity() , IDCardEditActivity.class);
+//        startActivityForResult(it , 102);
+
     }
 
     @Override
@@ -139,5 +159,6 @@ public class UpdateFragment extends BaseTitleFragemnt {
             }
         });
     }
+
 
 }

@@ -45,6 +45,7 @@ public class UpdateActivity extends BaseFragmentActivity {
     @Override
     protected void onCreateByUser() {
         UpdatePresenter.regist(this);
+//        DictManager.InitDict(UpdateActivity.this);
     }
 
     @Override
@@ -60,6 +61,7 @@ public class UpdateActivity extends BaseFragmentActivity {
     @Override
     protected void onDestroy() {
         UpdatePresenter.getInstance().onDes();
+//        DictManager.FinishDict();
         super.onDestroy();
     }
 

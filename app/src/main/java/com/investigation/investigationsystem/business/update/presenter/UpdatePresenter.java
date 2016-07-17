@@ -2,6 +2,8 @@ package com.investigation.investigationsystem.business.update.presenter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.investigation.investigationsystem.business.suggest.view.SuggestFragment;
@@ -218,7 +220,12 @@ public class UpdatePresenter extends BasePresenter {
     /**
      * 监测是否有数据变化
      */
-    public void checkDataChange(){
+    public void checkDataChange(ImageView iv_question ,ImageView iv_feedback ,ImageView iv_all ,
+                                ImageView iv_getquestion ,ImageView iv_emphases ,ImageView iv_userinfo){
+        //监测本地数据变化
+        if (!PrefersUtils.getString(StringConstants.questiannerPrefrenceKey).isEmpty()) {
+            iv_question.setVisibility(View.VISIBLE);
+        }
         //获取更新数据 写一个bean
         String url = ConstantUrl.url + ConstantUrl.checkUpdate;
 
