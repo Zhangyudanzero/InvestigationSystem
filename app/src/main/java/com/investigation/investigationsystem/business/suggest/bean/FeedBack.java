@@ -1,10 +1,24 @@
 package com.investigation.investigationsystem.business.suggest.bean;
 
 /**
- * Created by zero on 2016/7/10.
+ * ==========================================
+ * <p/>
+ * 版    权 ： 北京爱接力科技有限公司
+ * <p/>
+ * 作    者 ： iwen
+ * <p/>
+ * 版    本 ： 1.0
+ * <p/>
+ * 创建日期 ： on 2016/7/16  21:59
+ * <p/>
+ * 描    述 ：
+ * <p/>
+ * <p/>
+ * 修订历史 ：
+ * <p/>
+ * ==========================================
  */
 public class FeedBack {
-
 
     /**
      * userID : e717e1160ceb40c7ada2bf3e9ccaa57e
@@ -38,5 +52,8 @@ public class FeedBack {
     public void setTime(String time) {
         this.time = time;
     }
+
+
+
 
 }

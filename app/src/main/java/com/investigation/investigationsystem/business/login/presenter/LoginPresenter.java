@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.google.gson.Gson;
 import com.investigation.investigationsystem.business.login.bean.EditPasswordRequest;
 import com.investigation.investigationsystem.business.login.bean.LoginRequest;
-import com.investigation.investigationsystem.business.login.bean.UserInfo;
+import com.investigation.investigationsystem.business.login.bean.MyUserInfo;
 import com.investigation.investigationsystem.business.login.modle.LoginHelper;
 import com.investigation.investigationsystem.business.login.view.EditPasswordFragment;
 import com.investigation.investigationsystem.business.login.view.LoginFragment;
@@ -17,8 +17,12 @@ import com.investigation.investigationsystem.common.constants.StringConstants;
 import com.investigation.investigationsystem.common.utils.BaseUtils;
 import com.investigation.investigationsystem.common.utils.DebugLog;
 import com.investigation.investigationsystem.common.utils.MD5Util;
+import com.investigation.investigationsystem.common.utils.PrefersUtils;
 import com.investigation.investigationsystem.common.utils.ToastUtils;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.TreeMap;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -107,34 +111,49 @@ public class LoginPresenter extends BasePresenter {
                 }
 
                 @Override
-                public void success(UserInfo userInfo) {
+                public void success(MyUserInfo myUserInfo) {
                     dialog.dismiss();
-                    loginSuccess(userInfo);
+                    loginSuccess(myUserInfo);
                     toggleToMainActivity();
                 }
             });
         } else {
+            DebugLog.d(TAG, "本地输入的usderid：" + username);
             // 加载本地缓存数据，判断是否可以登陆
-            if (null == DataConstants.userInfos
-                    || DataConstants.userInfos.get(username) == null
-                    || TextUtils.isEmpty(DataConstants.userInfos.get(username).getPassword())) {
+            if (DataConstants.userInfos != null) {
                 // 发现本地没有用户登陆的信息，或是没有这个用户的登录信息数据，那么提示用户联网登陆
-                ToastUtils.showMessage(StringConstants.MESSAGE_CONECTIONNET_NOUSERINFO);
-                return;
-            } else {
+                MyUserInfo myUserInfo = DataConstants.userInfos.get(username);
+                if (myUserInfo == null) {
+                    ToastUtils.showMessage(StringConstants.MESSAGE_CONECTIONNET_NOUSERINFO);
+                    myUserInfo = null;
+                    return;
+                }
+//                DebugLog.d(TAG, "数据类型：" + DataConstants.userInfos.getClass().getName());
+//                HashMap<String, MyUserInfo> userInfos = DataConstants.userInfos;
+//
+//                Iterator<Map.Entry<String, MyUserInfo>> iterator = userInfos.entrySet().iterator();
+//                while (iterator.hasNext()){
+//                    String s = iterator.next().getValue().toString();
+//                    DebugLog.d(TAG, "取出数据:" +s);
+//                }
+
+                DebugLog.d(TAG, "取出数据:" + myUserInfo.toString());
                 // 校验用户账号，密码
-                UserInfo userInfo = DataConstants.userInfos.get(username);
-                if (passwordIsOK(userInfo, password)) {
+                if (passwordIsOK(myUserInfo, password)) {
                     // 密码正确
-                    loginSuccess(userInfo);
-                    userInfo = null;
+                    loginSuccess(myUserInfo);
+                    myUserInfo = null;
                     toggleToMainActivity();
                     return;
                 } else {
                     // 密码错误
                     loginError();
+                    myUserInfo = null;
                     return;
                 }
+            } else {
+                ToastUtils.showMessage(StringConstants.MESSAGE_CONECTIONNET_NOUSERINFO);
+                return;
             }
         }
     }
@@ -142,11 +161,11 @@ public class LoginPresenter extends BasePresenter {
     /**
      * 校验密码
      *
-     * @param userInfo
+     * @param myUserInfo
      * @return
      */
-    private boolean passwordIsOK(UserInfo userInfo, String password) {
-        if (password.equals(userInfo.getPassword())) {
+    private boolean passwordIsOK(MyUserInfo myUserInfo, String password) {
+        if (password.equals(myUserInfo.getPassword())) {
             // 密码正确
             return true;
         }
@@ -157,22 +176,18 @@ public class LoginPresenter extends BasePresenter {
     /**
      * 登录成功
      */
-    private void loginSuccess(UserInfo userInfo) {
+    private void loginSuccess(MyUserInfo myUserInfo) {
         // 同步数据
         // 设置当前登录用户数据
         ToastUtils.showMessage(StringConstants.MESSAGE_PASSWOROK);
-        DataConstants.currentUserInfo = userInfo;
+        DataConstants.currentMyUserInfo = myUserInfo;
         // 判断该用户数据是否添加入用户登录缓存信息列表，若没有添加进入，若有，更新改用户下数据
         if (DataConstants.userInfos == null) {
-            DataConstants.userInfos = new TreeMap<>();
+            DataConstants.userInfos = new HashMap<>();
         }
-        UserInfo userInfo1 = DataConstants.userInfos.get(userInfo.getUserID());
-        if (userInfo1 != null) {
-            userInfo1 = userInfo;
-        } else {
-            DataConstants.userInfos.put(userInfo.getUserID(), userInfo);
-        }
-        userInfo1 = null;
+        DataConstants.userInfos.remove(myUserInfo.getAccount());
+        DataConstants.userInfos.put(myUserInfo.getAccount(), myUserInfo);
+        PrefersUtils.putString(PrefersUtils.TAG_USERINFO, new Gson().toJson(DataConstants.userInfos));
     }
 
     /**
@@ -181,7 +196,7 @@ public class LoginPresenter extends BasePresenter {
     private void loginError() {
         // 重置数据
         ToastUtils.showMessage(StringConstants.MESSAGE_PASSWORDERROR);
-        DataConstants.currentUserInfo = null;
+        DataConstants.currentMyUserInfo = null;
     }
 
     /**
@@ -235,9 +250,9 @@ public class LoginPresenter extends BasePresenter {
             }
 
             @Override
-            public void success(UserInfo userInfo) {
+            public void success(MyUserInfo myUserInfo) {
                 viewHold.dialog_loading.dismiss();
-                loginSuccess(userInfo);
+                loginSuccess(myUserInfo);
                 toggleToMainActivity();
             }
         });

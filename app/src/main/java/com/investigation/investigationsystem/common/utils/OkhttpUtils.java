@@ -185,7 +185,7 @@ public class OkhttpUtils {
      */
     public void AsynPostJson(String url, String jsonStr, final RequestCallback requestCallback) {
 
-        DebugLog.i(TAG, StringConstants.NET_REQUESTDATA + jsonStr);
+        DebugLog.i(TAG, StringConstants.FORMAT+StringConstants.NET_REQUESTDATA + jsonStr);
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         RequestBody body = RequestBody.create(JSON, jsonStr);
         //request需求
@@ -199,7 +199,6 @@ public class OkhttpUtils {
             @Override
             public void onFailure(Call call, IOException e) {
                 // 连接超时
-                DebugLog.i(TAG, StringConstants.NET_TIMEOUT);
                 processTimeOut(requestCallback);
             }
 
@@ -211,19 +210,17 @@ public class OkhttpUtils {
                 try {
                     if (response.code() == 200) {
                         JSONObject jsonObject = new JSONObject(result);
-                        String code = jsonObject.getString("result");
-                        if ("1".equals(code)) {
+                        int code = jsonObject.getInt("result");
+                        if (code == 1) {
                             // 请求成功
                             processSuccess(result, requestCallback);
                             jsonObject = null;
                             result = null;
-                            code = null;
                         } else {
                             // 请求失败
                             processFail(requestCallback);
                             jsonObject = null;
                             result = null;
-                            code = null;
                         }
                     } else {
                         // 请求失败
@@ -283,6 +280,7 @@ public class OkhttpUtils {
         mDelivery.post(new Runnable() {
             @Override
             public void run() {
+                DebugLog.i(TAG, StringConstants.FORMAT+StringConstants.NET_TIMEOUT);
                 ToastUtils.showMessage(StringConstants.NET_TIMEOUT);
                 requestCallback.onTimeOut();
             }
@@ -294,6 +292,7 @@ public class OkhttpUtils {
         mDelivery.post(new Runnable() {
             @Override
             public void run() {
+                DebugLog.i(TAG, StringConstants.FORMAT+StringConstants.NET_DATAERROR);
                 ToastUtils.showMessage(StringConstants.NET_DATAERROR);
                 requestCallback.onError();
             }

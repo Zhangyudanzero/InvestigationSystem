@@ -108,10 +108,13 @@ public class EditPasswordFragment extends BaseTitleFragemnt {
 
     @Override
     public void onDestroy() {
-        if (viewHold.dialog_loading != null && viewHold.dialog_loading.isShowing()) {
-            viewHold.dialog_loading.dismiss();
+
+        if (viewHold != null) {
+            if (viewHold.dialog_loading != null && viewHold.dialog_loading.isShowing()) {
+                viewHold.dialog_loading.dismiss();
+            }
+            viewHold.dialog_loading = null;
         }
-        viewHold.dialog_loading = null;
         viewHold = null;
         super.onDestroy();
     }

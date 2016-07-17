@@ -3,9 +3,9 @@ package com.investigation.investigationsystem.business.login.modle;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
-import com.investigation.investigationsystem.business.login.bean.UserInfo;
-import com.investigation.investigationsystem.business.main.presenter.MainPresenter;
+import com.investigation.investigationsystem.business.login.bean.MyUserInfo;
 import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.investigation.investigationsystem.common.utils.DebugLog;
 import com.investigation.investigationsystem.common.utils.OkhttpUtils;
 import com.investigation.investigationsystem.common.utils.ToastUtils;
 import com.investigation.investigationsystem.config.ConfigFactroy;
@@ -33,16 +33,18 @@ import java.io.IOException;
  */
 public class LoginHelper {
 
+    private static final String TAG = StringConstants.TAG + LoginHelper.class.getName();
+
     public interface LoginCallBack {
         void error();
 
-        void success(UserInfo userInfo);
+        void success(MyUserInfo myUserInfo);
     }
 
     public interface editPasswordCallback {
         void error();
 
-        void success(UserInfo userInfo);
+        void success(MyUserInfo myUserInfo);
     }
 
     /**
@@ -68,19 +70,20 @@ public class LoginHelper {
             @Override
             public void onSuccess(String result) throws IOException {
                 try {
-                    UserInfo userInfo = new Gson().fromJson(request, UserInfo.class);
-                    if (userInfo != null && "1".equals(userInfo.getResult())
-                            && !TextUtils.isEmpty(userInfo.getUserID()) && !TextUtils.isEmpty(userInfo.getName()) && !TextUtils.isEmpty(userInfo.getPassword())
-                            && !"null".equals(userInfo.getUserID()) && !"null".equals(userInfo.getName()) && !"null".equals(userInfo.getPassword())) {
+                    MyUserInfo myUserInfo = new Gson().fromJson(result, MyUserInfo.class);
+                    DebugLog.d(TAG, "获取数据：" + myUserInfo.toString());
+                    if (myUserInfo != null && !TextUtils.isEmpty(myUserInfo.getUserID()) && !TextUtils.isEmpty(myUserInfo.getName()) && !TextUtils.isEmpty(myUserInfo.getPassword())
+                            && !"null".equals(myUserInfo.getUserID()) && !"null".equals(myUserInfo.getName()) && !"null".equals(myUserInfo.getPassword())) {
                         // 数据校验完毕，数据完整
-                        callback.success(userInfo);
+                        callback.success(myUserInfo);
                     } else {
                         // 数据缺失，按失败出来
                         ToastUtils.showMessage(StringConstants.NET_DATAERROR);
                         callback.error();
                     }
-                    userInfo = null;
+                    myUserInfo = null;
                 } catch (Exception e) {
+                    e.printStackTrace();
                     ToastUtils.showMessage(StringConstants.NET_DATAERROR);
                     callback.error();
                 }
@@ -111,9 +114,9 @@ public class LoginHelper {
             @Override
             public void onSuccess(String result) throws IOException {
                 try {
-                    UserInfo userInfo = new Gson().fromJson(request, UserInfo.class);
-                    callback.success(userInfo);
-                    userInfo = null;
+                    MyUserInfo myUserInfo = new Gson().fromJson(request, MyUserInfo.class);
+                    callback.success(myUserInfo);
+                    myUserInfo = null;
                 } catch (Exception e) {
                     ToastUtils.showMessage(StringConstants.NET_DATAERROR);
                     callback.error();

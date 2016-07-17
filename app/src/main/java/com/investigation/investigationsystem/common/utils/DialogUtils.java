@@ -25,7 +25,6 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
  */
 public class DialogUtils {
 
-
     public static SweetAlertDialog getloadingDialog(Context context, String text) {
         SweetAlertDialog alertDialog = new SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE)
                 .setTitleText(text);

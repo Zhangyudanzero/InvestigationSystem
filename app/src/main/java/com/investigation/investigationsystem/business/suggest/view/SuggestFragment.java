@@ -31,7 +31,7 @@ public class SuggestFragment extends BaseTitleFragemnt {
 
     private EditText et_commit; //意见建议输入框
     private Button btn_commit; // 提交按钮
-//    private String suggestPrefrenceKey = DataConstants.currentUserInfo.getUserID() + StringConstants.Suggest;
+//    private String suggestPrefrenceKey = DataConstants.currentMyUserInfo.getUserID() + StringConstants.Suggest;
     public static String suggestPrefrenceKey = StringConstants.Suggest;//暂时不使用currentUser因为是null
 
     public static SuggestFragment newInstance() {
@@ -88,7 +88,7 @@ public class SuggestFragment extends BaseTitleFragemnt {
                     Date curDate = new Date(System.currentTimeMillis());
                     String str = formatter.format(curDate);
                     feedBack.setTime(str);
-//                    feedBack.setUserID(DataConstants.currentUserInfo.getUserID());
+//                    feedBack.setUserID(DataConstants.currentMyUserInfo.getUserID());
 
                     //把数据存放到sps中 先解析再存放
                     Gson gson = new Gson();
