@@ -309,6 +309,8 @@ public class OkhttpUtils {
                     requestCallback.onSuccess(result);
                 } catch (IOException e) {
                     e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -321,7 +323,7 @@ public class OkhttpUtils {
 
         void onError();
 
-        void onSuccess(String result) throws IOException;
+        void onSuccess(String result) throws IOException, JSONException;
     }
 
 

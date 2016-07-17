@@ -24,8 +24,9 @@ import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
 import com.investigation.investigationsystem.common.constants.DataConstants;
 import com.investigation.investigationsystem.common.constants.StringConstants;
-import com.investigation.investigationsystem.common.data.Data;
 import com.investigation.investigationsystem.common.utils.DebugLog;
+import com.investigation.investigationsystem.common.utils.PrefersUtils;
+import com.investigation.investigationsystem.common.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,12 +111,19 @@ public class EmphasesPresenter extends BasePresenter {
     }
 
     /**
-     * 使用json解析本地的重点监测数据 以后变成解析
+     * 使用json解析本地的重点监测数据 以后变成解析sps数据
      */
     public emphases analysisJson(){
-        Gson gson = new Gson();
-        emphases emphasesz = gson.fromJson(Data.FocusMonitoring, emphases.class);
-        DebugLog.i(TAG  , "---解析本地数据emphasesz---" + emphasesz);
+        emphases emphasesz = null;
+        //如果数据获取不为null
+        if (!PrefersUtils.getString(StringConstants.emphasesPrefrenceKey).isEmpty()) {
+            Gson gson = new Gson();
+            emphasesz = gson.fromJson(PrefersUtils.getString(StringConstants.emphasesPrefrenceKey) , emphases.class);
+            DebugLog.i(TAG  , "---解析本地数据emphasesz---" + emphasesz);
+            return emphasesz;
+        }else{
+            ToastUtils.showMessage("重点监测对象没有数据");
+        }
         return emphasesz;
     }
 
@@ -128,31 +136,34 @@ public class EmphasesPresenter extends BasePresenter {
         //获取团队数据
         List<String> teamnamelist = new ArrayList<>();
         emphases emphases = analysisJson();
-        final List<MonitoringTeam> teamlist = emphases.getTeamlist();
-        for (int i = 0; i < teamlist.size(); i++) {
-            teamnamelist.add(teamlist.get(i).getTeamname());
-        }
-        //把teamnamelist数据填充进spinner
-        final String[] teamnames = new String[teamnamelist.size()];
-        for (int i = 0 ; i < teamnamelist.size() ; i++) {
-            teamnames[i] = teamnamelist.get(i);
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootActivity
-                , android.R.layout.simple_spinner_item , teamnames);
-        sp_team.setAdapter(adapter);
-        //sp点击时候的事件
-        sp_team.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                getEmphasesArea( teamnames[position] , teamlist , sp_area , btn_search , rv_show);
+        if (emphases != null) {
+
+            final List<MonitoringTeam> teamlist = emphases.getTeamlist();
+            for (int i = 0; i < teamlist.size(); i++) {
+                teamnamelist.add(teamlist.get(i).getTeamname());
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+            //把teamnamelist数据填充进spinner
+            final String[] teamnames = new String[teamnamelist.size()];
+            for (int i = 0 ; i < teamnamelist.size() ; i++) {
+                teamnames[i] = teamnamelist.get(i);
             }
-        });
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootActivity
+                    , android.R.layout.simple_spinner_item , teamnames);
+            sp_team.setAdapter(adapter);
+            //sp点击时候的事件
+            sp_team.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    getEmphasesArea( teamnames[position] , teamlist , sp_area , btn_search , rv_show);
+                }
 
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+        }
     }
 
     /**

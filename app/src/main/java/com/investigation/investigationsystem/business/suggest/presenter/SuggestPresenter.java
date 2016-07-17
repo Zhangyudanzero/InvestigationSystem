@@ -43,13 +43,6 @@ public class SuggestPresenter extends BasePresenter {
     }
 
     /**
-     * 提交意见建议
-     */
-    public void commitFeedBack() {
-
-    }
-
-    /**
      * 销毁，回收资源
      */
     public void onDes() {

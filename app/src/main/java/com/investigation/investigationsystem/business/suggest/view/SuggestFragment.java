@@ -88,6 +88,7 @@ public class SuggestFragment extends BaseTitleFragemnt {
                     Date curDate = new Date(System.currentTimeMillis());
                     String str = formatter.format(curDate);
                     feedBack.setTime(str);
+                    //currentInfo目前没有数据 有了以后解除注释
 //                    feedBack.setUserID(DataConstants.currentUserInfo.getUserID());
 
                     //把数据存放到sps中 先解析再存放
@@ -108,7 +109,7 @@ public class SuggestFragment extends BaseTitleFragemnt {
                         suggestInfo.setSize(1);
                         suggestInfo.setFeedbackList(list);
                         String suggestsz = gson.toJson(suggestInfo);
-                        PrefersUtils.putString( suggestPrefrenceKey, suggestsz);
+                        PrefersUtils.putString( suggestPrefrenceKey , suggestsz);
                         DebugLog.i( "suggestTAG" , suggestsz);
                         ToastUtils.showMessage("建议成功提交");
                     }
