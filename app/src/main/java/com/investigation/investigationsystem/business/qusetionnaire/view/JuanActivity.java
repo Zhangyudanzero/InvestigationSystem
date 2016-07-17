@@ -1,12 +1,17 @@
 package com.investigation.investigationsystem.business.qusetionnaire.view;
 
 import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.investigation.investigationsystem.MyApplication;
 import com.investigation.investigationsystem.R;
-import com.investigation.investigationsystem.business.qusetionnaire.presenter.QusetuinnairePresenter;
-import com.investigation.investigationsystem.common.base.BaseActivity;
+import com.investigation.investigationsystem.business.login.bean.JuanResponse;
+import com.investigation.investigationsystem.business.qusetionnaire.presenter.JuanPresenter;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
+import com.investigation.investigationsystem.common.data.Data;
 
 /**
  * ==========================================
@@ -29,6 +34,18 @@ import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
  */
 public class JuanActivity extends BaseFragmentActivity {
 
+    // 标题中的题目号
+    private TextView tv_title_bnumber;
+    // 标题中的返回按钮
+    private View view_title_back;
+    // 按钮上一题
+    private Button btn_lastOne;
+    // 按钮下一题
+    private Button btn_nextOne;
+    // 按钮完成
+    private Button btn_commit;
+    private JuanResponse juanResponse;
+
     @Override
     protected int getContentViewID() {
         return R.layout.activity_juan;
@@ -36,7 +53,7 @@ public class JuanActivity extends BaseFragmentActivity {
 
     @Override
     public int getFragmentViewID() {
-        return R.id.ac_login_content;
+        return R.id.juan_content;
     }
 
     @Override
@@ -46,22 +63,29 @@ public class JuanActivity extends BaseFragmentActivity {
 
     @Override
     protected void onCreateByUser() {
-        QusetuinnairePresenter.regist(this);
+        JuanPresenter.regist(this);
+        tv_title_bnumber = (TextView) findViewById(R.id.juan_title_number);
+        view_title_back = findViewById(R.id.juan_title_back);
+        btn_lastOne = (Button) findViewById(R.id.juan_btn_lastone);
+        btn_nextOne = (Button) findViewById(R.id.juan_btn_nextone);
+        btn_commit = (Button) findViewById(R.id.juan_btn_commit);
+        tv_title_bnumber.setText("第一题");
     }
 
     @Override
     protected void analyzeIntent(Intent intent) {
+        juanResponse = new Gson().fromJson(Data.getQuestion, JuanResponse.class);
         initDefaultAddFragment();
     }
 
     @Override
     protected void initDefaultAddFragment() {
-        QusetuinnairePresenter.getInstance().addDefaultFragment();
+        JuanPresenter.getInstance().replaceFragment(juanResponse);
     }
 
     @Override
     protected void onDestroy() {
-        QusetuinnairePresenter.getInstance().onDes();
+        JuanPresenter.getInstance().onDes();
         super.onDestroy();
     }
 

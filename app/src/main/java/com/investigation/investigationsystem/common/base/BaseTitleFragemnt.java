@@ -37,6 +37,7 @@ public abstract class BaseTitleFragemnt extends BaseFragment {
     /**
      * 头布局UI控件
      */
+    protected View head_view;
     protected View head_view_left;
     protected View head_view_user;
     protected View head_view_right;
@@ -97,6 +98,7 @@ public abstract class BaseTitleFragemnt extends BaseFragment {
     protected void initDefaultView() {
 
         view_content = (PercentRelativeLayout) rootView.findViewById(R.id.fragmenr_base_view_content);
+        head_view = rootView.findViewById(R.id.view_base_head);
         head_view_left = rootView.findViewById(R.id.fragmenr_base_head_left);
         head_view_user = rootView.findViewById(R.id.fragmenr_base_head_user);
         head_view_right = rootView.findViewById(R.id.fragmenr_base_head_right);
@@ -149,6 +151,15 @@ public abstract class BaseTitleFragemnt extends BaseFragment {
         head_view_left.setVisibility(leftShow ? View.VISIBLE : View.GONE);
         head_view_right.setVisibility(rightShow ? View.VISIBLE : View.GONE);
         head_tv_title.setText((TextUtils.isEmpty(title) ? "" : title));
+    }
+
+    /**
+     * 控制是不是显示标题栏
+     *
+     * @param isShowTitle
+     */
+    protected void setTitleStyle(boolean isShowTitle) {
+        head_view.setVisibility(isShowTitle ? View.VISIBLE : View.GONE);
     }
 
 }

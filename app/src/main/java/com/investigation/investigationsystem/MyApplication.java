@@ -2,6 +2,9 @@ package com.investigation.investigationsystem;
 
 import android.app.Application;
 
+import com.investigation.investigationsystem.common.data.Data;
+import com.investigation.investigationsystem.common.utils.DebugLog;
+
 /**
  * ==========================================
  * <p/>
@@ -28,6 +31,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+//        DebugLog.d("aaa", "假数据：" + Data.getQuestion);
     }
 
     public static MyApplication getInstance() {
