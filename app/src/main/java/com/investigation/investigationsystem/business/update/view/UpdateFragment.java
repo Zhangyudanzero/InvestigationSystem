@@ -84,6 +84,8 @@ public class UpdateFragment extends BaseTitleFragemnt {
         btn_update_question = (Button) rootView.findViewById(R.id.update_btn_update_question);
         btn_update_emphases = (Button) rootView.findViewById(R.id.update_btn_update_emphases);
         btn_update_my = (Button) rootView.findViewById(R.id.update_btn_update_userinfo);
+
+        //初始化数据
     }
 
     @Override

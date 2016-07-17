@@ -12,11 +12,12 @@ import android.view.WindowManager;
 
 import com.google.gson.Gson;
 import com.investigation.investigationsystem.MyApplication;
-import com.investigation.investigationsystem.business.login.bean.UserInfo;
+import com.investigation.investigationsystem.business.login.bean.MyUserInfo;
 import com.investigation.investigationsystem.common.SystemBarTintManager;
 import com.investigation.investigationsystem.common.constants.DataConstants;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 
+import java.util.HashMap;
 import java.util.TreeMap;
 
 
@@ -102,7 +103,8 @@ public class BaseUtils {
         }
         try {
             // 解析登陆数据
-            DataConstants.userInfos = new Gson().fromJson(userInfos, new TreeMap<String, UserInfo>().getClass());
+            DataConstants.userInfos = new Gson().fromJson(userInfos, new HashMap<String, MyUserInfo>().getClass());
+            DebugLog.d(TAG, "解析用户登陆信息集合：" +userInfos);
             DebugLog.d(TAG, "解析用户登陆信息集合：" + DataConstants.userInfos.toString());
             userInfos = null;
         } catch (Exception e) {
@@ -112,4 +114,25 @@ public class BaseUtils {
             userInfos = null;
         }
     }
+
+    /**
+     * 把字符串转为一个int值
+     *
+     * @param num
+     * @returns
+     */
+    public static int String2Int(String num) {
+        if (TextUtils.isEmpty(num) || "null".equals(num)) {
+            return 0;
+        }
+        int tem = 0;
+        try {
+            tem = Integer.parseInt(num);
+        } catch (Exception e) {
+            return 0;
+        }
+        return tem;
+    }
+
+
 }

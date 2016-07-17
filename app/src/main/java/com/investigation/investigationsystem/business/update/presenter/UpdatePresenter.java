@@ -44,6 +44,12 @@ public class UpdatePresenter extends BasePresenter {
     private static final String TAG = StringConstants.TAG + UpdatePresenter.class.getName();
     private static UpdatePresenter persenter;
     //是否显示小红点
+    private boolean isUserName = false;//是否有新用户信息
+    private boolean isQuestionnair = false;//是否有最新问卷
+    private boolean isEmphases = false;//是否有最新的重点监测
+    private boolean isSuggest = false;//是否有意见建议
+    private boolean isAnswer = false;//是否问卷答案
+
 
 
     private UpdatePresenter(BaseFragmentActivity rootActivity) {
@@ -158,7 +164,7 @@ public class UpdatePresenter extends BasePresenter {
      */
     public void updateEmphasesClick() {
         //获取用户id
-        String userID = DataConstants.currentUserInfo.getUserID();
+        String userID = DataConstants.currentMyUserInfo.getUserID();
         String userId = new Gson().toJson(userID);
         //提交数据内容 获取对应的数据
         String url = ConstantUrl.url + ConstantUrl.getFocusMonitoring;
@@ -187,7 +193,7 @@ public class UpdatePresenter extends BasePresenter {
      */
     public void updateMyClick() {
         //获取用户id
-        String userID = DataConstants.currentUserInfo.getUserID();
+        String userID = DataConstants.currentMyUserInfo.getUserID();
         String userId = new Gson().toJson(userID);
         //提交数据内容 获取对应的数据
         String url = ConstantUrl.url + ConstantUrl.getUserInfo;
@@ -214,6 +220,8 @@ public class UpdatePresenter extends BasePresenter {
      */
     public void checkDataChange(){
         //获取更新数据 写一个bean
+        String url = ConstantUrl.url + ConstantUrl.checkUpdate;
+
         
     }
 

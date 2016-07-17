@@ -20,25 +20,25 @@ package com.investigation.investigationsystem.business.login.bean;
  */
 public class EditPasswordRequest {
 
-    public String userid;
+    public String account;
     public String oldpassword;
     public String newpassword;
 
     public EditPasswordRequest() {
     }
 
-    public EditPasswordRequest(String userid, String oldpassword, String newpassword) {
-        this.userid = userid;
+    public EditPasswordRequest(String account, String oldpassword, String newpassword) {
+        this.account = account;
         this.oldpassword = oldpassword;
         this.newpassword = newpassword;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getAccount() {
+        return account;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getOldpassword() {
@@ -60,7 +60,7 @@ public class EditPasswordRequest {
     @Override
     public String toString() {
         return "EditPasswordRequest{" +
-                "userid='" + userid + '\'' +
+                "account='" + account + '\'' +
                 ", oldpassword='" + oldpassword + '\'' +
                 ", newpassword='" + newpassword + '\'' +
                 '}';

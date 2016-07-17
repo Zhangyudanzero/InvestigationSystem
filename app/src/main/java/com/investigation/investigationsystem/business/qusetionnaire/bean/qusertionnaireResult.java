@@ -49,7 +49,7 @@ public class qusertionnaireResult {
         return "qusertionnaireResult{" +
                 "teamid='" + teamid + '\'' +
                 ", areaid='" + areaid + '\'' +
-                ", userid='" + userid + '\'' +
+                ", account='" + userid + '\'' +
                 ", questionnaireid='" + questionnaireid + '\'' +
                 ", time='" + time + '\'' +
                 ", name='" + name + '\'' +

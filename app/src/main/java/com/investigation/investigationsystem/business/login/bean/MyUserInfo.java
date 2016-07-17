@@ -21,20 +21,29 @@ import java.util.List;
  * <p/>
  * ==========================================
  */
-public class UserInfo {
+public class MyUserInfo {
 
-    public String result;
+    public int result;
     public String updateTime;
     public String name;
     public String password;
     public String userID;
+    public String account; // 账号
     public List<Team> teamList;
 
-    public String getResult() {
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public int getResult() {
         return result;
     }
 
-    public void setResult(String result) {
+    public void setResult(int result) {
         this.result = result;
     }
 
@@ -80,12 +89,13 @@ public class UserInfo {
 
     @Override
     public String toString() {
-        return "UserInfo{" +
-                "result='" + result + '\'' +
+        return "MyUserInfo{" +
+                "result=" + result +
                 ", updateTime='" + updateTime + '\'' +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", userID='" + userID + '\'' +
+                ", account='" + account + '\'' +
                 ", teamList=" + teamList +
                 '}';
     }

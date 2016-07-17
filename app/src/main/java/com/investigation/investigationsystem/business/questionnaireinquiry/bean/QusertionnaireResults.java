@@ -45,7 +45,7 @@ public class QusertionnaireResults {
         return "QusertionnaireResults{" +
                 "teamid='" + teamid + '\'' +
                 ", areaid='" + areaid + '\'' +
-                ", userid='" + userid + '\'' +
+                ", account='" + userid + '\'' +
                 ", questionnaireid='" + questionnaireid + '\'' +
                 ", questionnairename='" + questionnairename + '\'' +
                 ", time='" + time + '\'' +
