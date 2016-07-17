@@ -3,12 +3,21 @@ package com.investigation.investigationsystem.business.qusetionnaire.view;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.animation.Animation;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.login.bean.Ti;
+import com.investigation.investigationsystem.business.qusetionnaire.bean.ToggleMessage;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
+import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.investigation.investigationsystem.common.utils.DebugLog;
+import com.labo.kaji.fragmentanimations.MoveAnimation;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * ==========================================
@@ -31,10 +40,16 @@ import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
  */
 public class EditFragment extends BaseTitleFragemnt {
 
+    private static final String TAG = StringConstants.TAG + EditFragment.class.getName();
     private TextView tv_title;
     private EditText ed_edit;
     private static final String TAG_TI = "ti";
     private Ti ti;
+    public static final String TAG_DIEECTION = "direction";
+    private int direction;
+    public static final int DURATION = 500;
+    public static final int LEFT = -1;
+    public static final int RIGHT = 1;
 
     @Override
     protected int getContentViewID() {
@@ -54,16 +69,18 @@ public class EditFragment extends BaseTitleFragemnt {
     @Override
     protected void analyzeBundle(Bundle bundle) {
         ti = (Ti) bundle.getSerializable(TAG_TI);
+        direction = bundle.getInt(TAG_DIEECTION);
     }
 
     @Override
     protected void onCreateByUser() {
-        return;
+        EventBus.getDefault().register(this);
     }
 
-    public static EditFragment newInstance(Ti ti) {
+    public static EditFragment newInstance(Ti ti, int direction) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(TAG_TI, ti);
+        bundle.putInt(TAG_DIEECTION, direction);
         EditFragment editFragment = new EditFragment();
         editFragment.setArguments(bundle);
         bundle = null;
@@ -100,5 +117,30 @@ public class EditFragment extends BaseTitleFragemnt {
             }
         });
 
+    }
+
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        switch (direction) {
+            case LEFT:
+                return MoveAnimation.create(MoveAnimation.LEFT, enter, DURATION);
+            case RIGHT:
+                return MoveAnimation.create(MoveAnimation.RIGHT, enter, DURATION);
+        }
+        return null;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN) //在ui线程执行
+    public void onUserEvent(ToggleMessage message) {
+        direction = message.drietion;
+        DebugLog.d(TAG, "接收到动画切换：" + direction);
+    }
+
+    @Override
+    public void onDestroy() {
+        DebugLog.d(TAG, "onDestroy...");
+        EventBus.getDefault().unregister(this);
+        ti = null;
+        super.onDestroy();
     }
 }

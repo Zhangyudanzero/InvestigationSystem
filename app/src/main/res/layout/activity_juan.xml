@@ -69,7 +69,7 @@
                 android:layout_alignParentLeft="true"
                 android:background="@color/main_btn_blue_deep"
                 android:text="上一题"
-                android:visibility="visible"
+                android:visibility="gone"
                 tools:visibility="visible" />
 
             <Button

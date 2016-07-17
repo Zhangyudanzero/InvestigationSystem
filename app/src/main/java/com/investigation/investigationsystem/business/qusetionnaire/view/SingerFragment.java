@@ -3,13 +3,20 @@ package com.investigation.investigationsystem.business.qusetionnaire.view;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.animation.Animation;
 
 import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.login.bean.Ti;
 import com.investigation.investigationsystem.business.qusetionnaire.adapter.SingerAdapter;
+import com.investigation.investigationsystem.business.qusetionnaire.bean.ToggleMessage;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
+import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.investigation.investigationsystem.common.utils.DebugLog;
+import com.labo.kaji.fragmentanimations.MoveAnimation;
 
-import java.io.Serializable;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * ==========================================
@@ -32,10 +39,16 @@ import java.io.Serializable;
  */
 public class SingerFragment extends BaseTitleFragemnt {
 
+    private static final String TAG = StringConstants.TAG + SingerFragment.class.getName();
     private RecyclerView recyclerView;
     private SingerAdapter adapter;
     private static final String TAG_TI = "ti";
     private Ti ti;
+    public static final String TAG_DIEECTION = "direction";
+    private int direction;
+    public static final int DURATION = 500;
+    public static final int LEFT = -1;
+    public static final int RIGHT = 1;
 
     @Override
     protected int getContentViewID() {
@@ -55,16 +68,18 @@ public class SingerFragment extends BaseTitleFragemnt {
     @Override
     protected void analyzeBundle(Bundle bundle) {
         ti = (Ti) bundle.getSerializable(TAG_TI);
+        direction = bundle.getInt(TAG_DIEECTION);
     }
 
     @Override
     protected void onCreateByUser() {
-        return;
+        EventBus.getDefault().register(this);
     }
 
-    public static SingerFragment newInstance(Ti ti) {
+    public static SingerFragment newInstance(Ti ti, int direction) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(TAG_TI, ti);
+        bundle.putInt(TAG_DIEECTION, direction);
         SingerFragment singerFragment = new SingerFragment();
         singerFragment.setArguments(bundle);
         bundle = null;
@@ -87,5 +102,30 @@ public class SingerFragment extends BaseTitleFragemnt {
     protected void initClick() {
 
 
+    }
+
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        switch (direction) {
+            case LEFT:
+                return MoveAnimation.create(MoveAnimation.LEFT, enter, DURATION);
+            case RIGHT:
+                return MoveAnimation.create(MoveAnimation.RIGHT, enter, DURATION);
+        }
+        return null;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN) //在ui线程执行
+    public void onUserEvent(ToggleMessage message) {
+        direction = message.drietion;
+        DebugLog.d(TAG, "接收到动画切换：" + direction);
+    }
+
+    @Override
+    public void onDestroy() {
+        DebugLog.d(TAG, "onDestroy...");
+        EventBus.getDefault().unregister(this);
+        ti = null;
+        super.onDestroy();
     }
 }
