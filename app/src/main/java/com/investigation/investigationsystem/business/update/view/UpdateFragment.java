@@ -118,7 +118,7 @@ public class UpdateFragment extends BaseTitleFragemnt {
         btn_answer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdatePresenter.getInstance().uploadQuestionClick();
+                UpdatePresenter.getInstance().uploadQuestionClick(iv_answer);
             }
         });
 
@@ -134,7 +134,7 @@ public class UpdateFragment extends BaseTitleFragemnt {
         btn_upload_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdatePresenter.getInstance().uploadAllClick();
+                UpdatePresenter.getInstance().uploadAllClick(update_iv_feedback_upload , iv_answer);
             }
         });
 

@@ -90,7 +90,7 @@ public class UpdatePresenter extends BasePresenter {
     /**
      * 问卷上传点击
      */
-    public void uploadQuestionClick() {
+    public void uploadQuestionClick(final ImageView iv_questionnier) {
 
 
     }
@@ -123,7 +123,7 @@ public class UpdatePresenter extends BasePresenter {
                     if ("1".equals(code)) {
                         PrefersUtils.putString(StringConstants.feedbackPrefrenceKey, "");
                         iv_feedback.setVisibility(View.GONE);
-
+                        isSuggest = false;
                     }
                 }
             });
@@ -137,9 +137,9 @@ public class UpdatePresenter extends BasePresenter {
     /**
      * 全部上传点击点击
      */
-    public void uploadAllClick() {
-
-
+    public void uploadAllClick(final ImageView iv_feedback , final ImageView iv_questionnier) {
+        uploadFeedbackClick(iv_feedback);
+        uploadQuestionClick(iv_questionnier);
     }
 
     /**
@@ -151,26 +151,32 @@ public class UpdatePresenter extends BasePresenter {
         UserId userIdz = new UserId(userID);
         String userIdjson = new Gson().toJson(userIdz);
         //提交数据内容 获取对应的数据
-        String url = ConstantUrl.url + ConstantUrl.getTeamQuestionnaire;
-        OkhttpUtils.getInstance().AsynPostJson(url, userIdjson, new OkhttpUtils.RequestCallback() {
-            @Override
-            public void onTimeOut() {
-                ToastUtils.showMessage("连接超时");
-            }
+        if ( isUpdate() ) {
 
-            @Override
-            public void onError() {
-                ToastUtils.showMessage("数据获取错误");
-            }
+            String url = ConstantUrl.url + ConstantUrl.getTeamQuestionnaire;
+            OkhttpUtils.getInstance().AsynPostJson(url, userIdjson, new OkhttpUtils.RequestCallback() {
+                @Override
+                public void onTimeOut() {
+                    ToastUtils.showMessage("连接超时");
+                }
 
-            @Override
-            public void onSuccess(String result) throws IOException, JSONException {
-                //获取数据以后 直接存放到sps中 覆盖原来的数据
-                ToastUtils.showMessage("获取所有调查问卷成功");
-                PrefersUtils.putString(StringConstants.questiannerPrefrenceKey, result);
-                iv_questionnair.setVisibility(View.GONE);
-            }
-        });
+                @Override
+                public void onError() {
+                    ToastUtils.showMessage("数据获取错误");
+                }
+
+                @Override
+                public void onSuccess(String result) throws IOException, JSONException {
+                    //获取数据以后 直接存放到sps中 覆盖原来的数据
+                    ToastUtils.showMessage("获取所有调查问卷成功");
+                    PrefersUtils.putString(StringConstants.questiannerPrefrenceKey, result);
+                    iv_questionnair.setVisibility(View.GONE);
+                }
+            });
+
+        }else{
+            ToastUtils.showMessage("您还有没有上传的数据，请先上传");
+        }
 
     }
 
@@ -183,28 +189,34 @@ public class UpdatePresenter extends BasePresenter {
         UserId userIdz = new UserId(userID);
         String userIdjson = new Gson().toJson(userIdz);
         //提交数据内容 获取对应的数据
-        String url = ConstantUrl.url + ConstantUrl.getFocusMonitoring;
-        OkhttpUtils.getInstance().AsynPostJson(url, userIdjson , new OkhttpUtils.RequestCallback() {
-            @Override
-            public void onTimeOut() {
-                ToastUtils.showMessage("连接超时");
-            }
+        if ( isUpdate() ) {
 
-            @Override
-            public void onError() {
-                ToastUtils.showMessage("数据获取错误");
-            }
+            String url = ConstantUrl.url + ConstantUrl.getFocusMonitoring;
+            OkhttpUtils.getInstance().AsynPostJson(url, userIdjson , new OkhttpUtils.RequestCallback() {
+                @Override
+                public void onTimeOut() {
+                    ToastUtils.showMessage("连接超时");
+                }
 
-            @Override
-            public void onSuccess(String result) throws IOException, JSONException {
-                //获取数据以后 直接存放到sps中
-                //保存当前的数据信息
-                iv_emphases.setVisibility(View.GONE);
-                ToastUtils.showMessage("重点监测数据获取成功");
-                PrefersUtils.putString(StringConstants.emphasesPrefrenceKey , result);
+                @Override
+                public void onError() {
+                    ToastUtils.showMessage("数据获取错误");
+                }
 
-            }
-        });
+                @Override
+                public void onSuccess(String result) throws IOException, JSONException {
+                    //获取数据以后 直接存放到sps中
+                    //保存当前的数据信息
+                    iv_emphases.setVisibility(View.GONE);
+                    ToastUtils.showMessage("重点监测数据获取成功");
+                    PrefersUtils.putString(StringConstants.emphasesPrefrenceKey , result);
+
+                }
+            });
+
+        }else{
+            ToastUtils.showMessage("您还有没有上传的数据，请先上传");
+        }
 
     }
 
@@ -217,37 +229,44 @@ public class UpdatePresenter extends BasePresenter {
         UserId userIdz = new UserId(userID);
         String userIdjson = new Gson().toJson(userIdz);
         //提交数据内容 获取对应的数据
-        String url = ConstantUrl.url + ConstantUrl.getUserInfo;
-        OkhttpUtils.getInstance().AsynPostJson(url, userIdjson, new OkhttpUtils.RequestCallback() {
-            @Override
-            public void onTimeOut() {
+        if ( isUpdate() ) {//判断hi否还有没有上传的数据
 
-            }
+            String url = ConstantUrl.url + ConstantUrl.getUserInfo;
+            OkhttpUtils.getInstance().AsynPostJson(url, userIdjson, new OkhttpUtils.RequestCallback() {
+                @Override
+                public void onTimeOut() {
 
-            @Override
-            public void onError() {
-
-            }
-
-            @Override
-            public void onSuccess(String result) throws IOException, JSONException {
-                ToastUtils.showMessage("个人信息数据更新成功");
-                //把用户信息添加到本地和缓存数据里面
-                MyUserInfo myUserInfo = new Gson().fromJson(result, MyUserInfo.class);
-                DataConstants.currentMyUserInfo = myUserInfo;
-                // 判断该用户数据是否添加入用户登录缓存信息列表，若没有添加进入，若有，更新改用户下数据
-                if (DataConstants.userInfos == null) {
-                    DataConstants.userInfos = new UserData();
                 }
-                if (DataConstants.userInfos.getData() == null) {
-                    DataConstants.userInfos.setData(new HashMap<String, MyUserInfo>());
-                }
-                DataConstants.userInfos.getData().remove(myUserInfo.getAccount());
-                DataConstants.userInfos.getData().put(myUserInfo.getAccount(), myUserInfo);
-                PrefersUtils.putString(PrefersUtils.TAG_USERINFO, new Gson().toJson(DataConstants.userInfos));
 
-            }
-        });
+                @Override
+                public void onError() {
+
+                }
+
+                @Override
+                public void onSuccess(String result) throws IOException, JSONException {
+                    ToastUtils.showMessage("个人信息数据更新成功");
+                    //把用户信息添加到本地和缓存数据里面
+                    MyUserInfo myUserInfo = new Gson().fromJson(result, MyUserInfo.class);
+                    DataConstants.currentMyUserInfo = myUserInfo;
+                    // 判断该用户数据是否添加入用户登录缓存信息列表，若没有添加进入，若有，更新改用户下数据
+                    if (DataConstants.userInfos == null) {
+                        DataConstants.userInfos = new UserData();
+                    }
+                    if (DataConstants.userInfos.getData() == null) {
+                        DataConstants.userInfos.setData(new HashMap<String, MyUserInfo>());
+                    }
+                    DataConstants.userInfos.getData().remove(myUserInfo.getAccount());
+                    DataConstants.userInfos.getData().put(myUserInfo.getAccount(), myUserInfo);
+                    PrefersUtils.putString(PrefersUtils.TAG_USERINFO, new Gson().toJson(DataConstants.userInfos));
+
+                }
+            });
+
+        }else{
+            ToastUtils.showMessage("您还有没有上传的数据，请先上传");
+        }
+
     }
 
     /**
@@ -263,10 +282,12 @@ public class UpdatePresenter extends BasePresenter {
         //反馈信息上传
         if (!PrefersUtils.getString(StringConstants.feedbackPrefrenceKey).isEmpty()) {
             iv_feedback.setVisibility(View.VISIBLE);
+            isSuggest = true;
         }
         //问卷答案上传
         if (!PrefersUtils.getString(StringConstants.answerPrefrenceKey).isEmpty()) {
             iv_answer.setVisibility(View.VISIBLE);
+            isQuestionnair = true;
         }
 
         //调查问卷时间获取 如果本地没有存放数据 则直接显示小红点
@@ -329,6 +350,16 @@ public class UpdatePresenter extends BasePresenter {
 
         }
 
+    }
+
+    /**
+     * 先上传再获取判断
+     */
+    public boolean isUpdate(){
+        if (!isQuestionnair && !isSuggest) {
+            return true;
+        }
+        return false;
     }
 
     /**
