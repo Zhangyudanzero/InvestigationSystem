@@ -1,7 +1,6 @@
 package com.investigation.investigationsystem.business.qusetionnaire.presenter;
 
 import com.investigation.investigationsystem.business.login.bean.Juan;
-import com.investigation.investigationsystem.business.login.bean.JuanResponse;
 import com.investigation.investigationsystem.business.login.bean.Ti;
 import com.investigation.investigationsystem.business.qusetionnaire.bean.JuanUpdateUIMessage;
 import com.investigation.investigationsystem.business.qusetionnaire.bean.ToggleMessage;
@@ -11,9 +10,16 @@ import com.investigation.investigationsystem.business.qusetionnaire.view.SingerF
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
 import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.investigation.investigationsystem.common.utils.DebugLog;
 import com.investigation.investigationsystem.common.utils.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * ==========================================
@@ -40,6 +46,7 @@ public class JuanPresenter extends BasePresenter {
 
     private static final String TAG = StringConstants.TAG + JuanPresenter.class.getName();
     private static JuanPresenter persenter;
+    private TreeMap<String, List<String>> result;
 
     /**
      * 页码控制
@@ -153,7 +160,82 @@ public class JuanPresenter extends BasePresenter {
      * 提交数据
      */
     public void commit() {
+        DebugLog.d(TAG, "用户的结果集==" + (result == null));
+        ToastUtils.showMessage("用户的结果集==" + result.toString());
+        Iterator<Map.Entry<String, List<String>>> iterator = result.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, List<String>> next = iterator.next();
+            DebugLog.d(TAG, "用户的结果集,id:" + next.getKey() + ",答案：" + next.getValue());
+        }
+    }
 
+    /**
+     * 添加结果
+     *
+     * @param id  题目编号
+     * @param res 题目答案
+     */
+    public void addResult(String id, String res) {
+        if (result == null) {
+            result = new TreeMap<>();
+        }
+        if (result.get(id) == null) {
+            result.put(id, new ArrayList<String>());
+        }
+        result.get(id).add(res);
+        DebugLog.d(TAG, "添加用户选择结果：" + result.toString());
+    }
+
+    /**
+     * 删除结果
+     *
+     * @param id
+     * @param res
+     */
+    public void delectResult(String id, String res) {
+        if (result == null) {
+            result = new TreeMap<>();
+        }
+        if (result.get(id) == null) {
+            result.put(id, new ArrayList<String>());
+        }
+        result.get(id).remove(res);
+        DebugLog.d(TAG, "添加用户选择结果：" + result.toString());
+    }
+
+    /**
+     * 添加，修改填空题结果
+     *
+     * @param id
+     * @param res
+     */
+    public void addSingleResult(String id, String res) {
+        if (result == null) {
+            result = new TreeMap<>();
+        }
+        if (result.get(id) == null) {
+            result.put(id, new ArrayList<String>());
+        }
+        if (result.get(id).size() == 0) {
+            result.get(id).add(res);
+        } else {
+            result.get(id).remove(0);
+            result.get(id).add(res);
+        }
+        DebugLog.d(TAG, "添加用户写入结果：" + result.toString());
+    }
+
+    /**
+     * 拿到上一次填写的结果
+     *
+     * @param id
+     * @return
+     */
+    public List<String> getLastResult(String id) {
+        if (result == null) {
+            return null;
+        }
+        return result.get(id);
     }
 
 

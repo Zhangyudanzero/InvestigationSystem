@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.login.bean.Ti;
 import com.investigation.investigationsystem.business.qusetionnaire.bean.ToggleMessage;
+import com.investigation.investigationsystem.business.qusetionnaire.presenter.JuanPresenter;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 import com.investigation.investigationsystem.common.utils.DebugLog;
@@ -18,6 +19,8 @@ import com.labo.kaji.fragmentanimations.MoveAnimation;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.List;
 
 /**
  * ==========================================
@@ -92,6 +95,13 @@ public class EditFragment extends BaseTitleFragemnt {
         tv_title = (TextView) rootView.findViewById(R.id.juan_edit_title);
         ed_edit = (EditText) rootView.findViewById(R.id.juan_edit_edit);
         tv_title.setText(ti.getQuestionTitle());
+
+        // 获取上一次的结果并显示
+        List<String> lastResult = JuanPresenter.getInstance().getLastResult(ti.getQuestionID());
+        if (lastResult != null && lastResult.get(0) != null) {
+            ed_edit.setText(lastResult.get(0));
+        }
+        lastResult = null;
     }
 
     @Override
@@ -113,7 +123,8 @@ public class EditFragment extends BaseTitleFragemnt {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                // 在用户输入后，吧用户输入的内容添加到结果集中
+                JuanPresenter.getInstance().addSingleResult(ti.getQuestionID(), ed_edit.getText().toString().trim());
             }
         });
 
@@ -133,7 +144,7 @@ public class EditFragment extends BaseTitleFragemnt {
     @Subscribe(threadMode = ThreadMode.MAIN) //在ui线程执行
     public void onUserEvent(ToggleMessage message) {
         direction = message.drietion;
-        DebugLog.d(TAG, "接收到动画切换：" + direction);
+//        DebugLog.d(TAG, "接收到动画切换：" + direction);
     }
 
     @Override

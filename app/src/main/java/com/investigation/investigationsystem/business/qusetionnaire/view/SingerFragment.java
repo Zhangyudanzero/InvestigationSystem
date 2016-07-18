@@ -1,6 +1,7 @@
 package com.investigation.investigationsystem.business.qusetionnaire.view;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.animation.Animation;
@@ -8,7 +9,9 @@ import android.view.animation.Animation;
 import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.login.bean.Ti;
 import com.investigation.investigationsystem.business.qusetionnaire.adapter.SingerAdapter;
+import com.investigation.investigationsystem.business.qusetionnaire.bean.RefrushAdapterMessage;
 import com.investigation.investigationsystem.business.qusetionnaire.bean.ToggleMessage;
+import com.investigation.investigationsystem.business.qusetionnaire.presenter.JuanPresenter;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 import com.investigation.investigationsystem.common.utils.DebugLog;
@@ -49,6 +52,7 @@ public class SingerFragment extends BaseTitleFragemnt {
     public static final int DURATION = 500;
     public static final int LEFT = -1;
     public static final int RIGHT = 1;
+    private Handler handler = new Handler();
 
     @Override
     protected int getContentViewID() {
@@ -95,7 +99,13 @@ public class SingerFragment extends BaseTitleFragemnt {
         linearLayoutManager = null;
         adapter = new SingerAdapter();
         recyclerView.setAdapter(adapter);
-        adapter.setData(ti);
+        adapter.setData(ti, JuanPresenter.getInstance().getLastResult(ti.getQuestionID()));
+        adapter.setClick(new SingerAdapter.ISingerAdapterClick() {
+            @Override
+            public void onSelect(String id, String res) {
+                JuanPresenter.getInstance().addSingleResult(id, res);
+            }
+        });
     }
 
     @Override
@@ -118,7 +128,18 @@ public class SingerFragment extends BaseTitleFragemnt {
     @Subscribe(threadMode = ThreadMode.MAIN) //在ui线程执行
     public void onUserEvent(ToggleMessage message) {
         direction = message.drietion;
-        DebugLog.d(TAG, "接收到动画切换：" + direction);
+//        DebugLog.d(TAG, "接收到动画切换：" + direction);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN) //在ui线程执行
+    public void refrushAdapter(RefrushAdapterMessage message) {
+//        handler.post(new Runnable() {
+//            @Override
+//            public void run() {
+                adapter.notifyDataSetChanged();
+//            }
+//        });
+        DebugLog.d(TAG, "单选题刷新数据");
     }
 
     @Override

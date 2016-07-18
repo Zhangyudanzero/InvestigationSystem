@@ -9,6 +9,7 @@ import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.login.bean.Ti;
 import com.investigation.investigationsystem.business.qusetionnaire.adapter.MulAdapter;
 import com.investigation.investigationsystem.business.qusetionnaire.bean.ToggleMessage;
+import com.investigation.investigationsystem.business.qusetionnaire.presenter.JuanPresenter;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 import com.investigation.investigationsystem.common.utils.DebugLog;
@@ -96,7 +97,18 @@ public class MulFragment extends BaseTitleFragemnt {
         linearLayoutManager = null;
         adapter = new MulAdapter();
         recyclerView.setAdapter(adapter);
-        adapter.setData(ti);
+        adapter.setData(ti, JuanPresenter.getInstance().getLastResult(ti.getQuestionID()));
+        adapter.setClick(new MulAdapter.IMulAdapterClick() {
+            @Override
+            public void onSelect(String id, String res) {
+                JuanPresenter.getInstance().addResult(id, res);
+            }
+
+            @Override
+            public void onRemove(String id, String res) {
+                JuanPresenter.getInstance().delectResult(id, res);
+            }
+        });
     }
 
     @Override
@@ -119,7 +131,7 @@ public class MulFragment extends BaseTitleFragemnt {
     @Subscribe(threadMode = ThreadMode.MAIN) //在ui线程执行
     public void onUserEvent(ToggleMessage message) {
         direction = message.drietion;
-        DebugLog.d(TAG, "接收到动画切换：" + direction);
+//        DebugLog.d(TAG, "接收到动画切换：" + direction);
     }
 
     @Override

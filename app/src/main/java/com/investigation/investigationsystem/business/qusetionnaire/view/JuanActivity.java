@@ -15,7 +15,6 @@ import com.investigation.investigationsystem.business.qusetionnaire.presenter.Ju
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 import com.investigation.investigationsystem.common.data.Data;
-import com.investigation.investigationsystem.common.utils.DebugLog;
 import com.investigation.investigationsystem.common.utils.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -127,6 +126,7 @@ public class JuanActivity extends BaseFragmentActivity {
         btn_commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                ToastUtils.showMessage("提交");
                 JuanPresenter.getInstance().commit();
             }
         });
@@ -148,7 +148,7 @@ public class JuanActivity extends BaseFragmentActivity {
     public void updateUIEvent(JuanUpdateUIMessage message) {
         int function = message.functionl;
         tv_title_bnumber.setText("第" + message.titlename + "题");
-        DebugLog.d(TAG, "接收到数据指令:" + function);
+//        DebugLog.d(TAG, "接收到数据指令:" + function);
         if (function == -1) {
             // 隐藏上一题按钮，显示下一页按钮，隐藏提交按钮
             btn_lastOne.setVisibility(View.GONE);

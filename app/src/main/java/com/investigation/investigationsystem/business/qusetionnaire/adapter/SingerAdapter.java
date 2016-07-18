@@ -4,12 +4,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
 import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.login.bean.Ti;
 import com.investigation.investigationsystem.business.login.bean.TiOption;
+import com.investigation.investigationsystem.business.qusetionnaire.bean.RefrushAdapterMessage;
+import com.investigation.investigationsystem.common.constants.StringConstants;
 import com.investigation.investigationsystem.common.utils.DebugLog;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -34,12 +39,30 @@ import java.util.List;
  */
 public class SingerAdapter extends RecyclerView.Adapter<SingerAdapter.ViewHold> {
 
+    private static final String TAG = StringConstants.TAG + SingerAdapter.class.getName();
+    // 用户上一次选择的结果
+    private List<String> res;
     private Ti ti;
     private List<TiOption> data;
+    private ISingerAdapterClick click;
+    private String lastData = "";
 
-    public void setData(Ti ti) {
+    public interface ISingerAdapterClick {
+
+        void onSelect(String id, String res);
+    }
+
+    public void setClick(ISingerAdapterClick click) {
+        this.click = click;
+    }
+
+    public void setData(Ti ti, List<String> res) {
         this.ti = ti;
+        this.res = res;
         this.data = ti.getQuestionOption_list();
+        if (res != null && res.size() > 0) {
+            lastData = res.get(0);
+        }
         this.notifyDataSetChanged();
     }
 
@@ -49,9 +72,29 @@ public class SingerAdapter extends RecyclerView.Adapter<SingerAdapter.ViewHold> 
     }
 
     @Override
-    public void onBindViewHolder(ViewHold holder, int position) {
-
+    public void onBindViewHolder(ViewHold holder, final int position) {
         holder.button.setText(data.get(position).getOptionContent());
+        holder.button.setChecked(false);
+        // 遍历上一次的结果，设置多选项目的选中状态
+        DebugLog.d(TAG, "上次结果:" + lastData);
+        if (ti.getQuestionOption_list().get(position).getOptionContent().equals(lastData)) {
+            // 上一次用户选这个了
+            holder.button.setChecked(true);
+        }
+
+        if (click != null) {
+            holder.button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        // 用户选择了
+                        click.onSelect(ti.getQuestionID(), ti.getQuestionOption_list().get(position).getOptionContent());
+                        lastData = ti.getQuestionOption_list().get(position).getOptionContent();
+                        EventBus.getDefault().post(new RefrushAdapterMessage());
+                    }
+                }
+            });
+        }
     }
 
     @Override
