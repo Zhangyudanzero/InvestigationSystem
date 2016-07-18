@@ -57,17 +57,23 @@
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:name=".business.login.view.LoginActivity"
+            android:name=".business.qusetionnaire.view.JuanActivity"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+        android:name=".business.login.view.LoginActivity"
+        android:launchMode="singleTop"
+        android:screenOrientation="landscape"
+        android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!--身份证识别activity-->
         <activity android:name="exocr.idcard.IDCardEditActivity" android:screenOrientation="portrait"/>
         <activity android:name="exocr.idcard.IDPhotoResultActivity" android:screenOrientation="portrait"/>

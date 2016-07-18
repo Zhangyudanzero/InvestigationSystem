@@ -49,6 +49,10 @@ public class StringConstants {
     public static String emphasesPrefrenceKey = DataConstants.currentMyUserInfo.getUserID() + StringConstants.Emphases;
     public static final String Questianner = "Questianner";
     public static String questiannerPrefrenceKey = DataConstants.currentMyUserInfo.getUserID() +  StringConstants.Questianner;
+    public static final String FeedBack = "FeedBack";
+    public static String feedbackPrefrenceKey = DataConstants.currentMyUserInfo.getUserID() +  StringConstants.FeedBack;
+    public static final String Answer = "Answer";
+    public static String answerPrefrenceKey = DataConstants.currentMyUserInfo.getUserID() +  StringConstants.Answer;
 
 
 }

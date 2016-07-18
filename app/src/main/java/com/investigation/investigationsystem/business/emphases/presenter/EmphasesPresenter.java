@@ -139,31 +139,37 @@ public class EmphasesPresenter extends BasePresenter {
         if (emphases != null) {
 
             final List<MonitoringTeam> teamlist = emphases.getTeamlist();
-            for (int i = 0; i < teamlist.size(); i++) {
-                teamnamelist.add(teamlist.get(i).getTeamname());
-            }
-            //把teamnamelist数据填充进spinner
-            final String[] teamnames = new String[teamnamelist.size()];
-            for (int i = 0 ; i < teamnamelist.size() ; i++) {
-                teamnames[i] = teamnamelist.get(i);
-            }
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootActivity
-                    , android.R.layout.simple_spinner_item , teamnames);
-            sp_team.setAdapter(adapter);
-            //sp点击时候的事件
-            sp_team.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    getEmphasesArea( teamnames[position] , teamlist , sp_area , btn_search , rv_show);
+            if(teamlist != null) {
+                for (int i = 0; i < teamlist.size(); i++) {
+                    teamnamelist.add(teamlist.get(i).getTeamname());
                 }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
+                //把teamnamelist数据填充进spinner
+                final String[] teamnames = new String[teamnamelist.size()];
+                for (int i = 0 ; i < teamnamelist.size() ; i++) {
+                    teamnames[i] = teamnamelist.get(i);
                 }
-            });
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootActivity
+                        , android.R.layout.simple_spinner_item , teamnames);
+                sp_team.setAdapter(adapter);
+                //sp点击时候的事件
+                sp_team.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        getEmphasesArea( teamnames[position] , teamlist , sp_area , btn_search , rv_show);
+                    }
 
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+            }
+
+        }else{
+            ToastUtils.showMessage("该用户目前没有需要监测的对象");
         }
+
     }
 
     /**

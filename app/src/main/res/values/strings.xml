@@ -2,7 +2,7 @@
     <string name="app_name">InvestigationSystem</string>
 
     <string name="app_ploaddata">上传数据</string>
-    <string name="str_questionnaire_upload">问卷上传</string>
+    <string name="str_questionnaire_upload">问卷答案上传</string>
     <string name="str_feedback_information_upload">反馈信息上传</string>
     <string name="str_upload_all">全部上传</string>
     <string name="str_survey_questionnaire">调查问卷获取</string>

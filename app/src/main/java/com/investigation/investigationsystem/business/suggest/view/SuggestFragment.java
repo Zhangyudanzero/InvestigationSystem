@@ -32,8 +32,6 @@ public class SuggestFragment extends BaseTitleFragemnt {
 
     private EditText et_commit; //意见建议输入框
     private Button btn_commit; // 提交按钮
-//    private String suggestPrefrenceKey = DataConstants.currentMyUserInfo.getUserID() + StringConstants.Suggest;
-    public static String suggestPrefrenceKey = StringConstants.Suggest;//暂时不使用currentUser因为是null
 
     public static SuggestFragment newInstance() {
         return new SuggestFragment();
@@ -94,13 +92,13 @@ public class SuggestFragment extends BaseTitleFragemnt {
 
                     //把数据存放到sps中 先解析再存放
                     Gson gson = new Gson();
-                    String suggests = PrefersUtils.getString(suggestPrefrenceKey);
+                    String suggests = PrefersUtils.getString(StringConstants.feedbackPrefrenceKey);
                     if (!suggests.isEmpty()) {
                         SuggestInfo suggestInfo = gson.fromJson(suggests, SuggestInfo.class);
                         suggestInfo.getFeedbackList().add(feedBack);
                         suggestInfo.setSize(suggestInfo.getFeedbackList().size());
                         String suggestsz = gson.toJson(suggestInfo);
-                        PrefersUtils.putString( suggestPrefrenceKey, suggestsz);
+                        PrefersUtils.putString( StringConstants.feedbackPrefrenceKey, suggestsz);
                         DebugLog.i( "suggestTAG" , suggestsz);
                         ToastUtils.showMessage("建议成功提交");
                     }else{//如果本地没有数据存放
@@ -110,7 +108,7 @@ public class SuggestFragment extends BaseTitleFragemnt {
                         suggestInfo.setSize(1);
                         suggestInfo.setFeedbackList(list);
                         String suggestsz = gson.toJson(suggestInfo);
-                        PrefersUtils.putString( suggestPrefrenceKey , suggestsz);
+                        PrefersUtils.putString( StringConstants.feedbackPrefrenceKey , suggestsz);
                         DebugLog.i( "suggestTAG" , suggestsz);
                         ToastUtils.showMessage("建议成功提交");
                     }

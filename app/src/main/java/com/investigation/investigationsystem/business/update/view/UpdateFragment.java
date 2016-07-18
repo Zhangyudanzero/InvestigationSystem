@@ -32,21 +32,21 @@ import com.investigation.investigationsystem.common.constants.StringConstants;
 public class UpdateFragment extends BaseTitleFragemnt {
 
     // 问卷上传
-    private Button btn_upload_question;
+    private Button btn_answer;
     // 反馈信息上传
     private Button btn_upload_feedback;
     // 全部上传
     private Button btn_upload_all;
 
     // 更新问卷
-    private Button btn_update_question;
+    private Button btn_questionnair;
     // 更新重点监控
     private Button btn_update_emphases;
     // 更新个人信息
     private Button btn_update_my;
 
     //小红点
-    private ImageView update_iv_question_upload;
+    private ImageView iv_answer;
     private ImageView update_iv_feedback_upload;
     private ImageView update_iv_all_upload;
     private ImageView update_iv_update_question;
@@ -88,14 +88,14 @@ public class UpdateFragment extends BaseTitleFragemnt {
 
     @Override
     protected void initView() {
-        btn_upload_question = (Button) rootView.findViewById(R.id.update_btn_question_upload);
+        btn_answer = (Button) rootView.findViewById(R.id.update_btn_answer);
         btn_upload_feedback = (Button) rootView.findViewById(R.id.update_btn_feedback_upload);
         btn_upload_all = (Button) rootView.findViewById(R.id.update_btn_all_upload);
-        btn_update_question = (Button) rootView.findViewById(R.id.update_btn_update_question);
+        btn_questionnair = (Button) rootView.findViewById(R.id.update_btn_questionnair);
         btn_update_emphases = (Button) rootView.findViewById(R.id.update_btn_update_emphases);
         btn_update_my = (Button) rootView.findViewById(R.id.update_btn_update_userinfo);
 
-        update_iv_question_upload = (ImageView) rootView.findViewById(R.id.update_iv_question_upload);
+        iv_answer = (ImageView) rootView.findViewById(R.id.update_iv_answer);
         update_iv_feedback_upload = (ImageView) rootView.findViewById(R.id.update_iv_feedback_upload);
         update_iv_all_upload = (ImageView) rootView.findViewById(R.id.update_iv_all_upload);
         update_iv_update_question = (ImageView) rootView.findViewById(R.id.update_iv_update_question);
@@ -105,6 +105,9 @@ public class UpdateFragment extends BaseTitleFragemnt {
         //获取身份证扫描数据
 //        Intent it = new Intent(getActivity() , IDCardEditActivity.class);
 //        startActivityForResult(it , 102);
+        //进入监测数据是否有变化
+        UpdatePresenter.getInstance().checkDataChange(iv_answer , update_iv_feedback_upload , update_iv_all_upload ,
+                update_iv_update_question , update_iv_update_emphases , update_iv_update_userinfo);
 
     }
 
@@ -112,7 +115,7 @@ public class UpdateFragment extends BaseTitleFragemnt {
     protected void initClick() {
 
         // 问卷上传点击
-        btn_upload_question.setOnClickListener(new View.OnClickListener() {
+        btn_answer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UpdatePresenter.getInstance().uploadQuestionClick();
@@ -123,7 +126,7 @@ public class UpdateFragment extends BaseTitleFragemnt {
         btn_upload_feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdatePresenter.getInstance().uploadFeedbackClick();
+                UpdatePresenter.getInstance().uploadFeedbackClick(update_iv_feedback_upload);
             }
         });
 
@@ -136,10 +139,10 @@ public class UpdateFragment extends BaseTitleFragemnt {
         });
 
         // 更新问卷点击
-        btn_update_question.setOnClickListener(new View.OnClickListener() {
+        btn_questionnair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdatePresenter.getInstance().updateQuestionClick();
+                UpdatePresenter.getInstance().updateQuestionClick(update_iv_update_question);
             }
         });
 
@@ -147,7 +150,7 @@ public class UpdateFragment extends BaseTitleFragemnt {
         btn_update_emphases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdatePresenter.getInstance().updateEmphasesClick();
+                UpdatePresenter.getInstance().updateEmphasesClick(update_iv_update_emphases);
             }
         });
 
@@ -155,7 +158,7 @@ public class UpdateFragment extends BaseTitleFragemnt {
         btn_update_my.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdatePresenter.getInstance().updateMyClick();
+                UpdatePresenter.getInstance().updateMyClick(update_iv_update_userinfo);
             }
         });
     }

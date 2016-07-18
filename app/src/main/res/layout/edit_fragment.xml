@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/juan_edit_title"
+        style="@style/main_text_black_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="测试" />
+
+
+    <EditText
+        android:id="@+id/juan_edit_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/juan_edit_title"
+        android:layout_marginTop="10dp"
+        android:gravity="left|top"
+        android:hint="请输入答案"
+        android:minHeight="180dp"
+        android:padding="8dp" />
+</RelativeLayout>

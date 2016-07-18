@@ -3,6 +3,7 @@ package com.investigation.investigationsystem.business.qusetionnaire.presenter;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.investigation.investigationsystem.business.qusetionnaire.view.JuanActivity;
 import com.investigation.investigationsystem.business.qusetionnaire.view.QusetuinnairFragment;
 import com.investigation.investigationsystem.business.qusetionnaire.view.QusetuinnaireActivity;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
@@ -11,10 +12,10 @@ import com.investigation.investigationsystem.common.constants.StringConstants;
 
 /**
  * 进入调查问卷之前的身份证扫描页面
- *
+ * <p/>
  * Created by zero on 2016/7/3.
  */
-public class QusetuinnairePresenter extends BasePresenter{
+public class QusetuinnairePresenter extends BasePresenter {
 
     private static final String TAG = StringConstants.TAG + QusetuinnairePresenter.class.getName();
     private static QusetuinnairePresenter persenter;
@@ -32,7 +33,8 @@ public class QusetuinnairePresenter extends BasePresenter{
     }
 
     public static void startUp(Activity activity) {
-        Intent intent = new Intent(activity, QusetuinnaireActivity.class);
+        Intent intent = new Intent(activity, JuanActivity.class);
+//        Intent intent = new Intent(activity, QusetuinnaireActivity.class);
         activity.startActivity(intent);
         intent = null;
     }
@@ -48,21 +50,21 @@ public class QusetuinnairePresenter extends BasePresenter{
     /**
      * 选择团队
      */
-    public void chooseTeam(){
+    public void chooseTeam() {
 
     }
 
     /**
      * 选择调查地域
      */
-    public void chooseEare(){
+    public void chooseEare() {
 
     }
 
     /**
      * 选择问卷
      */
-    public void chooseQuestion(){
+    public void chooseQuestion() {
 
     }
 
@@ -70,24 +72,23 @@ public class QusetuinnairePresenter extends BasePresenter{
      * 获取所有被调查人相关数据
      * 注意处理null数据
      */
-    public void getInvestigatedInfo(){
+    public void getInvestigatedInfo() {
 
     }
 
     /**
      * 开始问卷调查
      */
-    public void beginQusetion(){
+    public void beginQusetion() {
 
     }
 
     /**
      * 开始身份证扫描
      */
-    public void scanId(){
+    public void scanId() {
 
     }
-
 
 
     /**
@@ -96,7 +97,6 @@ public class QusetuinnairePresenter extends BasePresenter{
     public void onDes() {
         persenter = null;
     }
-
 
 
 }
