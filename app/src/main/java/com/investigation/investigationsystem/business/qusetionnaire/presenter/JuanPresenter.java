@@ -160,13 +160,12 @@ public class JuanPresenter extends BasePresenter {
      * 提交数据
      */
     public void commit() {
-        DebugLog.d(TAG, "用户的结果集==" + (result == null));
-        ToastUtils.showMessage("用户的结果集==" + result.toString());
-        Iterator<Map.Entry<String, List<String>>> iterator = result.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<String, List<String>> next = iterator.next();
-            DebugLog.d(TAG, "用户的结果集,id:" + next.getKey() + ",答案：" + next.getValue());
+        // 判断用户是否答卷了
+        if (result == null) {
+            ToastUtils.showMessage(StringConstants.NOANSWER);
+            return;
         }
+        ToastUtils.showMessage("用户的结果集==" + result.toString());
     }
 
     /**

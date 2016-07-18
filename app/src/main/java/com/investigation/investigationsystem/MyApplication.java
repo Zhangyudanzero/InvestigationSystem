@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.investigation.investigationsystem.common.data.Data;
 import com.investigation.investigationsystem.common.utils.DebugLog;
+import com.orhanobut.logger.Logger;
 
 /**
  * ==========================================
@@ -32,6 +33,7 @@ public class MyApplication extends Application {
         super.onCreate();
         instance = this;
 //        DebugLog.d("aaa", "假数据：" + Data.getQuestion);
+        Logger.d("假数据：" + Data.getQuestion, "hahaha");
     }
 
     public static MyApplication getInstance() {

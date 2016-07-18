@@ -2,6 +2,7 @@ package com.investigation.investigationsystem.common.utils;
 
 import android.content.Context;
 
+import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
@@ -25,6 +26,20 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
  */
 public class DialogUtils {
 
+    // 对话框点击接口
+    public static interface OnClick {
+
+        // 确认点击
+        public void okClick();
+    }
+
+    /**
+     * 获取等待对话框
+     *
+     * @param context
+     * @param text
+     * @return
+     */
     public static SweetAlertDialog getloadingDialog(Context context, String text) {
         SweetAlertDialog alertDialog = new SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE)
                 .setTitleText(text);
@@ -32,5 +47,40 @@ public class DialogUtils {
         alertDialog.setCancelable(false);
         return alertDialog;
     }
+
+    /**
+     * 获取带确认嗯哼却小按钮的对话框
+     *
+     * @param context
+     * @param title
+     * @param onClick
+     * @return
+     */
+    public static SweetAlertDialog getOkAndNoDialog(Context context, String title, final OnClick onClick) {
+
+        SweetAlertDialog alertDialog = new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText(title)
+                .setConfirmText("  确定  ")
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(final SweetAlertDialog sweetAlertDialog) {
+                        // 执行确认的点击事件
+                        onClick.okClick();
+                    }
+                })
+                .setCancelText("  取消  ")
+                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        sweetAlertDialog.dismiss();
+                    }
+                });
+
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.setCancelable(false);
+
+        return alertDialog;
+    }
+
 
 }

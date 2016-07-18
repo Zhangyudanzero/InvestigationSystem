@@ -15,11 +15,14 @@ import com.investigation.investigationsystem.business.qusetionnaire.presenter.Ju
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 import com.investigation.investigationsystem.common.data.Data;
+import com.investigation.investigationsystem.common.utils.DialogUtils;
 import com.investigation.investigationsystem.common.utils.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * ==========================================
@@ -46,7 +49,7 @@ public class JuanActivity extends BaseFragmentActivity {
     // 标题中的题目号
     private TextView tv_title_bnumber;
     // 标题中的返回按钮
-    private View view_title_back;
+    private TextView view_title_back;
     // 按钮上一题
     private Button btn_lastOne;
     // 按钮下一题
@@ -59,6 +62,7 @@ public class JuanActivity extends BaseFragmentActivity {
     private boolean isLastCanClick = true;
     private boolean isNextCanClick = true;
     private int time = 1000;
+    private SweetAlertDialog dialog_exit;
 
     @Override
     protected int getContentViewID() {
@@ -80,13 +84,30 @@ public class JuanActivity extends BaseFragmentActivity {
         EventBus.getDefault().register(this);
         JuanPresenter.regist(this);
         tv_title_bnumber = (TextView) findViewById(R.id.juan_title_number);
-        view_title_back = findViewById(R.id.juan_title_back);
+        view_title_back = (TextView) findViewById(R.id.juan_title_back);
         btn_lastOne = (Button) findViewById(R.id.juan_btn_lastone);
         btn_nextOne = (Button) findViewById(R.id.juan_btn_nextone);
         btn_commit = (Button) findViewById(R.id.juan_btn_commit);
         tv_title_bnumber.setText("第一题");
 
         handler = new Handler();
+        dialog_exit = DialogUtils.getOkAndNoDialog(this, "您是否要取消本次答卷", new DialogUtils.OnClick() {
+            @Override
+            public void okClick() {
+                // 关闭页面
+                JuanActivity.this.finish();
+            }
+        });
+
+        // 标题返回按钮点击
+        view_title_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_exit.show();
+            }
+        });
+
+        // 上一题按钮点击
         btn_lastOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,6 +126,7 @@ public class JuanActivity extends BaseFragmentActivity {
             }
         });
 
+        // 下一题按钮点击
         btn_nextOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,6 +145,7 @@ public class JuanActivity extends BaseFragmentActivity {
             }
         });
 
+        // 提交按钮点击
         btn_commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -179,12 +202,26 @@ public class JuanActivity extends BaseFragmentActivity {
         }
     }
 
+    /**
+     * 坚挺返回事件
+     */
+    @Override
+    public void onBackPressed() {
+        if (dialog_exit != null) {
+            dialog_exit.show();
+        }
+    }
+
     @Override
     protected void onDestroy() {
         if (handler != null) {
             handler.removeCallbacksAndMessages(null);
         }
         handler = null;
+        if (dialog_exit != null && dialog_exit.isShowing()) {
+            dialog_exit.dismiss();
+        }
+        dialog_exit = null;
         EventBus.getDefault().unregister(this);
         JuanPresenter.getInstance().onDes();
         super.onDestroy();
