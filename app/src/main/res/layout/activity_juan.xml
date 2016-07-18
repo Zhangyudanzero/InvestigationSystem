@@ -24,21 +24,17 @@
             tools:text="第2题" />
 
         <!-- 头中右边的电话按键 -->
-        <com.zhy.android.percent.support.PercentRelativeLayout
+        <TextView
             android:id="@+id/juan_title_back"
-            android:layout_width="0dp"
+            style="@style/main_text_white_big"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_alignParentRight="true"
-            app:layout_heightPercent="100%h"
-            app:layout_widthPercent="100%h">
-
-            <TextView
-                style="@style/main_text_white_big"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                tools:text="返回" />
-        </com.zhy.android.percent.support.PercentRelativeLayout>
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="返回"
+            app:layout_heightPercent="100%h" />
     </com.zhy.android.percent.support.PercentRelativeLayout>
 
     <LinearLayout

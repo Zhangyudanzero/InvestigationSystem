@@ -39,6 +39,7 @@ public class StringConstants {
     public static final String MESSAGE_PASSWOROK = "欢迎登录系统";
     public static final String MESSAGE_LOGINING = "登录中，请稍等...";
     public static final String NONETCONNETION = "没有网络，请连接网络再次尝试";
+    public static final String NOANSWER = "您还没有答卷，不能提交问卷";
     public static final int DURATION = 300;
     public static final long SPLASH_TIME = 1500;
 
