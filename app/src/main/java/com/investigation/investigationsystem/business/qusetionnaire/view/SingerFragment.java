@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.animation.Animation;
+import android.widget.TextView;
 
 import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.login.bean.Ti;
@@ -53,6 +54,7 @@ public class SingerFragment extends BaseTitleFragemnt {
     public static final int LEFT = -1;
     public static final int RIGHT = 1;
     private Handler handler = new Handler();
+    private TextView tv_title;
 
     @Override
     protected int getContentViewID() {
@@ -106,11 +108,12 @@ public class SingerFragment extends BaseTitleFragemnt {
                 JuanPresenter.getInstance().addSingleResult(id, res);
             }
         });
+        tv_title = (TextView) rootView.findViewById(R.id.juan_singer_title);
+        tv_title.setText(ti.getQuestionTitle());
     }
 
     @Override
     protected void initClick() {
-
 
     }
 

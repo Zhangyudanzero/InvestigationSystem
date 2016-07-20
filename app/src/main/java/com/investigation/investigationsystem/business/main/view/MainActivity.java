@@ -41,7 +41,7 @@ public class MainActivity extends BaseFragmentActivity {
 
     @Override
     protected void onDestroy() {
-        MainPresenter.getInstance().onDes();
+//        MainPresenter.getInstance().onDes();
         super.onDestroy();
     }
 

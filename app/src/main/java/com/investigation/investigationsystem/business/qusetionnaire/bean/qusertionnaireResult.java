@@ -25,6 +25,8 @@ public class qusertionnaireResult {
     public qusertionnaireResult() {
     }
 
+
+
     public qusertionnaireResult(String teamid, String areaid, String userid, String questionnaireid, String time, String name, String idno, int female, int age, String nation, String tel, String address, String address2, String contact, String contacttel, String relation) {
         this.teamid = teamid;
         this.areaid = areaid;

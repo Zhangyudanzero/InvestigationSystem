@@ -24,10 +24,11 @@ import java.util.List;
  */
 
 public class Juan implements Serializable {
+
     private String questionnaireID;
     private String subject;
     private String title;
-    private List<Ti> questionList;
+    private List<Ti> questionlist;
 
     public String getQuestionnaireID() {
         return questionnaireID;
@@ -54,11 +55,21 @@ public class Juan implements Serializable {
     }
 
     public List<Ti> getQuestionList() {
-        return questionList;
+        return questionlist;
     }
 
-    public void setQuestionList(List<Ti> questionList) {
-        this.questionList = questionList;
+    public void setQuestionList(List<Ti> questionlist) {
+        this.questionlist = questionlist;
+    }
+
+    @Override
+    public String toString() {
+        return "Juan{" +
+                "questionnaireID='" + questionnaireID + '\'' +
+                ", subject='" + subject + '\'' +
+                ", title='" + title + '\'' +
+                ", questionlist=" + questionlist +
+                '}';
     }
 
 }

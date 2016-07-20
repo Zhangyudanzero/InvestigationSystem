@@ -13,8 +13,10 @@ import com.investigation.investigationsystem.business.login.bean.JuanResponse;
 import com.investigation.investigationsystem.business.qusetionnaire.bean.JuanUpdateUIMessage;
 import com.investigation.investigationsystem.business.qusetionnaire.presenter.JuanPresenter;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
+import com.investigation.investigationsystem.common.constants.DataConstants;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 import com.investigation.investigationsystem.common.data.Data;
+import com.investigation.investigationsystem.common.utils.DebugLog;
 import com.investigation.investigationsystem.common.utils.DialogUtils;
 import com.investigation.investigationsystem.common.utils.ToastUtils;
 
@@ -157,9 +159,18 @@ public class JuanActivity extends BaseFragmentActivity {
 
     @Override
     protected void analyzeIntent(Intent intent) {
-        juanResponse = new Gson().fromJson(Data.getQuestion, JuanResponse.class);
-        JuanPresenter.getInstance().setData(juanResponse.getQuestionnaire_YES().get(0));
-        initDefaultAddFragment();
+        juanResponse = new Gson().fromJson(Data.getQuestion , JuanResponse.class);
+
+        if(DataConstants.juan != null){
+            DebugLog.i("zzz" , "---获取问卷--juanResponse---" + juanResponse.toString());
+            JuanPresenter.getInstance().setData(juanResponse.getQuestionnaire_YES().get(0));
+            DebugLog.i("zzz" , "---获取问卷---" + juanResponse.getQuestionnaire_YES().get(0).toString());
+            initDefaultAddFragment();
+        }else{
+
+        }
+
+
     }
 
     @Override

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,37 +12,37 @@
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="20dp"
             android:text="姓名" />
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:text="性别" />
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:text="年龄" />
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="20dp"
             android:text="身份证号" />
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="150dp"
             android:layout_marginTop="20dp"
             android:text="调查日期" />
 
         <TextView
             style="@style/main_text_black_normal_z"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="130dp"
             android:layout_marginTop="20dp"
             android:text="调查问卷名" />
 

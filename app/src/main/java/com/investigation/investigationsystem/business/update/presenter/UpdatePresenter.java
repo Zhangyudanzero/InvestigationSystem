@@ -32,6 +32,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.HashMap;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * ==========================================
  * <p/>
@@ -90,7 +92,7 @@ public class UpdatePresenter extends BasePresenter {
     /**
      * 问卷上传点击
      */
-    public void uploadQuestionClick(final ImageView iv_questionnier) {
+    public void uploadQuestionClick(final ImageView iv_questionnier , SweetAlertDialog dialog_update) {
 
 
     }
@@ -98,25 +100,30 @@ public class UpdatePresenter extends BasePresenter {
     /**
      * 反馈信息上传点击
      */
-    public void uploadFeedbackClick(final ImageView iv_feedback) {
+    public void uploadFeedbackClick(final ImageView iv_feedback , final SweetAlertDialog dialog_update) {
         String feedback = PrefersUtils.getString(StringConstants.feedbackPrefrenceKey);
-        if (!feedback.isEmpty()) {
 
+        if (!feedback.isEmpty()) {
+            if (dialog_update != null) {
+                dialog_update.show();
+            }
             String url = ConstantUrl.url + ConstantUrl.saveFeedBack;
             OkhttpUtils.getInstance().AsynPostJson(url, feedback, new OkhttpUtils.RequestCallback() {
                 @Override
                 public void onTimeOut() {
                     ToastUtils.showMessage("连接超时");
+                    dialog_update.dismiss();
                 }
 
                 @Override
                 public void onError() {
                     ToastUtils.showMessage("数据上传错误");
+                    dialog_update.dismiss();
                 }
 
                 @Override
                 public void onSuccess(String result) throws IOException, JSONException {
-
+                    dialog_update.dismiss();
                     //如果获取成功 清空意见建议
                     JSONObject jsonObject = new JSONObject(result);
                     String code = jsonObject.getString("result");
@@ -137,36 +144,41 @@ public class UpdatePresenter extends BasePresenter {
     /**
      * 全部上传点击点击
      */
-    public void uploadAllClick(final ImageView iv_feedback , final ImageView iv_questionnier) {
-        uploadFeedbackClick(iv_feedback);
-        uploadQuestionClick(iv_questionnier);
+    public void uploadAllClick(final ImageView iv_feedback , final ImageView iv_questionnier , SweetAlertDialog dialog_update) {
+        uploadFeedbackClick(iv_feedback , dialog_update);
+        uploadQuestionClick(iv_questionnier , dialog_update);
     }
 
     /**
      * 获取调查问卷点击
      */
-    public void updateQuestionClick(final ImageView iv_questionnair) {
+    public void updateQuestionClick(final ImageView iv_questionnair , final SweetAlertDialog dialog_download) {
         //获取用户id
         String userID = DataConstants.currentMyUserInfo.getUserID();
         UserId userIdz = new UserId(userID);
         String userIdjson = new Gson().toJson(userIdz);
         //提交数据内容 获取对应的数据
         if ( isUpdate() ) {
-
+            if (dialog_download != null) {
+                dialog_download.show();
+            }
             String url = ConstantUrl.url + ConstantUrl.getTeamQuestionnaire;
             OkhttpUtils.getInstance().AsynPostJson(url, userIdjson, new OkhttpUtils.RequestCallback() {
                 @Override
                 public void onTimeOut() {
                     ToastUtils.showMessage("连接超时");
+                    dialog_download.dismiss();
                 }
 
                 @Override
                 public void onError() {
                     ToastUtils.showMessage("数据获取错误");
+                    dialog_download.dismiss();
                 }
 
                 @Override
                 public void onSuccess(String result) throws IOException, JSONException {
+                    dialog_download.dismiss();
                     //获取数据以后 直接存放到sps中 覆盖原来的数据
                     ToastUtils.showMessage("获取所有调查问卷成功");
                     PrefersUtils.putString(StringConstants.questiannerPrefrenceKey, result);
@@ -183,28 +195,33 @@ public class UpdatePresenter extends BasePresenter {
     /**
      * 获取重点监控点击
      */
-    public void updateEmphasesClick(final ImageView iv_emphases) {
+    public void updateEmphasesClick(final ImageView iv_emphases , final SweetAlertDialog dialog_download) {
         //获取用户id
         String userID = DataConstants.currentMyUserInfo.getUserID();
         UserId userIdz = new UserId(userID);
         String userIdjson = new Gson().toJson(userIdz);
         //提交数据内容 获取对应的数据
         if ( isUpdate() ) {
-
+            if (dialog_download != null) {
+                dialog_download.show();
+            }
             String url = ConstantUrl.url + ConstantUrl.getFocusMonitoring;
             OkhttpUtils.getInstance().AsynPostJson(url, userIdjson , new OkhttpUtils.RequestCallback() {
                 @Override
                 public void onTimeOut() {
                     ToastUtils.showMessage("连接超时");
+                    dialog_download.dismiss();
                 }
 
                 @Override
                 public void onError() {
                     ToastUtils.showMessage("数据获取错误");
+                    dialog_download.dismiss();
                 }
 
                 @Override
                 public void onSuccess(String result) throws IOException, JSONException {
+                    dialog_download.dismiss();
                     //获取数据以后 直接存放到sps中
                     //保存当前的数据信息
                     iv_emphases.setVisibility(View.GONE);
@@ -223,28 +240,34 @@ public class UpdatePresenter extends BasePresenter {
     /**
      * 更新个人数据点击
      */
-    public void updateMyClick(ImageView iv_userinfo) {
+    public void updateMyClick(final ImageView iv_userinfo , final SweetAlertDialog dialog_download) {
         //获取用户id
         String userID = DataConstants.currentMyUserInfo.getUserID();
         UserId userIdz = new UserId(userID);
         String userIdjson = new Gson().toJson(userIdz);
         //提交数据内容 获取对应的数据
         if ( isUpdate() ) {//判断hi否还有没有上传的数据
-
+            if (dialog_download != null) {
+                dialog_download.show();
+            }
             String url = ConstantUrl.url + ConstantUrl.getUserInfo;
             OkhttpUtils.getInstance().AsynPostJson(url, userIdjson, new OkhttpUtils.RequestCallback() {
                 @Override
                 public void onTimeOut() {
-
+                    ToastUtils.showMessage("连接超时");
+                    dialog_download.dismiss();
                 }
 
                 @Override
                 public void onError() {
-
+                    ToastUtils.showMessage("数据获取错误");
+                    dialog_download.dismiss();
                 }
 
                 @Override
                 public void onSuccess(String result) throws IOException, JSONException {
+                    dialog_download.dismiss();
+                    iv_userinfo.setVisibility(View.GONE);
                     ToastUtils.showMessage("个人信息数据更新成功");
                     //把用户信息添加到本地和缓存数据里面
                     MyUserInfo myUserInfo = new Gson().fromJson(result, MyUserInfo.class);

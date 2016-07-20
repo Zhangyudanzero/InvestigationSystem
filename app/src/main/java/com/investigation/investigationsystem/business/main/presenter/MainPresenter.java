@@ -81,7 +81,8 @@ public class MainPresenter extends BasePresenter {
      * 开始问卷
      */
     public void btnStartClick() {
-        QusetuinnairePresenter.startUp(rootActivity);
+//        QusetuinnairePresenter.startUp(rootActivity);
+        QusetuinnairePresenter.startUpQuestionnair(rootActivity);
     }
 
     /**

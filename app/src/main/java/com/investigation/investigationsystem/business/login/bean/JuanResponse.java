@@ -60,5 +60,14 @@ public class JuanResponse {
         this.questionnaire_YES = questionnaire_YES;
     }
 
+    @Override
+    public String toString() {
+        return "JuanResponse{" +
+                "result='" + result + '\'' +
+                ", updateTime='" + updateTime + '\'' +
+                ", size=" + size +
+                ", questionnaire_YES=" + questionnaire_YES +
+                '}';
+    }
 
 }

@@ -9,6 +9,9 @@ import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.update.presenter.UpdatePresenter;
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
 import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.investigation.investigationsystem.common.utils.DialogUtils;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 /**
@@ -52,6 +55,10 @@ public class UpdateFragment extends BaseTitleFragemnt {
     private ImageView update_iv_update_question;
     private ImageView update_iv_update_emphases;
     private ImageView update_iv_update_userinfo;
+    //上传数据对话框
+    private SweetAlertDialog dialog_update;
+    //下载数据对话框
+    private SweetAlertDialog dialog_download;
 
     public static UpdateFragment newInstance() {
         return new UpdateFragment();
@@ -102,6 +109,9 @@ public class UpdateFragment extends BaseTitleFragemnt {
         update_iv_update_emphases = (ImageView) rootView.findViewById(R.id.update_iv_update_emphases);
         update_iv_update_userinfo = (ImageView) rootView.findViewById(R.id.update_iv_update_userinfo);
 
+        dialog_update = DialogUtils.getloadingDialog(rootActivity , StringConstants.MESSAGE_UPDATE);
+        dialog_download = DialogUtils.getloadingDialog(rootActivity , StringConstants.MESSAGE_DOWNLOAD);
+
         //获取身份证扫描数据
 //        Intent it = new Intent(getActivity() , IDCardEditActivity.class);
 //        startActivityForResult(it , 102);
@@ -118,7 +128,7 @@ public class UpdateFragment extends BaseTitleFragemnt {
         btn_answer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdatePresenter.getInstance().uploadQuestionClick(iv_answer);
+                UpdatePresenter.getInstance().uploadQuestionClick(iv_answer,dialog_update);
             }
         });
 
@@ -126,7 +136,7 @@ public class UpdateFragment extends BaseTitleFragemnt {
         btn_upload_feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdatePresenter.getInstance().uploadFeedbackClick(update_iv_feedback_upload);
+                UpdatePresenter.getInstance().uploadFeedbackClick(update_iv_feedback_upload,dialog_update);
             }
         });
 
@@ -134,7 +144,7 @@ public class UpdateFragment extends BaseTitleFragemnt {
         btn_upload_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdatePresenter.getInstance().uploadAllClick(update_iv_feedback_upload , iv_answer);
+                UpdatePresenter.getInstance().uploadAllClick(update_iv_feedback_upload , iv_answer,dialog_update);
             }
         });
 
@@ -142,7 +152,7 @@ public class UpdateFragment extends BaseTitleFragemnt {
         btn_questionnair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdatePresenter.getInstance().updateQuestionClick(update_iv_update_question);
+                UpdatePresenter.getInstance().updateQuestionClick(update_iv_update_question,dialog_download);
             }
         });
 
@@ -150,7 +160,7 @@ public class UpdateFragment extends BaseTitleFragemnt {
         btn_update_emphases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdatePresenter.getInstance().updateEmphasesClick(update_iv_update_emphases);
+                UpdatePresenter.getInstance().updateEmphasesClick(update_iv_update_emphases,dialog_download);
             }
         });
 
@@ -158,7 +168,7 @@ public class UpdateFragment extends BaseTitleFragemnt {
         btn_update_my.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdatePresenter.getInstance().updateMyClick(update_iv_update_userinfo);
+                UpdatePresenter.getInstance().updateMyClick(update_iv_update_userinfo,dialog_download);
             }
         });
     }

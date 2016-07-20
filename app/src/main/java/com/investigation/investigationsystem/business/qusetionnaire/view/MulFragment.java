@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.animation.Animation;
+import android.widget.TextView;
 
 import com.investigation.investigationsystem.R;
 import com.investigation.investigationsystem.business.login.bean.Ti;
@@ -50,6 +51,7 @@ public class MulFragment extends BaseTitleFragemnt {
     public static final int DURATION = 500;
     public static final int LEFT = -1;
     public static final int RIGHT = 1;
+    private TextView tv_title;
 
     @Override
     protected int getContentViewID() {
@@ -109,6 +111,8 @@ public class MulFragment extends BaseTitleFragemnt {
                 JuanPresenter.getInstance().delectResult(id, res);
             }
         });
+        tv_title = (TextView) rootView.findViewById(R.id.juan_mul_title);
+        tv_title.setText(ti.getQuestionTitle());
     }
 
     @Override

@@ -25,7 +25,7 @@
                 android:text="重点监测"
                 android:textColor="@color/main_white"
                 android:textSize="30sp"
-                android:padding="20dp"
+                android:padding="30dp"
                 />
 
             <Button
@@ -33,28 +33,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/main_keymonitoring"
-                android:background="@drawable/btn_bk_green_nostorge"
+                android:background="@color/main_text_green"
                 android:text="问卷查询"
                 android:textColor="@color/main_white"
                 android:textSize="30sp"
-                android:padding="20dp"
+                android:padding="30dp"
                 />
 
         </LinearLayout>
 
-
         <Button
             android:id="@+id/main_question_investigation"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="210dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_toRightOf="@+id/main_questionnaire_inquiry"
-            android:background="@drawable/btn_bk_blue_nostorge"
+            android:background="@color/main_text_blue"
             android:text="问卷调查"
             android:textColor="@color/main_white"
             android:textSize="40sp"
-            android:padding="20dp"
+            android:padding="30dp"
             />
 
         <LinearLayout
@@ -73,7 +72,7 @@
                 android:text="意见建议"
                 android:textColor="@color/main_white"
                 android:textSize="30sp"
-                android:padding="20dp"
+                android:padding="30dp"
                 />
 
             <Button
@@ -86,7 +85,7 @@
                 android:text="数据更新"
                 android:textColor="@color/main_white"
                 android:textSize="30sp"
-                android:padding="20dp"
+                android:padding="30dp"
                 />
 
         </LinearLayout>
@@ -105,7 +104,7 @@
         android:text="退出系统"
         android:textColor="@color/main_white"
         android:textSize="30sp"
-        android:padding="20dp"
+        android:padding="30dp"
         />
 
 </LinearLayout>

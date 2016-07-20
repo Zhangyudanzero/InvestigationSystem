@@ -38,15 +38,17 @@
     <TextView
         android:id="@+id/item_inquire_tv_time"
         style="@style/main_text_black_normal_z"
-        android:layout_marginLeft="80dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="10dp"
         android:text="调查日期" />
 
     <TextView
         android:id="@+id/item_inquire_tv_question"
         style="@style/main_text_black_normal_z"
-        android:layout_marginLeft="80dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="10dp"
-        android:text="调查问卷名" />
+        android:text="调查问卷名"
+        android:layout_marginRight="100dp"
+        />
 
 </LinearLayout>

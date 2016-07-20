@@ -28,7 +28,7 @@ public class Ti  implements Serializable {
     public String questionTitle;
     public String questionNO;
     public String questionType;
-    public List<TiOption> questionOption_list;
+    public List<TiOption> optionList;
 
     public String getQuestionID() {
         return questionID;
@@ -63,11 +63,11 @@ public class Ti  implements Serializable {
     }
 
     public List<TiOption> getQuestionOption_list() {
-        return questionOption_list;
+        return optionList;
     }
 
-    public void setQuestionOption_list(List<TiOption> questionOption_list) {
-        this.questionOption_list = questionOption_list;
+    public void setQuestionOption_list(List<TiOption> optionList) {
+        this.optionList = optionList;
     }
 
     @Override
@@ -77,7 +77,7 @@ public class Ti  implements Serializable {
                 ", questionTitle='" + questionTitle + '\'' +
                 ", questionNO='" + questionNO + '\'' +
                 ", questionType='" + questionType + '\'' +
-                ", questionOption_list=" + questionOption_list +
+                ", optionList=" + optionList +
                 '}';
     }
 }

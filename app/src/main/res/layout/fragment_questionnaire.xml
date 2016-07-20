@@ -100,7 +100,6 @@
             </LinearLayout>
 
             <LinearLayout style="@style/qusetion_linerlayout_margin"
-
                 >
 
                 <TextView
@@ -110,6 +109,23 @@
 
                 <EditText
                     android:id="@+id/questionnaire_et_femalse"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/qusetion_linerlayout_margin"
+                >
+
+                <TextView
+                    style="@style/main_text_blue_normal"
+                    android:layout_marginLeft="30dp"
+                    android:text="民族" />
+
+                <EditText
+                    android:id="@+id/questionnaire_et_nation"
                     android:layout_width="300dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="30dp" />
@@ -208,7 +224,7 @@
                     android:layout_height="wrap_content"
                     android:text="与户籍地址相同"
                     android:textColor="@color/main_blue_deep"
-                    android:textSize="25sp" />
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -242,18 +258,22 @@
 
             </LinearLayout>
 
-            <LinearLayout style="@style/qusetion_linerlayout_margin">
+            <LinearLayout style="@style/qusetion_linerlayout_margin"
+                android:layout_marginBottom="40dp"
+                >
 
                 <TextView
                     style="@style/main_text_blue_normal"
                     android:layout_marginLeft="30dp"
-                    android:text="联系人与被联系人调查关系" />
+                    android:text="联系人与被联系人调查关系"
+                    />
 
                 <EditText
                     android:id="@+id/questionnaire_et_relation"
                     android:layout_width="300dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="30dp" />
+                    android:layout_marginLeft="30dp"
+                    />
 
             </LinearLayout>
 

@@ -24,8 +24,8 @@ import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
 import com.investigation.investigationsystem.common.constants.DataConstants;
 import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.investigation.investigationsystem.common.data.Data;
 import com.investigation.investigationsystem.common.utils.DebugLog;
-import com.investigation.investigationsystem.common.utils.PrefersUtils;
 import com.investigation.investigationsystem.common.utils.ToastUtils;
 
 import java.util.ArrayList;
@@ -111,27 +111,39 @@ public class EmphasesPresenter extends BasePresenter {
     }
 
     /**
-     * 使用json解析本地的重点监测数据 以后变成解析sps数据
+     * 真数据 解析sps
      */
-    public emphases analysisJson(){
+//    public emphases analysisJson(){
+//        emphases emphasesz = null;
+//        //如果数据获取不为null
+//        if (!PrefersUtils.getString(StringConstants.emphasesPrefrenceKey).isEmpty()) {
+//            Gson gson = new Gson();
+//            emphasesz = gson.fromJson(PrefersUtils.getString(StringConstants.emphasesPrefrenceKey) , emphases.class);
+//            DebugLog.i(TAG  , "---解析本地数据emphasesz---" + emphasesz);
+//            return emphasesz;
+//        }else{
+//            ToastUtils.showMessage("重点监测对象没有数据");
+//        }
+//        return emphasesz;
+//    }
+
+    /**
+     * 假数据 解析本地数据
+     */
+    public emphases analysisJson() {
         emphases emphasesz = null;
         //如果数据获取不为null
-        if (!PrefersUtils.getString(StringConstants.emphasesPrefrenceKey).isEmpty()) {
-            Gson gson = new Gson();
-            emphasesz = gson.fromJson(PrefersUtils.getString(StringConstants.emphasesPrefrenceKey) , emphases.class);
-            DebugLog.i(TAG  , "---解析本地数据emphasesz---" + emphasesz);
-            return emphasesz;
-        }else{
-            ToastUtils.showMessage("重点监测对象没有数据");
-        }
+        Gson gson = new Gson();
+        emphasesz = gson.fromJson(Data.FocusMonitoring, emphases.class);
+        DebugLog.i(TAG, "---解析本地数据emphasesz---" + emphasesz);
         return emphasesz;
     }
 
     /**
      * 从本地获取重点监测数据中的团队信息
      */
-    public void getEmphasesTeamInfo(Spinner sp_team , final Spinner sp_area
-            , final Button btn_search , final RecyclerView rv_show){
+    public void getEmphasesTeamInfo(Spinner sp_team, final Spinner sp_area
+            , final Button btn_search, final RecyclerView rv_show) {
         //判断是否需要根据不同的用户获取数据
         //获取团队数据
         List<String> teamnamelist = new ArrayList<>();
@@ -139,23 +151,23 @@ public class EmphasesPresenter extends BasePresenter {
         if (emphases != null) {
 
             final List<MonitoringTeam> teamlist = emphases.getTeamlist();
-            if(teamlist != null) {
+            if (teamlist != null) {
                 for (int i = 0; i < teamlist.size(); i++) {
                     teamnamelist.add(teamlist.get(i).getTeamname());
                 }
                 //把teamnamelist数据填充进spinner
                 final String[] teamnames = new String[teamnamelist.size()];
-                for (int i = 0 ; i < teamnamelist.size() ; i++) {
+                for (int i = 0; i < teamnamelist.size(); i++) {
                     teamnames[i] = teamnamelist.get(i);
                 }
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootActivity
-                        , android.R.layout.simple_spinner_item , teamnames);
+                        , android.R.layout.simple_spinner_item, teamnames);
                 sp_team.setAdapter(adapter);
                 //sp点击时候的事件
                 sp_team.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        getEmphasesArea( teamnames[position] , teamlist , sp_area , btn_search , rv_show);
+                        getEmphasesArea(teamnames[position], teamlist, sp_area, btn_search, rv_show);
                     }
 
                     @Override
@@ -166,7 +178,7 @@ public class EmphasesPresenter extends BasePresenter {
 
             }
 
-        }else{
+        } else {
             ToastUtils.showMessage("该用户目前没有需要监测的对象");
         }
 
@@ -175,8 +187,8 @@ public class EmphasesPresenter extends BasePresenter {
     /**
      * 根据团队信息获取地域信息 刷新spinner的数据
      */
-    public void getEmphasesArea(String teamName , List<MonitoringTeam> teamlist , Spinner sp_area
-            , final Button btn_search , final RecyclerView rv_show){
+    public void getEmphasesArea(String teamName, List<MonitoringTeam> teamlist, Spinner sp_area
+            , final Button btn_search, final RecyclerView rv_show) {
         //把团队信息最放到缓存中
         DataConstants.emphasesTeam = teamName;
         //通过团队信息解析数据
@@ -189,14 +201,14 @@ public class EmphasesPresenter extends BasePresenter {
                     areas[j] = MonitoringArea.get(j).getAreaname().toString();
                 }
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootActivity
-                        , android.R.layout.simple_spinner_item , areas);
+                        , android.R.layout.simple_spinner_item, areas);
                 sp_area.setAdapter(adapter);
                 sp_area.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         //被选中的地域信息存放到全局静态变量
                         DataConstants.emphasesArea = MonitoringArea.get(position).getAreaname();
-                        showUserInfo(btn_search , MonitoringArea.get(position).getMonitoringPerson() , rv_show);
+                        showUserInfo(btn_search, MonitoringArea.get(position).getMonitoringPerson(), rv_show);
                     }
 
                     @Override
@@ -211,7 +223,7 @@ public class EmphasesPresenter extends BasePresenter {
     /**
      * 点击查询时 显示对应的数据
      */
-    public void showUserInfo(Button btn_search , final List<MonitoringPerson> monitoringPerson, final RecyclerView rv_show){
+    public void showUserInfo(Button btn_search, final List<MonitoringPerson> monitoringPerson, final RecyclerView rv_show) {
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

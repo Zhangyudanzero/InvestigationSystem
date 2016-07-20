@@ -16,9 +16,7 @@ import com.investigation.investigationsystem.common.utils.ToastUtils;
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -86,7 +84,7 @@ public class JuanPresenter extends BasePresenter {
      * 加载第一个页面
      */
     public void addFristFaragment() {
-        replaceFragment(juan.getQuestionList().get(current), -2);
+        replaceFragment(juan.getQuestionList().get(current) , -2);
     }
 
     /**
@@ -97,6 +95,7 @@ public class JuanPresenter extends BasePresenter {
         if (ti == null) {
             return;
         }
+
         String questionType = ti.getQuestionType();
         if ("0".equals(questionType)) {
             replaceFragment(SingerFragment.newInstance(ti, dri), rootActivity.getFragmentViewID());
@@ -166,6 +165,9 @@ public class JuanPresenter extends BasePresenter {
             return;
         }
         ToastUtils.showMessage("用户的结果集==" + result.toString());
+//        Intent it = new Intent(rootActivity , QusetuinnaireActivity.class);
+//        rootActivity.startActivity(it);
+//        rootActivity.finish();
     }
 
     /**
