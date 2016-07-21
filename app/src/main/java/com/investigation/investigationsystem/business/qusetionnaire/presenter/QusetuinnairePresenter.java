@@ -181,6 +181,7 @@ public class QusetuinnairePresenter extends BasePresenter {
             for (int i = 0 ; i < teamQuestionnaire.size() ; i++) {
                 juanids[i] = teamQuestionnaire.get(i).getQuestionnaireID();
             }
+            DebugLog.i(TAG , "---选择问卷的问卷编码---" + juanids);
             //获取问卷名称
             final String[] juannames = new String[teamQuestionnaire.size()];
             for (int i = 0 ; i < teamQuestionnaire.size() ; i++) {
@@ -196,7 +197,7 @@ public class QusetuinnairePresenter extends BasePresenter {
             spinner_juan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    DataConstants.juanJuan = juanids[position];
+                    DataConstants.juanJuanId = juanids[position];
                 }
 
                 @Override
@@ -226,7 +227,7 @@ public class QusetuinnairePresenter extends BasePresenter {
         //清空原来的试卷
         DataConstants.juan = null;
         //获取目前的问卷id
-        String juanJuan = DataConstants.juanJuan;
+        String juanJuanId = DataConstants.juanJuanId;
         //获取当前选中的问卷
         Juan juan = null;
         String string = PrefersUtils.getString(StringConstants.questiannerPrefrenceKey);
@@ -235,10 +236,9 @@ public class QusetuinnairePresenter extends BasePresenter {
             return ;
         }
         JuanResponse juanResponse = new Gson().fromJson(string, JuanResponse.class);
-        DebugLog.i(TAG , "---从缓存中解析出来的问卷---" + juanResponse);
         List<Juan> questionnaire_yes = juanResponse.getQuestionnaire_YES();
         for (int i = 0; i < questionnaire_yes.size(); i++) {
-            if (questionnaire_yes.get(i).getQuestionnaireID() == juanJuan) {
+            if (questionnaire_yes.get(i).getQuestionnaireID().equals(juanJuanId)) {
                 DataConstants.juan = questionnaire_yes.get(i);
                 DebugLog.i(TAG , "---被选中的问卷---" + DataConstants.juan);
             }
@@ -251,17 +251,6 @@ public class QusetuinnairePresenter extends BasePresenter {
             ToastUtils.showMessage("您的本地当前没有该试卷，请在网络环境下下载试卷");
         }
     }
-
-    /**
-     * 开始问卷调查
-     */
-//    public void beginQusetion(Activity activity) {
-//
-//            Intent intent = new Intent(activity, JuanActivity.class);
-//            activity.startActivity(intent);
-//            intent = null;
-//
-//    }
 
 
     /**

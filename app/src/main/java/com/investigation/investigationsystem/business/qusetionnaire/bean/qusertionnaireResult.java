@@ -9,6 +9,7 @@ public class qusertionnaireResult {
     private String areaid;
     private String userid;
     private String questionnaireid;
+    private String questionnairename;
     private String time;
     private String name;
     private String idno;
@@ -26,12 +27,12 @@ public class qusertionnaireResult {
     }
 
 
-
-    public qusertionnaireResult(String teamid, String areaid, String userid, String questionnaireid, String time, String name, String idno, int female, int age, String nation, String tel, String address, String address2, String contact, String contacttel, String relation) {
+    public qusertionnaireResult(String teamid, String areaid, String userid, String questionnaireid, String questionnairename, String time, String name, String idno, int female, int age, String nation, String tel, String address, String address2, String contact, String contacttel, String relation) {
         this.teamid = teamid;
         this.areaid = areaid;
         this.userid = userid;
         this.questionnaireid = questionnaireid;
+        this.questionnairename = questionnairename;
         this.time = time;
         this.name = name;
         this.idno = idno;
@@ -51,8 +52,9 @@ public class qusertionnaireResult {
         return "qusertionnaireResult{" +
                 "teamid='" + teamid + '\'' +
                 ", areaid='" + areaid + '\'' +
-                ", account='" + userid + '\'' +
+                ", userid='" + userid + '\'' +
                 ", questionnaireid='" + questionnaireid + '\'' +
+                ", questionnairename='" + questionnairename + '\'' +
                 ", time='" + time + '\'' +
                 ", name='" + name + '\'' +
                 ", idno='" + idno + '\'' +
@@ -180,4 +182,11 @@ public class qusertionnaireResult {
         return relation;
     }
 
+    public String getQuestionnairename() {
+        return questionnairename;
+    }
+
+    public void setQuestionnairename(String questionnairename) {
+        this.questionnairename = questionnairename;
+    }
 }

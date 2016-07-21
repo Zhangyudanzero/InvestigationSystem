@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.investigation.investigationsystem.R;
-import com.investigation.investigationsystem.business.questionnaireinquiry.bean.QusertionnaireResult;
+import com.investigation.investigationsystem.business.qusetionnaire.bean.QusertionnaireResultList;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class InquireAdapter extends RecyclerView.Adapter<InquireAdapter.InquireViiewHolder> {
 
-    private List<QusertionnaireResult> list;
+    private List<QusertionnaireResultList> list;
     private Context context;
 
     public InquireAdapter(List list, Context context) {
@@ -34,17 +34,17 @@ public class InquireAdapter extends RecyclerView.Adapter<InquireAdapter.InquireV
 
     @Override
     public void onBindViewHolder(InquireAdapter.InquireViiewHolder holder, int position) {
-        holder.tv_name.setText(list.get(position).getQusertionnaireresult().getName());
-        holder.tv_age.setText(list.get(position).getQusertionnaireresult().getAge()+"");
-        if (list.get(position).getQusertionnaireresult().getFemale() == 1) {
+        holder.tv_name.setText(list.get(position).getQusertionnaireResult().getName());
+        holder.tv_age.setText(list.get(position).getQusertionnaireResult().getAge()+"");
+        if (list.get(position).getQusertionnaireResult().getFemale() == 1) {
             holder.tv_famle.setText("男");
-        }else if (list.get(position).getQusertionnaireresult().getFemale() == 2){
+        }else if (list.get(position).getQusertionnaireResult().getFemale() == 2){
             holder.tv_famle.setText("女");
         }
 
-        holder.tv_idcard.setText(list.get(position).getQusertionnaireresult().getIdno());
-        holder.tv_time.setText(list.get(position).getQusertionnaireresult().getTime());
-        holder.tv_question.setText(list.get(position).getQusertionnaireresult().getQuestionnairename());
+        holder.tv_idcard.setText(list.get(position).getQusertionnaireResult().getIdno());
+        holder.tv_time.setText(list.get(position).getQusertionnaireResult().getTime());
+        holder.tv_question.setText(list.get(position).getQusertionnaireResult().getQuestionnairename());
 
     }
 

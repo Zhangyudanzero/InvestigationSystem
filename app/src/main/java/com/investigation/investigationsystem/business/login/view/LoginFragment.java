@@ -110,6 +110,12 @@ public class LoginFragment extends BaseTitleFragemnt {
                 LoginPresenter.getInstance().buttonLoginClick(username, password, dialog_loading);
             }
         });
+        btn_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
     }
 
     @Override

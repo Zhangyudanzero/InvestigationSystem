@@ -6,15 +6,16 @@ import android.support.v7.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.investigation.investigationsystem.business.questionnaireinquiry.adapter.InquireAdapter;
-import com.investigation.investigationsystem.business.questionnaireinquiry.bean.Answer;
-import com.investigation.investigationsystem.business.questionnaireinquiry.bean.QusertionnaireResult;
 import com.investigation.investigationsystem.business.questionnaireinquiry.view.InquireActivity;
 import com.investigation.investigationsystem.business.questionnaireinquiry.view.InquireFragment;
+import com.investigation.investigationsystem.business.qusetionnaire.bean.JuanResult;
+import com.investigation.investigationsystem.business.qusetionnaire.bean.QusertionnaireResultList;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
 import com.investigation.investigationsystem.common.constants.StringConstants;
-import com.investigation.investigationsystem.common.data.Data;
 import com.investigation.investigationsystem.common.utils.DebugLog;
+import com.investigation.investigationsystem.common.utils.PrefersUtils;
+import com.investigation.investigationsystem.common.utils.ToastUtils;
 
 import java.util.List;
 
@@ -60,12 +61,17 @@ public class InquiryPresenter extends BasePresenter {
         //获取问卷结果 暂时使用假数据 实际从sps中获取
 
 
+        if (!PrefersUtils.getString(StringConstants.answerPrefrenceKey).isEmpty()) {
+
+        }else{
+            ToastUtils.showMessage("没有可以查询的问卷");
+        }
 
         Gson gson = new Gson();
-        Answer answer = gson.fromJson(Data.answer, Answer.class);
-        DebugLog.i(TAG , "解析问卷---" + answer);
-        List<QusertionnaireResult> qusertionnaireresultlist = answer.getQusertionnaireresultlist();
-        rv_show.setAdapter(new InquireAdapter(qusertionnaireresultlist , rootActivity));
+        JuanResult juanResult = gson.fromJson(PrefersUtils.getString(StringConstants.answerPrefrenceKey) , JuanResult.class);
+        DebugLog.i(TAG , "解析问卷---" + juanResult);
+        List<QusertionnaireResultList> qusertionnaireResultList = juanResult.getQusertionnaireResultList();
+        rv_show.setAdapter(new InquireAdapter(qusertionnaireResultList , rootActivity));
     }
 
 

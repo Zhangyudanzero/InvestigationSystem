@@ -92,8 +92,40 @@ public class UpdatePresenter extends BasePresenter {
     /**
      * 问卷上传点击
      */
-    public void uploadQuestionClick(final ImageView iv_questionnier , SweetAlertDialog dialog_update) {
+    public void uploadQuestionClick(final ImageView iv_questionnier , final SweetAlertDialog dialog_update) {
+        String answer = PrefersUtils.getString(StringConstants.answerPrefrenceKey);
+        if (!answer.isEmpty()) {
+            if (dialog_update != null) {
+                dialog_update.show();
+            }
+            String url = ConstantUrl.url + ConstantUrl.saveQuestionnaire;
+            OkhttpUtils.getInstance().AsynPostJson(url, answer, new OkhttpUtils.RequestCallback() {
+                @Override
+                public void onTimeOut() {
+                    ToastUtils.showMessage("连接超时");
+                    dialog_update.dismiss();
+                }
 
+                @Override
+                public void onError() {
+                    ToastUtils.showMessage("数据上传错误");
+                    dialog_update.dismiss();
+                }
+
+                @Override
+                public void onSuccess(String result) throws IOException, JSONException {
+                    dialog_update.dismiss();
+                    //如果获取成功 清空问卷答案
+                    JSONObject jsonObject = new JSONObject(result);
+                    String code = jsonObject.getString("result");
+                    if ("1".equals(code)) {
+                        PrefersUtils.putString(StringConstants.answerPrefrenceKey, "");
+                        iv_questionnier.setVisibility(View.GONE);
+                        isAnswer = false;
+                    }
+                }
+            });
+        }
 
     }
 

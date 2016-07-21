@@ -4,6 +4,7 @@ import com.investigation.investigationsystem.business.emphases.bean.MonitoringPe
 import com.investigation.investigationsystem.business.login.bean.Juan;
 import com.investigation.investigationsystem.business.login.bean.MyUserInfo;
 import com.investigation.investigationsystem.business.login.bean.UserData;
+import com.investigation.investigationsystem.business.qusetionnaire.bean.qusertionnaireResult;
 
 /**
  * Created by zero on 2016/7/10.
@@ -34,5 +35,7 @@ public class DataConstants {
     public static String JuanAreaId = null;
     //开始答题的问卷
     public static Juan juan = null;
+    //当前被调查人信息 答题完成后保存 或取消答题后清除
+    public static qusertionnaireResult researchInfo = null;
 
 }

@@ -14,6 +14,7 @@ import com.investigation.investigationsystem.business.qusetionnaire.presenter.Qu
 import com.investigation.investigationsystem.common.base.BaseTitleFragemnt;
 import com.investigation.investigationsystem.common.constants.DataConstants;
 import com.investigation.investigationsystem.common.constants.StringConstants;
+import com.investigation.investigationsystem.common.utils.DebugLog;
 import com.investigation.investigationsystem.common.utils.TimeUtils;
 import com.investigation.investigationsystem.common.utils.ToastUtils;
 
@@ -22,6 +23,7 @@ import com.investigation.investigationsystem.common.utils.ToastUtils;
  */
 public class QusetuinnairFragment extends BaseTitleFragemnt {
 
+    private static final String TAG = StringConstants.TAG + QusetuinnairePresenter.class.getName();
     private EditText et_age;
     private EditText et_contact;
     private EditText et_contacttal;
@@ -106,6 +108,8 @@ public class QusetuinnairFragment extends BaseTitleFragemnt {
         btn_begin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //获取被调查人信息
+                getUserInfo();
                 QusetuinnairePresenter.getInstance().beginQusetion(rootActivity);
             }
         });
@@ -154,6 +158,7 @@ public class QusetuinnairFragment extends BaseTitleFragemnt {
                 || tel.isEmpty() || local.isEmpty() || contact.isEmpty() || contacttel.isEmpty() ||
                 relation.isEmpty() || nation.isEmpty()) {
             ToastUtils.showMessage("您有信息没有填写，请填写后继续答题");
+            return ;
         }else{
             //保存被调查者数据
             qusertionnaireResult qusertionnaireResult =
@@ -161,6 +166,7 @@ public class QusetuinnairFragment extends BaseTitleFragemnt {
                             DataConstants.juanTeamId,
                             DataConstants.JuanAreaId,
                             DataConstants.currentMyUserInfo.getUserID(),
+                            DataConstants.juanJuanId,
                             DataConstants.juanJuan,
                             TimeUtils.getCurrentTiem(),
                             name,
@@ -175,6 +181,8 @@ public class QusetuinnairFragment extends BaseTitleFragemnt {
                             contacttel,
                             relation
                     );
+            DebugLog.i(TAG , qusertionnaireResult.toString());
+            DataConstants.researchInfo = qusertionnaireResult;
         }
 
     }

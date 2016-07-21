@@ -26,4 +26,11 @@ public class questionnaireResultContent {
         return resultcontent;
     }
 
+    @Override
+    public String toString() {
+        return "questionnaireResultContent{" +
+                "questionid='" + questionid + '\'' +
+                ", resultcontent=" + resultcontent +
+                '}';
+    }
 }

@@ -1,22 +1,29 @@
 package com.investigation.investigationsystem.business.qusetionnaire.presenter;
 
+import com.google.gson.Gson;
 import com.investigation.investigationsystem.business.login.bean.Juan;
 import com.investigation.investigationsystem.business.login.bean.Ti;
+import com.investigation.investigationsystem.business.qusetionnaire.bean.JuanResult;
 import com.investigation.investigationsystem.business.qusetionnaire.bean.JuanUpdateUIMessage;
+import com.investigation.investigationsystem.business.qusetionnaire.bean.QusertionnaireResultList;
 import com.investigation.investigationsystem.business.qusetionnaire.bean.ToggleMessage;
+import com.investigation.investigationsystem.business.qusetionnaire.bean.questionnaireResultContent;
 import com.investigation.investigationsystem.business.qusetionnaire.view.EditFragment;
 import com.investigation.investigationsystem.business.qusetionnaire.view.MulFragment;
 import com.investigation.investigationsystem.business.qusetionnaire.view.SingerFragment;
 import com.investigation.investigationsystem.common.base.BaseFragmentActivity;
 import com.investigation.investigationsystem.common.base.BasePresenter;
+import com.investigation.investigationsystem.common.constants.DataConstants;
 import com.investigation.investigationsystem.common.constants.StringConstants;
 import com.investigation.investigationsystem.common.utils.DebugLog;
+import com.investigation.investigationsystem.common.utils.PrefersUtils;
 import com.investigation.investigationsystem.common.utils.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -165,9 +172,48 @@ public class JuanPresenter extends BasePresenter {
             return;
         }
         ToastUtils.showMessage("用户的结果集==" + result.toString());
-//        Intent it = new Intent(rootActivity , QusetuinnaireActivity.class);
-//        rootActivity.startActivity(it);
-//        rootActivity.finish();
+//        DebugLog.i(TAG , "---用户答题结果---" + result.toString());
+
+        List<questionnaireResultContent> questionnaireResultContent = new ArrayList<>();
+
+        //封装问卷结果
+        for (Map.Entry<String, List<String>> entry : result.entrySet()) {
+//            DebugLog.i(TAG , "---key= " + entry.getKey() + " --- and value= " + entry.getValue());
+            questionnaireResultContent content = new questionnaireResultContent();
+            content.setQuestionid(entry.getKey());
+            content.setResultcontent(entry.getValue());
+            questionnaireResultContent.add(content);
+        }
+        DebugLog.i(TAG , "---把keymap里面的值保存到类里面---" + questionnaireResultContent.toString());
+
+        //封装被调查人信息和问卷结果
+        QusertionnaireResultList list = new QusertionnaireResultList();
+        list.setQuestionnaireResultContent(questionnaireResultContent);
+        list.setQusertionnaireResult(DataConstants.researchInfo);
+        DebugLog.i(TAG , "---封装被调查人信息和问卷结果researchInfo---" + DataConstants.researchInfo);
+        DebugLog.i(TAG , "---封装被调查人信息和问卷结果---" + list.toString());
+        List<QusertionnaireResultList> lists = new ArrayList<>();
+        lists.add(list);
+        JuanResult juanResult = new JuanResult();
+        juanResult.setQusertionnaireResultList(lists);
+        juanResult.setSize(lists.size());
+
+        //把调查问卷结果存放到sps中
+        if (PrefersUtils.getString(StringConstants.answerPrefrenceKey).isEmpty()) {
+            String s = new Gson().toJson(juanResult);
+            PrefersUtils.putString(StringConstants.answerPrefrenceKey , s);
+        }else{
+            String str = PrefersUtils.getString(StringConstants.answerPrefrenceKey);
+            JuanResult juanResultz = new Gson().fromJson(str, JuanResult.class);
+            List<QusertionnaireResultList> qusertionnaireResultList = juanResultz.getQusertionnaireResultList();
+            qusertionnaireResultList.add(list);
+            juanResultz.setQusertionnaireResultList(qusertionnaireResultList);
+            juanResultz.setSize(qusertionnaireResultList.size());
+            String s = new Gson().toJson(juanResultz);
+            PrefersUtils.putString(StringConstants.answerPrefrenceKey , s);
+        }
+        DebugLog.i(TAG , "---存放到sps中---" + PrefersUtils.getString(StringConstants.answerPrefrenceKey));
+        rootActivity.finish();
     }
 
     /**
@@ -175,7 +221,7 @@ public class JuanPresenter extends BasePresenter {
      *
      * @param id  题目编号
      * @param res 题目答案
-     */
+   */
     public void addResult(String id, String res) {
         if (result == null) {
             result = new TreeMap<>();
